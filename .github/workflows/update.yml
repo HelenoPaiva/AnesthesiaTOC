@@ -28,7 +28,14 @@ jobs:
 
       - name: Build data.json
         env:
+          # Polite identification for Crossref
           CROSSREF_UA: AnesTOC-Dashboard/1.0 (mailto:${{ secrets.CROSSREF_MAILTO }})
+
+          # Reuse the same email for NCBI (recommended)
+          NCBI_EMAIL: ${{ secrets.CROSSREF_MAILTO }}
+
+          # Optional but recommended: cap PubMed DOI→PMID lookups per run
+          PMID_LOOKUP_BUDGET: "80"
         run: |
           python scripts/build_data.py
 
