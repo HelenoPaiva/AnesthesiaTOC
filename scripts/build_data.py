@@ -137,6 +137,7 @@ def main() -> int:
         name = s["name"]
         short = s.get("short", name)
         issn = s["issn"]
+        tier = s.get("tier", 0)
 
         try:
             items = crossref_query_by_issn(issn, rows=30)
@@ -146,6 +147,7 @@ def main() -> int:
 
         for raw in items:
             item = to_item(name, short, raw)
+            item["tier"] = tier
             # Skip empty titles (rare but happens)
             if not item["title"]:
                 continue
