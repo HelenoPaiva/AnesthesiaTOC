@@ -21,10 +21,6 @@ function saveStars(stars) {
   localStorage.setItem(STAR_KEY, JSON.stringify([...stars]));
 }
 
-function norm(s) {
-  return (s || "").toLowerCase();
-}
-
 function matchesQuery(item, q) {
   if (!q) return true;
   const hay = `${item.title} ${item.authors} ${item.journal} ${item.doi}`.toLowerCase();
@@ -39,8 +35,8 @@ function render(items, stars) {
   }
 
   for (const it of items) {
-    const starOn = stars.has(it.doi || it.url || `${it.journal_short}|${it.title}`);
     const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
+    const starOn = stars.has(key);
 
     const div = document.createElement("div");
     div.className = "item";
@@ -53,18 +49,21 @@ function render(items, stars) {
           </h3>
           <div class="metaLine">
             <span class="pill">${it.journal_short}</span>
+            ${it.tier ? `<span class="pill">T${it.tier}</span>` : ""}
             ${it.published ? `<span>${it.published}</span>` : `<span class="muted">no date</span>`}
             ${it.authors ? `<span>${it.authors}</span>` : ""}
             ${it.doi ? `<span class="muted">${it.doi}</span>` : ""}
+            ${it.pubmed_url ? `<a class="pill" href="${it.pubmed_url}" target="_blank" rel="noopener noreferrer">PubMed</a>` : ""}
           </div>
         </div>
       </div>
     `;
 
     div.querySelector(".star").addEventListener("click", () => {
-      if (stars.has(key)) stars.delete(key);
-      else stars.add(key);
-      saveStars(stars);
+      const stars2 = loadStars();
+      if (stars2.has(key)) stars2.delete(key);
+      else stars2.add(key);
+      saveStars(stars2);
       applyFilters();
     });
 
@@ -73,6 +72,7 @@ function render(items, stars) {
 }
 
 let DATA = { generated_at: null, items: [] };
+let SOURCES = null;
 
 function applyFilters() {
   const stars = loadStars();
@@ -97,43 +97,45 @@ function applyFilters() {
 
 async function init() {
   els.status.textContent = "Loading data…";
+
+  // Load data.json
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
 
-  // Populate journal dropdown from sources.json (so journals with 0 items still appear)
-const sourcesRes = await fetch("./sources.json", { cache: "no-store" });
-const SOURCES = await sourcesRes.json();
+  // Load sources.json to build dropdown (so journals with 0 items still appear)
+  const sourcesRes = await fetch("./sources.json", { cache: "no-store" });
+  SOURCES = await sourcesRes.json();
 
-// Count items per journal_short from data.json
-const counts = new Map();
-for (const it of DATA.items) {
-  counts.set(it.journal_short, (counts.get(it.journal_short) || 0) + 1);
-}
+  // Count items per journal_short from data.json
+  const counts = new Map();
+  for (const it of DATA.items) {
+    counts.set(it.journal_short, (counts.get(it.journal_short) || 0) + 1);
+  }
 
-const options = SOURCES
-  .map(s => ({
-    short: s.short || s.name,
-    name: s.name,
-    tier: s.tier ?? 0,
-    count: counts.get(s.short || s.name) || 0,
-  }))
-  .sort((a, b) => (a.tier - b.tier) || a.short.localeCompare(b.short));
+  // Populate journal dropdown
+  const options = SOURCES
+    .map(s => ({
+      short: s.short || s.name,
+      name: s.name,
+      tier: s.tier ?? 0,
+      count: counts.get(s.short || s.name) || 0,
+    }))
+    .sort((a, b) => (a.tier - b.tier) || a.short.localeCompare(b.short));
 
-for (const o of options) {
-  const opt = document.createElement("option");
-  opt.value = o.short;
-  opt.textContent = `T${o.tier} · ${o.short} — ${o.name} (${o.count})`;
-  if (o.count === 0) opt.disabled = true; // optional: disable empty journals
-  els.journal.appendChild(opt);
-}
+  for (const o of options) {
+    const opt = document.createElement("option");
+    opt.value = o.short;
+    opt.textContent = `T${o.tier} · ${o.short} — ${o.name} (${o.count})`;
+    if (o.count === 0) opt.disabled = true; // optional: prevent selecting empty journals
+    els.journal.appendChild(opt);
+  }
 
-
-  els.generatedAt.textContent = DATA.generated_at ? `Updated: ${DATA.generated_at.replace("T"," ").replace("+00:00"," UTC")}` : "";
+  els.generatedAt.textContent = DATA.generated_at
+    ? `Updated: ${DATA.generated_at.replace("T", " ").replace("+00:00", " UTC")}`
+    : "";
 
   // Wire events
-  ["input", "change"].forEach(evt => {
-    els.q.addEventListener(evt, applyFilters);
-  });
+  els.q.addEventListener("input", applyFilters);
   els.journal.addEventListener("change", applyFilters);
   els.starOnly.addEventListener("change", applyFilters);
 
@@ -150,5 +152,3 @@ init().catch(err => {
   els.status.textContent = "Failed to load data.json";
   els.list.innerHTML = `<div class="muted">Error loading data. Check console.</div>`;
 });
-
-
