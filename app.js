@@ -1,7 +1,6 @@
 const els = {
   q: document.getElementById("q"),
   journal: document.getElementById("journal"),
-  days: document.getElementById("days"),
   starOnly: document.getElementById("starOnly"),
   list: document.getElementById("list"),
   status: document.getElementById("status"),
@@ -20,12 +19,6 @@ function loadStars() {
 }
 function saveStars(stars) {
   localStorage.setItem(STAR_KEY, JSON.stringify([...stars]));
-}
-
-function daysAgoISO(n) {
-  const d = new Date();
-  d.setDate(d.getDate() - n);
-  return d.toISOString().slice(0, 10);
 }
 
 function norm(s) {
@@ -85,13 +78,10 @@ function applyFilters() {
   const stars = loadStars();
   const q = els.q.value.trim();
   const j = els.journal.value;
-  const days = els.days.value ? parseInt(els.days.value, 10) : null;
-  const cutoff = days ? daysAgoISO(days) : null;
 
   let items = DATA.items.slice();
 
   if (j) items = items.filter(it => it.journal_short === j);
-  if (cutoff) items = items.filter(it => (it.published || "0000-00-00") >= cutoff);
   items = items.filter(it => matchesQuery(it, q));
 
   if (els.starOnly.checked) {
@@ -145,7 +135,6 @@ for (const o of options) {
     els.q.addEventListener(evt, applyFilters);
   });
   els.journal.addEventListener("change", applyFilters);
-  els.days.addEventListener("change", applyFilters);
   els.starOnly.addEventListener("change", applyFilters);
 
   els.clearStars.addEventListener("click", () => {
@@ -161,4 +150,5 @@ init().catch(err => {
   els.status.textContent = "Failed to load data.json";
   els.list.innerHTML = `<div class="muted">Error loading data. Check console.</div>`;
 });
+
 
