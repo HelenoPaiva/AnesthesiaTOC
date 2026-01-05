@@ -93,3 +93,14 @@ select { min-width: 160px; }
 
 .foot { margin: 14px 0 30px; font-size: 13px; }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+/* Make native selects behave in dark mode (helps Safari/iOS) */
+select, input {
+  color-scheme: dark;
+}
+
+/* Improve option readability (works in many browsers; ignored in some) */
+select option {
+  color: #0b0f14;
+  background: #ffffff;
+}
