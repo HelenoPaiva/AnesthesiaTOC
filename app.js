@@ -110,16 +110,33 @@ async function init() {
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
 
-  // Populate journal dropdown
-  const jset = new Map();
-  for (const it of DATA.items) jset.set(it.journal_short, it.journal);
-  const options = [...jset.entries()].sort((a,b) => a[0].localeCompare(b[0]));
-  for (const [short, name] of options) {
-    const opt = document.createElement("option");
-    opt.value = short;
-    opt.textContent = `${short} — ${name}`;
-    els.journal.appendChild(opt);
-  }
+  // Populate journal dropdown from sources.json (so journals with 0 items still appear)
+const sourcesRes = await fetch("./sources.json", { cache: "no-store" });
+const SOURCES = await sourcesRes.json();
+
+// Count items per journal_short from data.json
+const counts = new Map();
+for (const it of DATA.items) {
+  counts.set(it.journal_short, (counts.get(it.journal_short) || 0) + 1);
+}
+
+const options = SOURCES
+  .map(s => ({
+    short: s.short || s.name,
+    name: s.name,
+    tier: s.tier ?? 0,
+    count: counts.get(s.short || s.name) || 0,
+  }))
+  .sort((a, b) => (a.tier - b.tier) || a.short.localeCompare(b.short));
+
+for (const o of options) {
+  const opt = document.createElement("option");
+  opt.value = o.short;
+  opt.textContent = `T${o.tier} · ${o.short} — ${o.name} (${o.count})`;
+  if (o.count === 0) opt.disabled = true; // optional: disable empty journals
+  els.journal.appendChild(opt);
+}
+
 
   els.generatedAt.textContent = DATA.generated_at ? `Updated: ${DATA.generated_at.replace("T"," ").replace("+00:00"," UTC")}` : "";
 
@@ -144,3 +161,4 @@ init().catch(err => {
   els.status.textContent = "Failed to load data.json";
   els.list.innerHTML = `<div class="muted">Error loading data. Check console.</div>`;
 });
+
