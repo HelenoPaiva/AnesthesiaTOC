@@ -1,13 +1,20 @@
 [
-  { "name": "Anesthesiology", "short": "ANES", "issn": "0003-3022" },
-  { "name": "British Journal of Anaesthesia", "short": "BJA", "issn": "0007-0912" },
-  { "name": "Anesthesia & Analgesia", "short": "A&A", "issn": "0003-2999" },
-  { "name": "Brazilian Journal of Anesthesiology", "short": "BJAN", "issn": "2352-2291"},
-  { "name": "Anaesthesia", "short": "ANAES-UK", "issn": "0003-2409" },
-  { "name": "European Journal of Anaesthesiology", "short": "EJA", "issn": "0265-0215" },
-  { "name": "Regional Anesthesia & Pain Medicine", "short": "RAPM", "issn": "1098-7339" },
-  { "name": "Canadian Journal of Anesthesia", "short": "CJA", "issn": "0832-610X" },
-  { "name": "Paediatric Anaesthesia", "short": "PEDANES", "issn": "1155-5645" },
-  { "name": "Journal of Neurosurgical Anesthesiology", "short": "JNA", "issn": "0898-4921" }
-]
+  { "name": "Anesthesiology", "short": "ANES", "issn": "0003-3022", "tier": 1 },
+  { "name": "British Journal of Anaesthesia", "short": "BJA", "issn": "0007-0912", "tier": 1 },
+  { "name": "Anesthesia & Analgesia", "short": "A&A", "issn": "0003-2999", "tier": 1 },
+  { "name": "Anaesthesia", "short": "ANAES-UK", "issn": "0003-2409", "tier": 1 },
+  { "name": "European Journal of Anaesthesiology", "short": "EJA", "issn": "0265-0215", "tier": 1 },
+  { "name": "Canadian Journal of Anesthesia", "short": "CJA", "issn": "0832-610X", "tier": 1 },
+  { "name": "Brazilian Journal of Anesthesiology", "short": "BJAN", "issn": "2352-2291", "tier": 1 },
 
+  { "name": "Regional Anesthesia & Pain Medicine", "short": "RAPM", "issn": "1098-7339", "tier": 2 },
+  { "name": "Pain Practice", "short": "PAINPRAC", "issn": "1530-7085", "tier": 2 },
+  { "name": "Paediatric Anaesthesia", "short": "PEDANES", "issn": "1155-5645", "tier": 2 },
+  { "name": "Journal of Neurosurgical Anesthesiology", "short": "JNA", "issn": "0898-4921", "tier": 2 },
+  { "name": "Journal of Cardiothoracic and Vascular Anesthesia", "short": "JCVA", "issn": "1053-0770", "tier": 2 },
+
+  { "name": "Journal of Clinical Anesthesia", "short": "JCLINANES", "issn": "0952-8180", "tier": 3 },
+  { "name": "Anaesthesia Critical Care & Pain Medicine", "short": "ACCPM", "issn": "2352-5568", "tier": 3 },
+  { "name": "Korean Journal of Anesthesiology", "short": "KJA", "issn": "2005-6419", "tier": 3 },
+  { "name": "Saudi Journal of Anaesthesia", "short": "SJA", "issn": "1658-354X", "tier": 3 }
+]
