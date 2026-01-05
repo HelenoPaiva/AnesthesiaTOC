@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anesthesiology Journal TOC Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <div class="titlebar">
+      <h1>Anesthesiology TOC Dashboard</h1>
+      <p class="subtitle">Unified “latest articles” view from major anesthesiology journals (via Crossref). Links go to DOI/publisher.</p>
+    </div>
+
+    <div class="controls card">
+      <div class="row">
+        <label>
+          Search
+          <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." />
+        </label>
+
+        <label>
+          Journal
+          <select id="journal">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label>
+          Days
+          <select id="days">
+            <option value="7">Last 7</option>
+            <option value="30" selected>Last 30</option>
+            <option value="90">Last 90</option>
+            <option value="365">Last 365</option>
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label class="chk">
+          <input id="starOnly" type="checkbox" />
+          Starred only
+        </label>
+      </div>
+
+      <div class="row meta">
+        <span id="status">Loading…</span>
+        <span class="spacer"></span>
+        <button id="clearStars" class="btn">Clear stars</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="listhead">
+        <h2>Latest</h2>
+        <span id="generatedAt" class="muted"></span>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
+
+    <footer class="muted foot">
+      Tip: Stars are saved locally in your browser (no login). You can fork this and add more journals in <code>sources.json</code>.
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
