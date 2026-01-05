@@ -27,6 +27,13 @@ function matchesQuery(item, q) {
   return hay.includes(q.toLowerCase());
 }
 
+function formatDateDMY(iso) {
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-");
+  if (!y || !m || !d) return iso; // fallback
+  return `${d}/${m}/${y}`;
+}
+
 function render(items, stars) {
   els.list.innerHTML = "";
   if (!items.length) {
@@ -50,7 +57,7 @@ function render(items, stars) {
           <div class="metaLine">
             <span class="pill">${it.journal_short}</span>
             ${it.tier ? `<span class="pill">T${it.tier}</span>` : ""}
-            ${it.published ? `<span>${it.published}</span>` : `<span class="muted">no date</span>`}
+            ${it.published ? `<span>${formatDateDMY(it.published)}</span>` : `<span class="muted">no date</span>`}
             ${it.authors ? `<span>${it.authors}</span>` : ""}
             ${it.doi ? `<span class="muted">${it.doi}</span>` : ""}
             ${it.pubmed_url ? `<a class="pill" href="${it.pubmed_url}" target="_blank" rel="noopener noreferrer">PubMed</a>` : ""}
