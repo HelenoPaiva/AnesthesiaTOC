@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """
-Build unified TOC data.json from Crossref by ISSN.
+Build unified TOC data.json from Crossref by ISSN, and optionally add PubMed links.
 
-- Reads sources.json
-- For each journal ISSN, queries Crossref for recent works
-- Normalizes into a single list and writes data.json
+- Reads sources.json (each source: name, short, issn (str or [str]), optional tier)
+- Queries Crossref for recent works per ISSN
+- Normalizes into a unified list and writes data.json
+- Enriches items with PMID + pubmed_url using NCBI E-utilities (DOI -> PMID)
+
+Notes:
+- PubMed enrichment is rate-limited and budgeted to avoid slow runs.
+- Set env var PMID_LOOKUP_BUDGET to adjust how many DOI->PMID lookups per run (default 120).
+- Provide a polite mailto in CROSSREF_UA and/or NCBI_EMAIL via GitHub Actions secrets if you want.
 """
 
 from __future__ import annotations
@@ -13,21 +19,30 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
-import urllib.parse
+from typing import Any, Dict, List, Optional, Union
 
 import requests
 
 
 CROSSREF_API = "https://api.crossref.org/works"
+NCBI_ESEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+
+# Crossref (and NCBI) behave better if you include a mailto.
+# In GitHub Actions you can set:
+# - CROSSREF_UA = "AnesTOC-Dashboard/1.0 (mailto:you@example.com)"
 USER_AGENT = os.getenv(
     "CROSSREF_UA",
-    "AnesTOC-Dashboard/1.0 (mailto:example@example.com)"
+    "AnesTOC-Dashboard/1.0 (mailto:example@example.com)",
 )
 
-# Crossref is much happier if you provide a real mailto:
-# In GitHub Actions, set secret CROSSREF_MAILTO and the workflow injects it.
+# Optional: use the same email for NCBI; if unset, NCBI still works.
+NCBI_EMAIL = os.getenv("NCBI_EMAIL", "")
+
+# PubMed lookup limits (to keep the workflow fast + polite)
+PMID_LOOKUP_BUDGET = int(os.getenv("PMID_LOOKUP_BUDGET", "120"))
+PMID_SLEEP_SECONDS = float(os.getenv("PMID_SLEEP_SECONDS", "0.34"))  # ~3 req/sec
 
 
 def iso_now() -> str:
@@ -62,7 +77,7 @@ def join_authors(item: Dict[str, Any]) -> str:
 
 
 def pick_date(item: Dict[str, Any]) -> Optional[str]:
-    # Prefer published-online, then published-print, then created, then issued.
+    # Prefer published-online, then published-print, then issued, then created.
     date_paths = [
         ["published-online", "date-parts"],
         ["published-print", "date-parts"],
@@ -86,12 +101,25 @@ def clean_title(item: Dict[str, Any]) -> str:
     t = item.get("title") or []
     if not t:
         return ""
-    # Crossref title can include odd spacing
     return re.sub(r"\s+", " ", t[0]).strip()
 
 
+def crossref_query_by_issn(issn: str, rows: int = 30) -> List[Dict[str, Any]]:
+    params = {
+        "filter": f"issn:{issn}",
+        "sort": "published",
+        "order": "desc",
+        "rows": str(rows),
+    }
+    headers = {"User-Agent": USER_AGENT}
+    r = requests.get(CROSSREF_API, params=params, headers=headers, timeout=30)
+    r.raise_for_status()
+    payload = r.json()
+    return payload.get("message", {}).get("items", []) or []
+
+
 def to_item(journal_name: str, journal_short: str, raw: Dict[str, Any]) -> Dict[str, Any]:
-    doi = raw.get("DOI", "")
+    doi = raw.get("DOI", "") or ""
     url = raw.get("URL") or (f"https://doi.org/{doi}" if doi else "")
     return {
         "journal": journal_name,
@@ -101,27 +129,35 @@ def to_item(journal_name: str, journal_short: str, raw: Dict[str, Any]) -> Dict[
         "published": pick_date(raw),
         "doi": doi,
         "url": url,
-        "type": raw.get("type", ""),
-        "publisher": raw.get("publisher", ""),
+        "type": raw.get("type", "") or "",
+        "publisher": raw.get("publisher", "") or "",
         "source": "crossref",
     }
 
 
-def crossref_query_by_issn(issn: str, rows: int = 25) -> List[Dict[str, Any]]:
-    # Filter by ISSN; sort by "published" desc tends to be okay, but Crossref varies by journal.
+def doi_to_pmid(doi: str) -> Optional[str]:
+    """
+    Map DOI -> PMID using NCBI E-utilities (esearch).
+    Returns PMID as string, or None if not found.
+    """
+    if not doi:
+        return None
+
     params = {
-        "filter": f"issn:{issn}",
-        "sort": "published",
-        "order": "desc",
-        "rows": str(rows),
-        # Some endpoints behave better with select, but we keep full to not miss fields.
+        "db": "pubmed",
+        "term": f"{doi}[doi]",
+        "retmode": "json",
+        "tool": "AnesTOC-Dashboard",
     }
+    if NCBI_EMAIL:
+        params["email"] = NCBI_EMAIL
 
     headers = {"User-Agent": USER_AGENT}
-    r = requests.get(CROSSREF_API, params=params, headers=headers, timeout=30)
+    r = requests.get(NCBI_ESEARCH, params=params, headers=headers, timeout=30)
     r.raise_for_status()
-    payload = r.json()
-    return payload.get("message", {}).get("items", []) or []
+    data = r.json()
+    idlist = (((data or {}).get("esearchresult") or {}).get("idlist")) or []
+    return idlist[0] if idlist else None
 
 
 def main() -> int:
@@ -133,31 +169,35 @@ def main() -> int:
         sources = json.load(f)
 
     unified: List[Dict[str, Any]] = []
+
     for s in sources:
         name = s["name"]
         short = s.get("short", name)
-        issn = s["issn"]
-        tier = s.get("tier", 0)
+        tier = int(s.get("tier", 0))
 
-        try:
-            items = crossref_query_by_issn(issn, rows=30)
-        except Exception as e:
-            print(f"[WARN] Failed for {name} ({issn}): {e}", file=sys.stderr)
-            continue
+        issns: Union[str, List[str]] = s["issn"]
+        if isinstance(issns, str):
+            issns = [issns]
+
+        items: List[Dict[str, Any]] = []
+        for issn in issns:
+            try:
+                items.extend(crossref_query_by_issn(issn, rows=30))
+            except Exception as e:
+                print(f"[WARN] Crossref failed for {name} ({issn}): {e}", file=sys.stderr)
 
         for raw in items:
             item = to_item(name, short, raw)
-            item["tier"] = tier
-            # Skip empty titles (rare but happens)
             if not item["title"]:
                 continue
+            item["tier"] = tier
             unified.append(item)
 
     # De-duplicate by DOI (best unique key)
     seen = set()
-    deduped = []
+    deduped: List[Dict[str, Any]] = []
     for it in unified:
-        key = it.get("doi") or it.get("url") or (it["journal_short"] + "|" + it["title"])
+        key = (it.get("doi") or "").lower().strip() or it.get("url") or (it["journal_short"] + "|" + it["title"])
         if key in seen:
             continue
         seen.add(key)
@@ -170,12 +210,35 @@ def main() -> int:
 
     deduped.sort(key=sort_key, reverse=True)
 
+    # --- PubMed enrichment (budgeted) ---
+    lookups_used = 0
+    for it in deduped:
+        if lookups_used >= PMID_LOOKUP_BUDGET:
+            break
+
+        doi = (it.get("doi") or "").strip()
+        if not doi:
+            continue
+
+        try:
+            pmid = doi_to_pmid(doi)
+            if pmid:
+                it["pmid"] = pmid
+                it["pubmed_url"] = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+            lookups_used += 1
+            time.sleep(PMID_SLEEP_SECONDS)
+        except Exception as e:
+            # Don't fail the whole run because PubMed had a hiccup
+            print(f"[WARN] PubMed lookup failed for DOI {doi}: {e}", file=sys.stderr)
+            lookups_used += 1
+            time.sleep(PMID_SLEEP_SECONDS)
+
     out = {"generated_at": iso_now(), "items": deduped}
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {len(deduped)} items -> {out_path}")
+    print(f"Wrote {len(deduped)} items -> {out_path} (PubMed lookups used: {lookups_used}/{PMID_LOOKUP_BUDGET})")
     return 0
 
 
