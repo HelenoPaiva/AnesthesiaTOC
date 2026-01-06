@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-06T07:29:23+00:00",
+  "generated_at": "2026-01-06T08:34:45+00:00",
   "items": [
     {
       "journal": "Anesthesiology",
@@ -25,7 +25,9 @@
       "doi": "10.1097/aln.0000000000005822",
       "url": "https://doi.org/10.1097/aln.0000000000005822",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41384808",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41384808/"
     },
     {
       "journal": "Anesthesiology",
@@ -37,7 +39,9 @@
       "doi": "10.1097/aln.0000000000005894",
       "url": "https://doi.org/10.1097/aln.0000000000005894",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41379941",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41379941/"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -177,25 +181,29 @@
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
       "tier": 1,
-      "title": "Opioid choice and hypersalivation: a prospective cohort study comparing sufentanil and remifentanil",
-      "authors": "Vanclooster E., Carvalho H., Vereecke H., Kalmar A.",
-      "published": "2026-01-05",
-      "doi": "10.1097/eja.0000000000002281",
-      "url": "https://doi.org/10.1097/eja.0000000000002281",
-      "aop": false,
-      "source": "crossref"
-    },
-    {
-      "journal": "European Journal of Anaesthesiology",
-      "journal_short": "EJA",
-      "tier": 1,
       "title": "Interpreting venous saturation markers in transfusion practice",
       "authors": "Tabatabaei S., Shakarami S., Cheraghi P.",
       "published": "2026-01-05",
       "doi": "10.1097/eja.0000000000002244",
       "url": "https://doi.org/10.1097/eja.0000000000002244",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479318",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479318/"
+    },
+    {
+      "journal": "European Journal of Anaesthesiology",
+      "journal_short": "EJA",
+      "tier": 1,
+      "title": "Opioid choice and hypersalivation: a prospective cohort study comparing sufentanil and remifentanil",
+      "authors": "Vanclooster E., Carvalho H., Vereecke H., Kalmar A.",
+      "published": "2026-01-05",
+      "doi": "10.1097/eja.0000000000002281",
+      "url": "https://doi.org/10.1097/eja.0000000000002281",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41479319",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479319/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -207,7 +215,9 @@
       "doi": "10.1097/eja.0000000000002333",
       "url": "https://doi.org/10.1097/eja.0000000000002333",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479330",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479330/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -241,20 +251,6 @@
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
       "tier": 1,
-      "title": "Reply to: hypnotic and antinociceptive contribution of magnesium sulphate during balanced total intravenous anaesthesia in total thyroidectomy",
-      "authors": "van Zuylen M.",
-      "published": "2026-01-05",
-      "doi": "10.1097/eja.0000000000002290",
-      "url": "https://doi.org/10.1097/eja.0000000000002290",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "41479325",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479325/"
-    },
-    {
-      "journal": "European Journal of Anaesthesiology",
-      "journal_short": "EJA",
-      "tier": 1,
       "title": "Reply to: the application of continuous positive airway pressure after cardiac surgery",
       "authors": "Pasero D., Filippini C., Ranieri M.",
       "published": "2026-01-05",
@@ -264,6 +260,20 @@
       "source": "crossref",
       "pmid": "41479327",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479327/"
+    },
+    {
+      "journal": "European Journal of Anaesthesiology",
+      "journal_short": "EJA",
+      "tier": 1,
+      "title": "Reply to: hypnotic and antinociceptive contribution of magnesium sulphate during balanced total intravenous anaesthesia in total thyroidectomy",
+      "authors": "van Zuylen M.",
+      "published": "2026-01-05",
+      "doi": "10.1097/eja.0000000000002290",
+      "url": "https://doi.org/10.1097/eja.0000000000002290",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41479325",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479325/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -303,7 +313,9 @@
       "doi": "10.1097/eja.0000000000002275",
       "url": "https://doi.org/10.1097/eja.0000000000002275",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479313",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479313/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -357,7 +369,9 @@
       "doi": "10.1097/eja.0000000000002246",
       "url": "https://doi.org/10.1097/eja.0000000000002246",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479309",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479309/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -369,7 +383,9 @@
       "doi": "10.1097/eja.0000000000002247",
       "url": "https://doi.org/10.1097/eja.0000000000002247",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479308",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479308/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -381,7 +397,9 @@
       "doi": "10.1097/eja.0000000000002292",
       "url": "https://doi.org/10.1097/eja.0000000000002292",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41479322",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479322/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -477,7 +495,9 @@
       "doi": "10.1007/s12630-025-03030-1",
       "url": "https://doi.org/10.1007/s12630-025-03030-1",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "40983823",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40983823/"
     },
     {
       "journal": "Regional Anesthesia & Pain Medicine",
@@ -527,7 +547,9 @@
       "doi": "10.1016/j.jclinane.2025.112121",
       "url": "https://doi.org/10.1016/j.jclinane.2025.112121",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41485362",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41485362/"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -631,7 +653,9 @@
       "doi": "10.1016/j.jclinane.2025.112112",
       "url": "https://doi.org/10.1016/j.jclinane.2025.112112",
       "aop": false,
-      "source": "crossref"
+      "source": "crossref",
+      "pmid": "41485363",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41485363/"
     },
     {
       "journal": "Journal of Clinical Anesthesia",
@@ -889,20 +913,6 @@
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
       "tier": 1,
-      "title": "Coming full circle: could glucagon-like peptide-1 receptor agonists confer a net perioperative benefit?",
-      "authors": "Hobai I., De Baerdemaeker L., Dhatariya K.",
-      "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.10.003",
-      "url": "https://doi.org/10.1016/j.bja.2025.10.003",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "41162254",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41162254/"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "tier": 1,
       "title": "Non-insulin diabetes medicines: an emerging role in pain management? Comment on Br J Anaesth 2025; 135: 898–911",
       "authors": "Alcántara Montero A.",
       "published": "2026-01-02",
@@ -912,6 +922,20 @@
       "source": "crossref",
       "pmid": "41198428",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41198428/"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "tier": 1,
+      "title": "Coming full circle: could glucagon-like peptide-1 receptor agonists confer a net perioperative benefit?",
+      "authors": "Hobai I., De Baerdemaeker L., Dhatariya K.",
+      "published": "2026-01-02",
+      "doi": "10.1016/j.bja.2025.10.003",
+      "url": "https://doi.org/10.1016/j.bja.2025.10.003",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41162254",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41162254/"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1287,6 +1311,18 @@
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
       "tier": 2,
+      "title": "Current State of Patient Blood Management in Cardiovascular Surgery: Insights from a Survey of Leading Centers",
+      "authors": "Bracey A., Yates S., DeAnda A., Kothary P., Joshi R., Warner M., Shore-Lesserson L.",
+      "published": "2026-01-02",
+      "doi": "10.1053/j.jvca.2025.08.061",
+      "url": "https://doi.org/10.1053/j.jvca.2025.08.061",
+      "aop": false,
+      "source": "crossref"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
+      "tier": 2,
       "title": "Outcomes of Extracorporeal Membrane Oxygenation in Patients with COVID-19 and Pulmonary Hypertension: An ELSO Registry Analysis",
       "authors": "Morales-Demori R., Ortoleva J., Aras S., Anders M.",
       "published": "2026-01-02",
@@ -1304,18 +1340,6 @@
       "published": "2026-01-02",
       "doi": "10.1053/j.jvca.2025.08.040",
       "url": "https://doi.org/10.1053/j.jvca.2025.08.040",
-      "aop": false,
-      "source": "crossref"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
-      "tier": 2,
-      "title": "Current State of Patient Blood Management in Cardiovascular Surgery: Insights from a Survey of Leading Centers",
-      "authors": "Bracey A., Yates S., DeAnda A., Kothary P., Joshi R., Warner M., Shore-Lesserson L.",
-      "published": "2026-01-02",
-      "doi": "10.1053/j.jvca.2025.08.061",
-      "url": "https://doi.org/10.1053/j.jvca.2025.08.061",
       "aop": false,
       "source": "crossref"
     },
@@ -5631,11 +5655,11 @@
       "journal": "Korean Journal of Anesthesiology",
       "journal_short": "KJA",
       "tier": 3,
-      "title": "Response to \"Comment on Hypotension after induction of anesthesia with remimazolam or etomidate: a non-inferiority randomized controlled trial in patients undergoing coronary artery bypass grafting\"",
-      "authors": "Min J., Oh E., Cho H., Kim C., Lee J.",
+      "title": "The 90% minimum effective volume and concentration of lidocaine for ultrasound-guided stellate ganglion blocks in adults: a biased-coin design, up-and-down sequential allocation trial",
+      "authors": "Sun S., Yin Q., Shen J., Lv Y., Li L., Mao Z., Lin Y., Chen X., Yang D.",
       "published": "2025-10-01",
-      "doi": "10.4097/kja.25484",
-      "url": "https://doi.org/10.4097/kja.25484",
+      "doi": "10.4097/kja.24607",
+      "url": "https://doi.org/10.4097/kja.24607",
       "aop": false,
       "source": "crossref"
     },
@@ -5643,11 +5667,11 @@
       "journal": "Korean Journal of Anesthesiology",
       "journal_short": "KJA",
       "tier": 3,
-      "title": "The 90% minimum effective volume and concentration of lidocaine for ultrasound-guided stellate ganglion blocks in adults: a biased-coin design, up-and-down sequential allocation trial",
-      "authors": "Sun S., Yin Q., Shen J., Lv Y., Li L., Mao Z., Lin Y., Chen X., Yang D.",
+      "title": "Response to \"Comment on Hypotension after induction of anesthesia with remimazolam or etomidate: a non-inferiority randomized controlled trial in patients undergoing coronary artery bypass grafting\"",
+      "authors": "Min J., Oh E., Cho H., Kim C., Lee J.",
       "published": "2025-10-01",
-      "doi": "10.4097/kja.24607",
-      "url": "https://doi.org/10.4097/kja.24607",
+      "doi": "10.4097/kja.25484",
+      "url": "https://doi.org/10.4097/kja.25484",
       "aop": false,
       "source": "crossref"
     },
