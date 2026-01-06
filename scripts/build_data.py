@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Build unified TOC data.json from Crossref by ISSN, with PubMed enrichment.
+Build unified TOC data.json from Crossref by ISSN, with PubMed enrichment
+and Ahead-of-Print (AOP) detection.
 
 Key behaviors:
 - Supports single or multiple ISSNs per journal
 - Deduplicates by DOI
-- Chooses a publication date that is NOT in the future
+- Never displays future publication dates
+- Marks articles as Ahead of Print when appropriate
 - Adds PMID / PubMed links when available
 """
 
@@ -75,43 +77,44 @@ def clean_title(item: Dict[str, Any]) -> str:
     return re.sub(r"\s+", " ", t[0]).strip()
 
 
-# ---------------- DATE FIX (CRITICAL) ----------------
+def extract_ymd(item: Dict[str, Any], field: str) -> Optional[str]:
+    parts = safe_get(item, [field, "date-parts"])
+    if not (isinstance(parts, list) and parts and isinstance(parts[0], list)):
+        return None
+    try:
+        y = parts[0][0]
+        m = parts[0][1] if len(parts[0]) >= 2 else 1
+        d = parts[0][2] if len(parts[0]) >= 3 else 1
+        return f"{int(y):04d}-{int(m):02d}-{int(d):02d}"
+    except Exception:
+        return None
+
+
+# ---------------- DATE SELECTION (NO FUTURE DATES) ----------------
 
 def pick_date(item: Dict[str, Any]) -> Optional[str]:
     """
     Choose a sensible publication date.
 
-    Crossref often contains future 'issue/cover' dates.
     Strategy:
-    - Collect candidate dates from multiple fields
+    - Collect candidate dates from multiple Crossref fields
     - Discard dates in the future (UTC)
     - Pick the most recent non-future date
-    - If all are future, fall back to the earliest
+    - If all candidates are future, fall back to the earliest
     """
 
-    def to_ymd(parts) -> Optional[str]:
-        if not (isinstance(parts, list) and parts and isinstance(parts[0], list)):
-            return None
-        try:
-            y = parts[0][0]
-            m = parts[0][1] if len(parts[0]) >= 2 else 1
-            d = parts[0][2] if len(parts[0]) >= 3 else 1
-            return f"{int(y):04d}-{int(m):02d}-{int(d):02d}"
-        except Exception:
-            return None
-
-    date_fields = [
-        ["published-online", "date-parts"],
-        ["published-print", "date-parts"],
-        ["issued", "date-parts"],
-        ["created", "date-parts"],
-        ["indexed", "date-parts"],
-        ["deposited", "date-parts"],
+    fields = [
+        "published-online",
+        "published-print",
+        "issued",
+        "created",
+        "indexed",
+        "deposited",
     ]
 
     candidates: List[str] = []
-    for path in date_fields:
-        ymd = to_ymd(safe_get(item, path))
+    for f in fields:
+        ymd = extract_ymd(item, f)
         if ymd:
             candidates.append(ymd)
 
@@ -163,6 +166,20 @@ def doi_to_pmid(doi: str) -> Optional[str]:
 def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[str, Any]:
     doi = raw.get("DOI", "") or ""
     url = raw.get("URL") or (f"https://doi.org/{doi}" if doi else "")
+
+    online = extract_ymd(raw, "published-online")
+    pprint = extract_ymd(raw, "published-print")
+    issued = extract_ymd(raw, "issued")
+
+    # Ahead-of-print logic
+    aop = False
+    if online:
+        later = [d for d in [pprint, issued] if d]
+        if not later:
+            aop = True
+        elif min(later) > online:
+            aop = True
+
     return {
         "journal": journal,
         "journal_short": short,
@@ -172,6 +189,7 @@ def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[st
         "published": pick_date(raw),
         "doi": doi,
         "url": url,
+        "aop": aop,
         "source": "crossref",
     }
 
