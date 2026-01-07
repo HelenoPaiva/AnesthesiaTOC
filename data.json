@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-07T12:50:40+00:00",
+  "generated_at": "2026-01-07T13:41:13+00:00",
   "items": [
     {
       "journal": "British Journal of Anaesthesia",
@@ -101,20 +101,6 @@
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
       "tier": 1,
-      "title": "Interpreting venous saturation markers in transfusion practice",
-      "authors": "Tabatabaei S., Shakarami S., Cheraghi P.",
-      "published": "2026-01-07",
-      "doi": "10.1097/eja.0000000000002244",
-      "url": "https://doi.org/10.1097/eja.0000000000002244",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "41479318",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479318/"
-    },
-    {
-      "journal": "European Journal of Anaesthesiology",
-      "journal_short": "EJA",
-      "tier": 1,
       "title": "Opioid choice and hypersalivation: a prospective cohort study comparing sufentanil and remifentanil",
       "authors": "Vanclooster E., Carvalho H., Vereecke H., Kalmar A.",
       "published": "2026-01-07",
@@ -124,6 +110,20 @@
       "source": "crossref",
       "pmid": "41479319",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479319/"
+    },
+    {
+      "journal": "European Journal of Anaesthesiology",
+      "journal_short": "EJA",
+      "tier": 1,
+      "title": "Interpreting venous saturation markers in transfusion practice",
+      "authors": "Tabatabaei S., Shakarami S., Cheraghi P.",
+      "published": "2026-01-07",
+      "doi": "10.1097/eja.0000000000002244",
+      "url": "https://doi.org/10.1097/eja.0000000000002244",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41479318",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41479318/"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -446,6 +446,42 @@
       "source": "crossref",
       "pmid": "41493753",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41493753/"
+    },
+    {
+      "journal": "Regional Anesthesia & Pain Medicine",
+      "journal_short": "RAPM",
+      "tier": 2,
+      "title": "Troubleshooting sensory sparing in motor-sparing forearm blocks",
+      "authors": "Celebioglu G.",
+      "published": "2026-01-07",
+      "doi": "10.1136/rapm-2025-107527",
+      "url": "https://doi.org/10.1136/rapm-2025-107527",
+      "aop": false,
+      "source": "crossref"
+    },
+    {
+      "journal": "Regional Anesthesia & Pain Medicine",
+      "journal_short": "RAPM",
+      "tier": 2,
+      "title": "Mechanistic insights into bupivacaine spread through anisotropic tissue planes and fascial barriers: experimental evidence for interfascial block dynamics",
+      "authors": "Istenič S., Pušnik L., Kenneth Ugwoke C., Stopar Pintarič T., Umek N.",
+      "published": "2026-01-07",
+      "doi": "10.1136/rapm-2025-107469",
+      "url": "https://doi.org/10.1136/rapm-2025-107469",
+      "aop": false,
+      "source": "crossref"
+    },
+    {
+      "journal": "Regional Anesthesia & Pain Medicine",
+      "journal_short": "RAPM",
+      "tier": 2,
+      "title": "What constitutes WALANT in modern hand surgery?",
+      "authors": "Nijs K., Keunen B., Jalil H., Van de Velde M., Stessel B.",
+      "published": "2026-01-07",
+      "doi": "10.1136/rapm-2025-107540",
+      "url": "https://doi.org/10.1136/rapm-2025-107540",
+      "aop": false,
+      "source": "crossref"
     },
     {
       "journal": "Regional Anesthesia & Pain Medicine",
@@ -1075,9 +1111,7 @@
       "doi": "10.1016/j.bja.2025.09.043",
       "url": "https://doi.org/10.1016/j.bja.2025.09.043",
       "aop": false,
-      "source": "crossref",
-      "pmid": "41193378",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41193378/"
+      "source": "crossref"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1089,9 +1123,7 @@
       "doi": "10.1016/j.bja.2025.10.045",
       "url": "https://doi.org/10.1016/j.bja.2025.10.045",
       "aop": false,
-      "source": "crossref",
-      "pmid": "41365710",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41365710/"
+      "source": "crossref"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1103,9 +1135,7 @@
       "doi": "10.1016/j.bja.2024.11.043",
       "url": "https://doi.org/10.1016/j.bja.2024.11.043",
       "aop": false,
-      "source": "crossref",
-      "pmid": "39890490",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39890490/"
+      "source": "crossref"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -2023,11 +2053,11 @@
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
       "tier": 1,
-      "title": "Comparative effectiveness of TAP block, EOIP block, and standard care for postoperative analgesia in renal transplantation: a retrospective study",
-      "authors": "Azem K., Aranbitski R., Awad S., Shpack O., Peres A., Argov R., Kaplan O., Artyukh A., Khinchuk A., Stav M. et al.",
+      "title": "Association between troponin and NT-proBNP levels, cytokines, and clinical outcomes in early sepsis response: a cohort study",
+      "authors": "Nedel W., Portela L.",
       "published": "2026-01-01",
-      "doi": "10.1016/j.bjane.2025.844692",
-      "url": "https://doi.org/10.1016/j.bjane.2025.844692",
+      "doi": "10.1016/j.bjane.2025.844712",
+      "url": "https://doi.org/10.1016/j.bjane.2025.844712",
       "aop": false,
       "source": "crossref"
     },
@@ -2035,11 +2065,11 @@
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
       "tier": 1,
-      "title": "Association between troponin and NT-proBNP levels, cytokines, and clinical outcomes in early sepsis response: a cohort study",
-      "authors": "Nedel W., Portela L.",
+      "title": "Comparative effectiveness of TAP block, EOIP block, and standard care for postoperative analgesia in renal transplantation: a retrospective study",
+      "authors": "Azem K., Aranbitski R., Awad S., Shpack O., Peres A., Argov R., Kaplan O., Artyukh A., Khinchuk A., Stav M. et al.",
       "published": "2026-01-01",
-      "doi": "10.1016/j.bjane.2025.844712",
-      "url": "https://doi.org/10.1016/j.bjane.2025.844712",
+      "doi": "10.1016/j.bjane.2025.844692",
+      "url": "https://doi.org/10.1016/j.bjane.2025.844692",
       "aop": false,
       "source": "crossref"
     },
@@ -2167,11 +2197,11 @@
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
       "tier": 1,
-      "title": "Moving toward a standardized regional anesthesia approach in clavicle surgery",
-      "authors": "Schaefer M., Zoremba M.",
+      "title": "Correlation between impostor phenomenon and burnout syndrome in medical residents: a single-center study",
+      "authors": "Ramírez C., Bocanegra R., Sánchez-Navarro C.",
       "published": "2026-01-01",
-      "doi": "10.1016/j.bjane.2025.844711",
-      "url": "https://doi.org/10.1016/j.bjane.2025.844711",
+      "doi": "10.1016/j.bjane.2025.844688",
+      "url": "https://doi.org/10.1016/j.bjane.2025.844688",
       "aop": false,
       "source": "crossref"
     },
@@ -2179,11 +2209,11 @@
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
       "tier": 1,
-      "title": "Correlation between impostor phenomenon and burnout syndrome in medical residents: a single-center study",
-      "authors": "Ramírez C., Bocanegra R., Sánchez-Navarro C.",
+      "title": "Moving toward a standardized regional anesthesia approach in clavicle surgery",
+      "authors": "Schaefer M., Zoremba M.",
       "published": "2026-01-01",
-      "doi": "10.1016/j.bjane.2025.844688",
-      "url": "https://doi.org/10.1016/j.bjane.2025.844688",
+      "doi": "10.1016/j.bjane.2025.844711",
+      "url": "https://doi.org/10.1016/j.bjane.2025.844711",
       "aop": false,
       "source": "crossref"
     },
@@ -2815,11 +2845,11 @@
       "journal": "Anaesthesia Critical Care & Pain Medicine",
       "journal_short": "ACCPM",
       "tier": 3,
-      "title": "Sepsis is associated with radiological lesions in patients with primary brain injuries: The result of a bicentric retrospective cohort",
-      "authors": "Rombi C., Klinkmann G., Hmeydia G., Mancusi R., Le Tertre L., Grabow M., Hermann B., Benghanem S., Grossmann A., Sharshar T. et al.",
+      "title": "Cirrhosis is an independent risk factor for candidemia in critically ill patients: A 6-year single-center observational study",
+      "authors": "Ghalayini M., Zylberfajn C., Nahon P., Lobo D., Lescat M., Amathieu R.",
       "published": "2026-01-01",
-      "doi": "10.1016/j.accpm.2025.101635",
-      "url": "https://doi.org/10.1016/j.accpm.2025.101635",
+      "doi": "10.1016/j.accpm.2025.101611",
+      "url": "https://doi.org/10.1016/j.accpm.2025.101611",
       "aop": false,
       "source": "crossref"
     },
@@ -4288,18 +4318,6 @@
       "source": "crossref"
     },
     {
-      "journal": "Regional Anesthesia & Pain Medicine",
-      "journal_short": "RAPM",
-      "tier": 2,
-      "title": "Implantable peripheral nerve stimulation for chronic pain: a systematic review and meta-analysis of analgesic outcomes up to 24 months",
-      "authors": "D’Souza R., Her Y., Morsi M., Soleymani H., Banks D., Miclau T., Ekhtiari E., Cho D., Prokop L., Hussain N.",
-      "published": "2025-12-11",
-      "doi": "10.1136/rapm-2025-107160",
-      "url": "https://doi.org/10.1136/rapm-2025-107160",
-      "aop": false,
-      "source": "crossref"
-    },
-    {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
       "tier": 3,
@@ -5032,18 +5050,6 @@
       "source": "crossref"
     },
     {
-      "journal": "Regional Anesthesia & Pain Medicine",
-      "journal_short": "RAPM",
-      "tier": 2,
-      "title": "Analgesic efficacy of continuous superficial parasternal intercostal plane blockade in patients undergoing cardiac surgery with median sternotomy: a randomized controlled trial",
-      "authors": "Jen T., Prabhakar C., Matras P., Rondi K., Bruce S., Sun T., Edwards N., Mehta S., Schwarz S., Chau A. et al.",
-      "published": "2025-11-27",
-      "doi": "10.1136/rapm-2025-107162",
-      "url": "https://doi.org/10.1136/rapm-2025-107162",
-      "aop": false,
-      "source": "crossref"
-    },
-    {
       "journal": "Paediatric Anaesthesia",
       "journal_short": "PEDANES",
       "tier": 2,
@@ -5436,18 +5442,6 @@
       "published": "2025-11-10",
       "doi": "10.4097/kja.25485",
       "url": "https://doi.org/10.4097/kja.25485",
-      "aop": false,
-      "source": "crossref"
-    },
-    {
-      "journal": "Regional Anesthesia & Pain Medicine",
-      "journal_short": "RAPM",
-      "tier": 2,
-      "title": "Ultrasound-guided, percutaneous cryoneurolysis of intercostal nerves in high-risk, traumatic rib fracture patients",
-      "authors": "Jew M., Evtushevski B., Liang J., Wang K.",
-      "published": "2025-11-06",
-      "doi": "10.1136/rapm-2025-106973",
-      "url": "https://doi.org/10.1136/rapm-2025-106973",
       "aop": false,
       "source": "crossref"
     },
