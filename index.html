@@ -1,69 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anesthesiology Journal TOC Dashboard</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anesthesiology TOC Dashboard</title>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header class="wrap">
-    <div class="titlebar">
-      <h1>Anesthesiology TOC Dashboard</h1>
-      <p class="subtitle">A selection of the latest articles from selected sources.</p>
-      <p class="repo-link">
-  <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
-    View source on GitHub
-  </a>
-  · Customize this dashboard for your specialty, institution, or research needs.
-</p>
-    </div>
+  <header class="container">
+    <h1>Anesthesiology TOC Dashboard</h1>
 
-    <div class="controls card">
-      <div class="row">
-        <label>
-          Search
-          <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." />
-        </label>
+    <p class="subtitle">
+      Unified “latest articles” view from major anesthesiology journals.
+      <br />
+      <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
+        View on GitHub · Fork and customize for your specialty
+      </a>
+    </p>
+  </header>
 
-        <label>
+  <main class="container">
+    <section class="controls">
+      <div class="control-group">
+        <label for="q">Search</label>
+        <input
+          id="q"
+          type="search"
+          placeholder="airway, neuraxial, PONV, rocuronium…"
+        />
+      </div>
+
+      <div class="control-group">
+        <label for="journal">
           Journal
-          <select id="journal">
-            <option value="">All</option>
-          </select>
+          <span
+            class="info"
+            title="Journals are ordered by SCImago Journal Rank (SJR). SJR is a journal-level metric using the latest year available in the dataset."
+            aria-label="About SJR"
+          >
+            ⓘ
+          </span>
         </label>
 
-        <label class="chk">
-          <input id="starOnly" type="checkbox" />
+        <select id="journal">
+          <option value="">All journals</option>
+        </select>
+      </div>
+
+      <div class="control-group checkbox">
+        <label>
+          <input type="checkbox" id="starOnly" />
           Starred only
         </label>
       </div>
-
-      <div class="row meta">
-        <span id="status">Loading…</span>
-        <span class="spacer"></span>
-        <button id="clearStars" class="btn">Clear stars</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section class="card">
-      <div class="listhead">
-        <h2>Latest</h2>
-        <span id="generatedAt" class="muted"></span>
-      </div>
-      <div id="list" class="list"></div>
     </section>
 
-    <footer class="muted foot">
-      Tip: Stars are saved locally in your browser (no login). You can fork this and add more journals in <code>sources.json</code>.
-    </footer>
+    <section class="statusbar">
+      <div id="status" class="status">Loading…</div>
+      <div id="generatedAt" class="generated"></div>
+      <button id="clearStars" class="clear-stars" type="button">
+        Clear stars
+      </button>
+    </section>
+
+    <section id="list" class="list">
+      <!-- articles rendered here -->
+    </section>
   </main>
 
-  <script src="./app.js"></script>
+  <footer class="container footer">
+    <p>
+      Data retrieved from Crossref and PubMed. Journal ranking based on
+      SCImago Journal Rank (SJR).
+    </p>
+    <p class="muted">
+      No tracking · No cookies · All processing happens locally in your browser
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
-
-
-
