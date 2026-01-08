@@ -1,7 +1,7 @@
 # AnesthesiaTOC  
 
 [![Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://helenopaiva.github.io/AnesthesiaTOC/)
-![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update-.yml/badge.svg)
+![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
 
@@ -9,6 +9,7 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Data Source](https://img.shields.io/badge/data-Crossref%20%7C%20PubMed-orange)
 ![Domain](https://img.shields.io/badge/domain-anesthesiology-blueviolet)
+
 
 
 https://helenopaiva.github.io/AnesthesiaTOC/
