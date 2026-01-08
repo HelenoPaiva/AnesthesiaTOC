@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anesthesiology Journal TOC Dashboard</title>
+  <link rel="preload" href="./data.json" as="fetch" crossorigin />
+  <link rel="preload" href="./sources.json" as="fetch" crossorigin />
+  <link rel="preload" href="./journal_metrics.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -61,8 +64,6 @@
     </footer>
   </main>
 
-  <script src="./app.js"></script>
+  <script src="./app.js" defer></script>
 </body>
 </html>
-
-
