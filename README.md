@@ -1,9 +1,12 @@
 # AnesthesiaTOC  
 
-[![Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://helenopaiva.github.io/AnesthesiaTOC/)
+![GitHub Pages](https://img.shields.io/badge/demo-live-brightgreen)
 ![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update-toc.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
+
+https://helenopaiva.github.io/AnesthesiaTOC/
+
 
 https://helenopaiva.github.io/AnesthesiaTOC/
 
