@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-01-08T01:59:19+00:00",
+  "generated_at": "2026-01-08T02:39:57+00:00",
   "source_name": "SCImago Journal Rank (SJR)",
   "source_note": "SJR is treated as an annual journal-level metric; the dashboard uses the latest year available in the upstream dataset at update time.",
   "sjr_year": 2024,
   "coverage": {
-    "matched": 16,
-    "total_sources": 16
+    "matched": 17,
+    "total_sources": 17
   },
   "by_issn": {
     "0003-2409": {
@@ -35,6 +35,10 @@
     "0832-610X": {
       "sjr": 0.924,
       "title_source": "Canadian Journal of Anesthesia"
+    },
+    "0952-7907": {
+      "sjr": 0.701,
+      "title_source": "Current Opinion in Anaesthesiology"
     },
     "0265-0215": {
       "sjr": 1.25,
