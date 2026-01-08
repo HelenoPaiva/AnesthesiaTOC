@@ -65,8 +65,15 @@ function saveStars(stars) {
 
 function matchesQuery(item, q) {
   if (!q) return true;
-  const hay = `${item.title} ${item.authors} ${item.journal} ${item.doi}`.toLowerCase();
-  return hay.includes(q.toLowerCase());
+  return item.searchText.includes(q);
+}
+
+function debounce(fn, delayMs) {
+  let timerId = null;
+  return (...args) => {
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => fn(...args), delayMs);
+  };
 }
 
 /* ---------- SJR helpers ---------- */
@@ -91,6 +98,10 @@ let GENERATED_MS = null;
 let FILTERED = [];      // current filtered list
 let visibleLimit = 0;   // how many are currently rendered
 let manualExtra = 0;    // extra beyond AUTO_SCROLL_LIMIT enabled by button
+let renderToken = 0;
+let renderedCount = 0;
+let activeToken = 0;
+let STARS = new Set();
 
 let sentinelEl = null;
 let loadMoreWrap = null;
@@ -148,47 +159,46 @@ function ensureProgressiveControls() {
   }
 }
 
-function render(items, stars) {
-  els.list.innerHTML = "";
-  if (!items.length) {
-    els.list.innerHTML = `<div class="muted">No results.</div>`;
-    return;
-  }
+function buildItemNode(it, stars) {
+  const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
+  const starOn = stars.has(key);
 
-  for (const it of items) {
-    const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
-    const starOn = stars.has(key);
-
-    const div = document.createElement("div");
-    div.className = "item";
-    div.innerHTML = `
-      <div class="top">
-        <button class="star ${starOn ? "on" : ""}" aria-label="star">${starOn ? "★" : "☆"}</button>
-        <div>
-          <h3 class="title">
-            <a href="${it.url}" target="_blank" rel="noopener noreferrer">${it.title}</a>
-          </h3>
-          <div class="metaLine">
-            <span class="pill">${it.journal_short}</span>
-            ${it.aop ? `<span class="pill aop">Ahead of print</span>` : ""}
-            ${it.published ? `<span>${formatDateDMYMMM(it.published)}</span>` : `<span class="muted">no date</span>`}
-            ${it.authors ? `<span>${it.authors}</span>` : ""}
-            ${it.doi ? `<span class="muted">${it.doi}</span>` : ""}
-            ${it.pubmed_url ? `<a class="pill" href="${it.pubmed_url}" target="_blank" rel="noopener noreferrer">PubMed</a>` : ""}
-          </div>
+  const div = document.createElement("div");
+  div.className = "item";
+  div.innerHTML = `
+    <div class="top">
+      <button class="star ${starOn ? "on" : ""}" aria-label="star">${starOn ? "★" : "☆"}</button>
+      <div>
+        <h3 class="title">
+          <a href="${it.url}" target="_blank" rel="noopener noreferrer">${it.title}</a>
+        </h3>
+        <div class="metaLine">
+          <span class="pill">${it.journal_short}</span>
+          ${it.aop ? `<span class="pill aop">Ahead of print</span>` : ""}
+          ${it.published ? `<span>${formatDateDMYMMM(it.published)}</span>` : `<span class="muted">no date</span>`}
+          ${it.authors ? `<span>${it.authors}</span>` : ""}
+          ${it.doi ? `<span class="muted">${it.doi}</span>` : ""}
+          ${it.pubmed_url ? `<a class="pill" href="${it.pubmed_url}" target="_blank" rel="noopener noreferrer">PubMed</a>` : ""}
         </div>
       </div>
-    `;
+    </div>
+  `;
 
-    div.querySelector(".star").addEventListener("click", () => {
-      const s = loadStars();
-      s.has(key) ? s.delete(key) : s.add(key);
-      saveStars(s);
-      applyFilters(false);
-    });
+  div.querySelector(".star").addEventListener("click", () => {
+    STARS.has(key) ? STARS.delete(key) : STARS.add(key);
+    saveStars(STARS);
+    applyFilters(false);
+  });
 
-    els.list.appendChild(div);
+  return div;
+}
+
+function renderSlice(items, stars, startIndex, endIndex) {
+  const fragment = document.createDocumentFragment();
+  for (let i = startIndex; i < endIndex; i += 1) {
+    fragment.appendChild(buildItemNode(items[i], stars));
   }
+  els.list.appendChild(fragment);
 }
 
 function updateStatus() {
@@ -213,15 +223,31 @@ function updateLoadMoreVisibility() {
 }
 
 function renderVisible() {
-  const stars = loadStars();
-  const slice = FILTERED.slice(0, Math.min(visibleLimit, FILTERED.length));
-  render(slice, stars);
+  const maxVisible = Math.min(visibleLimit, FILTERED.length);
+
+  if (!FILTERED.length) {
+    els.list.innerHTML = `<div class="muted">No results.</div>`;
+    renderedCount = 0;
+    updateLoadMoreVisibility();
+    return;
+  }
+
+  if (activeToken !== renderToken) {
+    activeToken = renderToken;
+    renderedCount = 0;
+    els.list.innerHTML = "";
+  }
+
+  if (renderedCount < maxVisible) {
+    renderSlice(FILTERED, STARS, renderedCount, maxVisible);
+    renderedCount = maxVisible;
+  }
+
   updateLoadMoreVisibility();
 }
 
 function computeFiltered() {
-  const stars = loadStars();
-  const q = els.q.value.trim();
+  const q = els.q.value.trim().toLowerCase();
   const j = els.journal.value;
 
   let items = DATA.items.slice();
@@ -232,7 +258,7 @@ function computeFiltered() {
   if (els.starOnly.checked) {
     items = items.filter(it => {
       const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
-      return stars.has(key);
+      return STARS.has(key);
     });
   }
   return items;
@@ -240,6 +266,7 @@ function computeFiltered() {
 
 function applyFilters(resetLimits = true) {
   FILTERED = computeFiltered();
+  renderToken += 1;
 
   if (resetLimits) {
     manualExtra = 0;
@@ -262,6 +289,12 @@ async function init() {
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
   GENERATED_MS = DATA.generated_at ? Date.parse(DATA.generated_at) : null;
+  DATA.items.forEach((it) => {
+    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi}`.toLowerCase();
+    it.searchText = hay;
+  });
+
+  STARS = loadStars();
 
   const srcRes = await fetch("./sources.json", { cache: "no-store" });
   SOURCES = await srcRes.json();
@@ -314,11 +347,13 @@ async function init() {
       `Updated: ${formatDateTimeDMYMMM(DATA.generated_at)} UTC · ${relativeFromMs(GENERATED_MS)}`;
   }
 
-  els.q.addEventListener("input", () => applyFilters(true));
+  const debouncedFilter = debounce(() => applyFilters(true), 150);
+  els.q.addEventListener("input", debouncedFilter);
   els.journal.addEventListener("change", () => applyFilters(true));
   els.starOnly.addEventListener("change", () => applyFilters(true));
 
   els.clearStars.addEventListener("click", () => {
+    STARS.clear();
     localStorage.removeItem(STAR_KEY);
     applyFilters(true);
   });
