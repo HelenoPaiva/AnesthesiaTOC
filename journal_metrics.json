@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-01-08T01:59:19+00:00",
+  "source_name": "SCImago Journal Rank (SJR)",
+  "source_note": "SJR is treated as an annual journal-level metric; the dashboard uses the latest year available in the upstream dataset at update time.",
+  "sjr_year": 2024,
+  "coverage": {
+    "matched": 16,
+    "total_sources": 16
+  },
+  "by_issn": {
+    "0003-2409": {
+      "sjr": 2.751,
+      "title_source": "Anaesthesia"
+    },
+    "2352-5568": {
+      "sjr": 1.002,
+      "title_source": "Anaesthesia Critical Care and Pain Medicine"
+    },
+    "0003-2999": {
+      "sjr": 1.161,
+      "title_source": "Anesthesia and Analgesia"
+    },
+    "0003-3022": {
+      "sjr": 1.946,
+      "title_source": "Anesthesiology"
+    },
+    "0104-0014": {
+      "sjr": 0.461,
+      "title_source": "Brazilian Journal of Anesthesiology (English Edition)"
+    },
+    "0007-0912": {
+      "sjr": 2.36,
+      "title_source": "British Journal of Anaesthesia"
+    },
+    "0832-610X": {
+      "sjr": 0.924,
+      "title_source": "Canadian Journal of Anesthesia"
+    },
+    "0265-0215": {
+      "sjr": 1.25,
+      "title_source": "European Journal of Anaesthesiology"
+    },
+    "1053-0770": {
+      "sjr": 0.68,
+      "title_source": "Journal of Cardiothoracic and Vascular Anesthesia"
+    },
+    "0952-8180": {
+      "sjr": 1.333,
+      "title_source": "Journal of Clinical Anesthesia"
+    },
+    "0898-4921": {
+      "sjr": 0.715,
+      "title_source": "Journal of Neurosurgical Anesthesiology"
+    },
+    "2005-6419": {
+      "sjr": 1.182,
+      "title_source": "Korean Journal of Anesthesiology"
+    },
+    "1155-5645": {
+      "sjr": 0.658,
+      "title_source": "Paediatric Anaesthesia"
+    },
+    "1530-7085": {
+      "sjr": 0.775,
+      "title_source": "Pain Practice"
+    },
+    "1098-7339": {
+      "sjr": 1.411,
+      "title_source": "Regional Anesthesia and Pain Medicine"
+    },
+    "1658-354X": {
+      "sjr": 0.389,
+      "title_source": "Saudi Journal of Anaesthesia"
+    }
+  }
+}
