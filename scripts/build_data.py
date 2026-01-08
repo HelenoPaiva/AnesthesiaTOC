@@ -3,12 +3,9 @@
 Build unified TOC data.json from Crossref by ISSN, with PubMed enrichment
 and Ahead-of-Print (AOP) detection.
 
-Key behaviors:
-- Supports single or multiple ISSNs per journal
-- Deduplicates by DOI
-- Never displays future publication dates
-- Marks articles as Ahead of Print when appropriate
-- Adds PMID / PubMed links when available
+Changes for SJR migration:
+- Tier removed entirely (sources.json no longer needs tier)
+- Journal has a single ISSN (per your decision); code tolerates list defensively
 """
 
 from __future__ import annotations
@@ -37,8 +34,6 @@ NCBI_EMAIL = os.getenv("NCBI_EMAIL", "")
 PMID_LOOKUP_BUDGET = int(os.getenv("PMID_LOOKUP_BUDGET", "80"))
 PMID_SLEEP_SECONDS = float(os.getenv("PMID_SLEEP_SECONDS", "0.34"))
 
-
-# ---------------- utilities ----------------
 
 def iso_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -90,19 +85,10 @@ def extract_ymd(item: Dict[str, Any], field: str) -> Optional[str]:
         return None
 
 
-# ---------------- DATE SELECTION (NO FUTURE DATES) ----------------
-
 def pick_date(item: Dict[str, Any]) -> Optional[str]:
     """
-    Choose a sensible publication date.
-
-    Strategy:
-    - Collect candidate dates from multiple Crossref fields
-    - Discard dates in the future (UTC)
-    - Pick the most recent non-future date
-    - If all candidates are future, fall back to the earliest
+    Choose a sensible publication date and avoid future 'issue/cover' dates.
     """
-
     fields = [
         "published-online",
         "published-print",
@@ -129,8 +115,6 @@ def pick_date(item: Dict[str, Any]) -> Optional[str]:
 
     return min(candidates)
 
-
-# ---------------- API helpers ----------------
 
 def crossref_query_by_issn(issn: str, rows: int = 30) -> List[Dict[str, Any]]:
     params = {
@@ -163,7 +147,7 @@ def doi_to_pmid(doi: str) -> Optional[str]:
     return ids[0] if ids else None
 
 
-def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[str, Any]:
+def to_item(journal: str, short: str, raw: Dict[str, Any]) -> Dict[str, Any]:
     doi = raw.get("DOI", "") or ""
     url = raw.get("URL") or (f"https://doi.org/{doi}" if doi else "")
 
@@ -171,7 +155,6 @@ def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[st
     pprint = extract_ymd(raw, "published-print")
     issued = extract_ymd(raw, "issued")
 
-    # Ahead-of-print logic
     aop = False
     if online:
         later = [d for d in [pprint, issued] if d]
@@ -183,7 +166,6 @@ def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[st
     return {
         "journal": journal,
         "journal_short": short,
-        "tier": tier,
         "title": clean_title(raw),
         "authors": join_authors(raw),
         "published": pick_date(raw),
@@ -193,8 +175,6 @@ def to_item(journal: str, short: str, tier: int, raw: Dict[str, Any]) -> Dict[st
         "source": "crossref",
     }
 
-
-# ---------------- main ----------------
 
 def main() -> int:
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -209,29 +189,32 @@ def main() -> int:
     for s in sources:
         name = s["name"]
         short = s.get("short", name)
-        tier = int(s.get("tier", 0))
 
-        issns: Union[str, List[str]] = s["issn"]
-        if isinstance(issns, str):
-            issns = [issns]
+        issn: Union[str, List[str]] = s["issn"]
+        if isinstance(issn, list):
+            issn = issn[0] if issn else ""
 
-        for issn in issns:
-            try:
-                items = crossref_query_by_issn(issn)
-            except Exception as e:
-                print(f"[WARN] Crossref failed for {name} ({issn}): {e}", file=sys.stderr)
-                continue
+        if not issn:
+            continue
 
-            for raw in items:
-                item = to_item(name, short, tier, raw)
-                if item["title"]:
-                    unified.append(item)
+        try:
+            items = crossref_query_by_issn(str(issn))
+        except Exception as e:
+            print(f"[WARN] Crossref failed for {name} ({issn}): {e}", file=sys.stderr)
+            continue
 
-    # Deduplicate by DOI
+        for raw in items:
+            item = to_item(name, short, raw)
+            if item["title"]:
+                unified.append(item)
+
+    # Deduplicate by DOI (fallback: URL)
     seen = set()
     deduped: List[Dict[str, Any]] = []
     for it in unified:
-        key = (it.get("doi") or "").lower() or it["url"]
+        key = (it.get("doi") or "").lower() or it.get("url") or ""
+        if not key:
+            continue
         if key in seen:
             continue
         seen.add(key)
@@ -240,7 +223,7 @@ def main() -> int:
     # Sort by publication date desc
     deduped.sort(key=lambda x: (x["published"] is not None, x["published"] or ""), reverse=True)
 
-    # PubMed enrichment
+    # PubMed enrichment (optional budget)
     lookups = 0
     for it in deduped:
         if lookups >= PMID_LOOKUP_BUDGET:
