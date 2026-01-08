@@ -3,9 +3,13 @@
 Build unified TOC data.json from Crossref by ISSN, with PubMed enrichment
 and Ahead-of-Print (AOP) detection.
 
-Changes for SJR migration:
-- Tier removed entirely (sources.json no longer needs tier)
-- Journal has a single ISSN (per your decision); code tolerates list defensively
+Pagination strategy (simple & robust for static hosting):
+- Pull N recent items per journal (default 200) from Crossref
+- Merge + dedupe (DOI/URL)
+- Sort by date desc
+- Cap output to a global max (default 3000)
+
+Front-end will infinite-scroll render progressively (auto up to 1000 shown).
 """
 
 from __future__ import annotations
@@ -31,7 +35,13 @@ USER_AGENT = os.getenv(
 
 NCBI_EMAIL = os.getenv("NCBI_EMAIL", "")
 
-PMID_LOOKUP_BUDGET = int(os.getenv("PMID_LOOKUP_BUDGET", "80"))
+# How many recent works to fetch per journal from Crossref
+CROSSREF_ROWS_PER_JOURNAL = int(os.getenv("CROSSREF_ROWS_PER_JOURNAL", "200"))
+# Hard cap on total items written to data.json (after dedupe and sorting)
+GLOBAL_MAX_ITEMS = int(os.getenv("GLOBAL_MAX_ITEMS", "3000"))
+
+# PubMed DOI->PMID lookups budget (avoid hammering NCBI)
+PMID_LOOKUP_BUDGET = int(os.getenv("PMID_LOOKUP_BUDGET", "120"))
 PMID_SLEEP_SECONDS = float(os.getenv("PMID_SLEEP_SECONDS", "0.34"))
 
 
@@ -113,10 +123,15 @@ def pick_date(item: Dict[str, Any]) -> Optional[str]:
     if non_future:
         return max(non_future)
 
+    # if everything is in the future, pick earliest (still consistent)
     return min(candidates)
 
 
-def crossref_query_by_issn(issn: str, rows: int = 30) -> List[Dict[str, Any]]:
+def crossref_query_by_issn(issn: str, rows: int) -> List[Dict[str, Any]]:
+    """
+    Pull up to `rows` recent works. Crossref allows up to 1000 rows.
+    """
+    rows = max(1, min(int(rows), 1000))
     params = {
         "filter": f"issn:{issn}",
         "sort": "published",
@@ -124,7 +139,7 @@ def crossref_query_by_issn(issn: str, rows: int = 30) -> List[Dict[str, Any]]:
         "rows": str(rows),
     }
     headers = {"User-Agent": USER_AGENT}
-    r = requests.get(CROSSREF_API, params=params, headers=headers, timeout=30)
+    r = requests.get(CROSSREF_API, params=params, headers=headers, timeout=45)
     r.raise_for_status()
     return r.json().get("message", {}).get("items", []) or []
 
@@ -141,7 +156,7 @@ def doi_to_pmid(doi: str) -> Optional[str]:
     if NCBI_EMAIL:
         params["email"] = NCBI_EMAIL
     headers = {"User-Agent": USER_AGENT}
-    r = requests.get(NCBI_ESEARCH, params=params, headers=headers, timeout=30)
+    r = requests.get(NCBI_ESEARCH, params=params, headers=headers, timeout=45)
     r.raise_for_status()
     ids = r.json().get("esearchresult", {}).get("idlist", [])
     return ids[0] if ids else None
@@ -190,7 +205,7 @@ def main() -> int:
         name = s["name"]
         short = s.get("short", name)
 
-        issn: Union[str, List[str]] = s["issn"]
+        issn: Union[str, List[str]] = s.get("issn", "")
         if isinstance(issn, list):
             issn = issn[0] if issn else ""
 
@@ -198,7 +213,7 @@ def main() -> int:
             continue
 
         try:
-            items = crossref_query_by_issn(str(issn))
+            items = crossref_query_by_issn(str(issn), rows=CROSSREF_ROWS_PER_JOURNAL)
         except Exception as e:
             print(f"[WARN] Crossref failed for {name} ({issn}): {e}", file=sys.stderr)
             continue
@@ -221,7 +236,10 @@ def main() -> int:
         deduped.append(it)
 
     # Sort by publication date desc
-    deduped.sort(key=lambda x: (x["published"] is not None, x["published"] or ""), reverse=True)
+    deduped.sort(
+        key=lambda x: (x.get("published") is not None, x.get("published") or ""),
+        reverse=True
+    )
 
     # PubMed enrichment (optional budget)
     lookups = 0
@@ -243,15 +261,23 @@ def main() -> int:
             lookups += 1
             time.sleep(PMID_SLEEP_SECONDS)
 
+    # Hard cap output size
+    if len(deduped) > GLOBAL_MAX_ITEMS:
+        deduped = deduped[:GLOBAL_MAX_ITEMS]
+
     out = {
         "generated_at": iso_now(),
         "items": deduped,
+        "meta": {
+            "rows_per_journal": CROSSREF_ROWS_PER_JOURNAL,
+            "global_max_items": GLOBAL_MAX_ITEMS,
+        },
     }
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {len(deduped)} items -> data.json")
+    print(f"Wrote {len(deduped)} items -> data.json (rows/journal={CROSSREF_ROWS_PER_JOURNAL}, cap={GLOBAL_MAX_ITEMS})")
     return 0
 
 
