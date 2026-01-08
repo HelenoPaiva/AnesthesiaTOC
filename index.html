@@ -1,84 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anesthesiology TOC Dashboard</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnesthesiaTOC</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <header class="container">
-    <h1>Anesthesiology TOC Dashboard</h1>
+  <header>
+    <h1>AnesthesiaTOC</h1>
 
-    <p class="subtitle">
-      Unified “latest articles” view from major anesthesiology journals.
-      <br />
+    <p style="margin-top: 6px; margin-bottom: 14px;">
       <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
-        View on GitHub · Fork and customize for your specialty
+        View source on GitHub
       </a>
+      <span>· Fork and customize this dashboard for your specialty, institution, or research needs.</span>
     </p>
   </header>
 
-  <main class="container">
-    <section class="controls">
-      <div class="control-group">
-        <label for="q">Search</label>
-        <input
-          id="q"
-          type="search"
-          placeholder="airway, neuraxial, PONV, rocuronium…"
-        />
-      </div>
+  <section>
+    <div>
+      <label for="q">Search</label><br />
+      <input id="q" type="search" placeholder="Search title, authors, journal, DOI…" />
+    </div>
 
-      <div class="control-group">
-        <label for="journal">
-          Journal
-          <span
-            class="info"
-            title="Journals are ordered by SCImago Journal Rank (SJR). SJR is a journal-level metric using the latest year available in the dataset."
-            aria-label="About SJR"
-          >
-            ⓘ
-          </span>
-        </label>
+    <div style="margin-top: 10px;">
+      <label for="journal">
+        Journal
+        <span
+          title="SJR (SCImago Journal Rank) is a journal-level metric. Journals are ordered by the latest SJR available in the dataset."
+          aria-label="About SJR"
+          style="
+            display:inline-block;
+            margin-left:6px;
+            cursor:help;
+            opacity:.75;
+            font-weight:600;
+            user-select:none;
+          "
+        >ⓘ</span>
+      </label><br />
+      <select id="journal">
+        <option value="">All journals</option>
+      </select>
+    </div>
 
-        <select id="journal">
-          <option value="">All journals</option>
-        </select>
-      </div>
+    <div style="margin-top: 10px;">
+      <label style="cursor:pointer;">
+        <input type="checkbox" id="starOnly" />
+        Starred only
+      </label>
+    </div>
+  </section>
 
-      <div class="control-group checkbox">
-        <label>
-          <input type="checkbox" id="starOnly" />
-          Starred only
-        </label>
-      </div>
-    </section>
+  <section style="margin-top: 14px;">
+    <div id="status"></div>
+    <div id="generatedAt" style="margin-top: 6px;"></div>
+    <button id="clearStars" type="button" style="margin-top: 10px;">
+      Clear stars
+    </button>
+  </section>
 
-    <section class="statusbar">
-      <div id="status" class="status">Loading…</div>
-      <div id="generatedAt" class="generated"></div>
-      <button id="clearStars" class="clear-stars" type="button">
-        Clear stars
-      </button>
-    </section>
-
-    <section id="list" class="list">
-      <!-- articles rendered here -->
-    </section>
+  <main style="margin-top: 14px;">
+    <div id="list"></div>
   </main>
-
-  <footer class="container footer">
-    <p>
-      Data retrieved from Crossref and PubMed. Journal ranking based on
-      SCImago Journal Rank (SJR).
-    </p>
-    <p class="muted">
-      No tracking · No cookies · All processing happens locally in your browser
-    </p>
-  </footer>
 
   <script src="app.js"></script>
 </body>
