@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """
-Build journal_metrics.json using SCImago Journal Rank (SJR).
+Build journal_metrics.json using SJR (SCImago Journal Rank).
 
-- Reads sources.json (journals with a single ISSN)
-- Downloads SCImago journal rankings export
-- Detects the latest year present in the dataset
-- Extracts SJR values for the ISSNs in sources.json
-- Writes journal_metrics.json (journal-level metrics only)
+GitHub Actions often gets 403 from scimagojr.com. To keep this reliable:
+- Try SCImago export first
+- Fallback to a public GitHub mirror CSV dataset (reliable for Actions)
+- If both fail: DO NOT overwrite existing journal_metrics.json
+  - If an old file exists -> exit 0 (no-op success)
+  - If no old file exists -> exit 1 (so you notice on first setup)
 
-Failure behavior:
-- If fetch/parse fails, exits non-zero and DOES NOT write output.
+Inputs:
+- sources.json (journals with a single ISSN each)
+
+Output:
+- journal_metrics.json (journal-level SJR only; no quartile)
 """
 
 from __future__ import annotations
@@ -21,7 +25,7 @@ import os
 import re
 import sys
 from datetime import datetime, timezone
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 
 import requests
 
@@ -30,16 +34,18 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SOURCES_PATH = os.path.join(ROOT, "sources.json")
 OUT_PATH = os.path.join(ROOT, "journal_metrics.json")
 
-# SCImago export endpoint (often labeled out=xls but is semicolon-delimited text)
+# Primary (may 403 in GitHub Actions)
 SJR_EXPORT_URL = "https://www.scimagojr.com/journalrank.php?out=xls"
 
-# A browser-like UA helps with sites that block generic clients
+# Fallback mirror (public dataset hosted on GitHub; far less likely to be blocked)
+# Source: Michael-E-Rose/SCImagoJournalRankIndicators (all.csv)
+SJR_FALLBACK_URL = "https://raw.githubusercontent.com/Michael-E-Rose/SCImagoJournalRankIndicators/master/all.csv"
+
 UA = os.getenv(
     "SJR_UA",
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 )
-
 TIMEOUT = 60
 
 
@@ -49,16 +55,27 @@ def iso_now() -> str:
 
 def normalize_issn(raw: str) -> str:
     """
-    Normalize ISSN into ####-#### (uppercase), removing spaces.
-    Accepts input with/without hyphen.
+    Normalize ISSN into ####-#### uppercase.
+    Accepts with/without hyphen.
     """
     s = (raw or "").strip().upper().replace(" ", "")
-    s = s.replace("–", "-")  # en-dash just in case
+    s = s.replace("–", "-")
     if re.fullmatch(r"\d{4}-\d{3}[\dX]", s):
         return s
     if re.fullmatch(r"\d{7}[\dX]", s):
         return s[:4] + "-" + s[4:]
     return s
+
+
+def looks_like_html(text: str) -> bool:
+    t = (text or "").lstrip().lower()
+    return t.startswith("<!doctype") or t.startswith("<html") or "<html" in t[:2000]
+
+
+def fetch_text(url: str, headers: Dict[str, str]) -> str:
+    r = requests.get(url, headers=headers, timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.text
 
 
 def fetch_scimago_export() -> str:
@@ -67,61 +84,56 @@ def fetch_scimago_export() -> str:
         "Accept": "text/plain,text/csv,application/octet-stream,*/*",
         "Referer": "https://www.scimagojr.com/journalrank.php",
     }
-    r = requests.get(SJR_EXPORT_URL, headers=headers, timeout=TIMEOUT)
-    r.raise_for_status()
-    return r.text
+    return fetch_text(SJR_EXPORT_URL, headers=headers)
 
 
-def detect_columns(fieldnames) -> Tuple[str, str, str, str]:
+def fetch_fallback_csv() -> str:
+    headers = {
+        "User-Agent": UA,
+        "Accept": "text/csv,text/plain,*/*",
+    }
+    return fetch_text(SJR_FALLBACK_URL, headers=headers)
+
+
+def sniff_delimiter(sample: str) -> str:
+    # SCImago export is usually ';' separated; GitHub CSV is ',' separated
+    if sample.count(";") > sample.count(","):
+        return ";"
+    return ","
+
+
+def detect_columns(fieldnames: List[str]) -> Tuple[str, str, str, str]:
     """
-    Return column names for: year, issn, sjr, title.
-    SCImago export column names can vary slightly.
+    Detect columns for: year, issn, sjr, title.
+    Handles both SCImago export and fallback CSV variants.
     """
     if not fieldnames:
-        raise ValueError("No columns detected in SCImago export")
+        raise ValueError("No columns detected")
 
-    cols = {c.strip(): c for c in fieldnames}
+    norm = {c.strip().lower(): c for c in fieldnames}
 
-    # Common expected names:
-    year_col = None
-    for candidate in ["Year", "year"]:
-        if candidate in cols:
-            year_col = cols[candidate]
-            break
+    def pick(*names: str) -> Optional[str]:
+        for n in names:
+            if n in norm:
+                return norm[n]
+        return None
 
-    issn_col = None
-    for candidate in ["Issn", "ISSN", "Issn ", "issn"]:
-        if candidate in cols:
-            issn_col = cols[candidate]
-            break
-
-    sjr_col = None
-    for candidate in ["SJR", "Sjr", "sjr"]:
-        if candidate in cols:
-            sjr_col = cols[candidate]
-            break
-
-    title_col = None
-    for candidate in ["Title", "title", "Journal", "Source Title"]:
-        if candidate in cols:
-            title_col = cols[candidate]
-            break
+    year_col = pick("year")
+    issn_col = pick("issn")
+    sjr_col = pick("sjr")
+    title_col = pick("title", "journal", "source title", "sourcetitle")
 
     if not (year_col and issn_col and sjr_col and title_col):
-        raise ValueError(
-            f"Missing required columns. Detected: {fieldnames[:20]}"
-        )
-
+        raise ValueError(f"Missing required columns. Got: {fieldnames[:30]}")
     return year_col, issn_col, sjr_col, title_col
 
 
-def parse_sjr_float(value: str) -> Optional[float]:
-    if value is None:
+def parse_float(x: Any) -> Optional[float]:
+    if x is None:
         return None
-    s = str(value).strip()
+    s = str(x).strip()
     if not s:
         return None
-    # SCImago sometimes uses comma as decimal separator in some exports; accept both
     s = s.replace(",", ".")
     try:
         return float(s)
@@ -129,107 +141,132 @@ def parse_sjr_float(value: str) -> Optional[float]:
         return None
 
 
-def main() -> int:
-    if not os.path.exists(SOURCES_PATH):
-        print(f"[ERROR] sources.json not found at {SOURCES_PATH}", file=sys.stderr)
-        return 2
-
+def load_sources() -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]], set]:
     with open(SOURCES_PATH, "r", encoding="utf-8") as f:
         sources = json.load(f)
 
-    # Single ISSN per journal (per your decision)
-    wanted_issns = []
+    # Map ISSN -> source record (short, name)
+    issn_to_source: Dict[str, Dict[str, Any]] = {}
+    wanted = set()
+
     for s in sources:
         issn = s.get("issn")
         if isinstance(issn, list):
-            # You decided: single ISSN per journal; take first defensively
             issn = issn[0] if issn else ""
-        wanted_issns.append(normalize_issn(str(issn)))
+        issn_norm = normalize_issn(str(issn))
+        if not issn_norm:
+            continue
+        wanted.add(issn_norm)
+        issn_to_source[issn_norm] = {
+            "short": s.get("short") or s.get("name"),
+            "name": s.get("name"),
+            "issn": issn_norm,
+        }
 
-    wanted_set = set([x for x in wanted_issns if x])
+    return sources, issn_to_source, wanted
 
-    # Fetch SCImago export (DO NOT write output until successful parse)
-    text = fetch_scimago_export()
 
-    # Parse semicolon-delimited text
-    reader = csv.DictReader(io.StringIO(text), delimiter=";")
-    year_col, issn_col, sjr_col, title_col = detect_columns(reader.fieldnames)
+def build_from_text(csv_text: str, wanted_issns: set) -> Tuple[int, Dict[str, Dict[str, Any]]]:
+    if looks_like_html(csv_text):
+        raise ValueError("Received HTML instead of CSV (likely blocked)")
 
-    # First pass: detect latest year
-    latest_year = None
-    rows_cache = []
+    delim = sniff_delimiter(csv_text[:4000])
+    reader = csv.DictReader(io.StringIO(csv_text), delimiter=delim)
+    year_col, issn_col, sjr_col, title_col = detect_columns(reader.fieldnames or [])
 
-    for row in reader:
-        rows_cache.append(row)
-        y_raw = (row.get(year_col) or "").strip()
+    rows = list(reader)
+
+    latest_year: Optional[int] = None
+    for r in rows:
         try:
-            y = int(y_raw)
+            y = int((r.get(year_col) or "").strip())
         except Exception:
             continue
         if latest_year is None or y > latest_year:
             latest_year = y
 
     if latest_year is None:
-        raise ValueError("Could not detect latest year in SCImago export")
+        raise ValueError("Could not detect latest year")
 
-    # Second pass: collect SJR for wanted ISSNs from latest year only
     by_issn: Dict[str, Dict[str, Any]] = {}
-    matched = 0
 
-    for row in rows_cache:
-        y_raw = (row.get(year_col) or "").strip()
+    for r in rows:
         try:
-            y = int(y_raw)
+            y = int((r.get(year_col) or "").strip())
         except Exception:
             continue
         if y != latest_year:
             continue
 
-        issn_raw = (row.get(issn_col) or "").strip()
+        issn_raw = (r.get(issn_col) or "").strip()
         if not issn_raw:
             continue
 
-        # SCImago sometimes provides multiple ISSNs in one field separated by comma
+        # Some datasets use comma-separated ISSNs
         issns = [normalize_issn(x) for x in issn_raw.split(",")]
 
-        sjr_val = parse_sjr_float(row.get(sjr_col))
+        sjr_val = parse_float(r.get(sjr_col))
         if sjr_val is None:
             continue
 
-        title_source = (row.get(title_col) or "").strip()
+        title_source = (r.get(title_col) or "").strip()
 
         for issn in issns:
-            if not issn or issn not in wanted_set:
-                continue
+            if issn in wanted_issns:
+                # keep max if duplicates
+                cur = by_issn.get(issn)
+                if cur is None or float(cur.get("sjr", 0.0)) < sjr_val:
+                    by_issn[issn] = {"sjr": sjr_val, "title_source": title_source}
 
-            # If duplicate entries appear, keep the max SJR (safe and stable)
-            existing = by_issn.get(issn)
-            if existing is None or float(existing.get("sjr", 0)) < sjr_val:
-                by_issn[issn] = {
-                    "sjr": sjr_val,
-                    "title_source": title_source,
-                }
+    return latest_year, by_issn
 
-    matched = len(by_issn)
 
-    out = {
-        "generated_at": iso_now(),
-        "source_name": "SCImago Journal Rank (SJR)",
-        "source_note": "SJR is treated as an annual journal-level metric; the dashboard uses the latest year available in the SCImago export at update time.",
-        "sjr_year": latest_year,
-        "coverage": {
-            "matched": matched,
-            "total_sources": len(sources),
-        },
-        "by_issn": by_issn,
-    }
+def main() -> int:
+    if not os.path.exists(SOURCES_PATH):
+        print(f"[ERROR] sources.json not found at {SOURCES_PATH}", file=sys.stderr)
+        return 2
 
-    # Write output only after everything succeeded
-    with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+    sources, issn_to_source, wanted = load_sources()
+    have_old = os.path.exists(OUT_PATH)
 
-    print(f"Wrote journal_metrics.json (year={latest_year}, matched={matched}/{len(sources)})")
-    return 0
+    # Try primary, then fallback
+    last_err = None
+    for attempt, label in [(fetch_scimago_export, "SCImago export"), (fetch_fallback_csv, "Fallback GitHub CSV")]:
+        try:
+            text = attempt()
+            latest_year, by_issn = build_from_text(text, wanted)
+
+            out = {
+                "generated_at": iso_now(),
+                "source_name": "SCImago Journal Rank (SJR)",
+                "source_note": "SJR is treated as an annual journal-level metric; the dashboard uses the latest year available in the upstream dataset at update time.",
+                "sjr_year": latest_year,
+                "coverage": {
+                    "matched": len(by_issn),
+                    "total_sources": len(sources),
+                },
+                "by_issn": by_issn,
+            }
+
+            # Write only after success
+            with open(OUT_PATH, "w", encoding="utf-8") as f:
+                json.dump(out, f, ensure_ascii=False, indent=2)
+
+            print(f"[OK] {label}: wrote journal_metrics.json (year={latest_year}, matched={len(by_issn)}/{len(sources)})")
+            return 0
+
+        except Exception as e:
+            last_err = f"{label} failed: {e}"
+            print(f"[WARN] {last_err}", file=sys.stderr)
+
+    # Both failed: do not overwrite; decide exit code
+    if have_old:
+        print("[WARN] Metrics update skipped (kept existing journal_metrics.json).", file=sys.stderr)
+        return 0  # green run, no-op
+    else:
+        print("[ERROR] Metrics update failed and no previous journal_metrics.json exists.", file=sys.stderr)
+        print(f"[ERROR] Last error: {last_err}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":
