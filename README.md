@@ -5,6 +5,10 @@
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18180895.svg)](https://doi.org/10.5281/zenodo.18180895)
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Data Source](https://img.shields.io/badge/data-Crossref%20%7C%20PubMed-orange)
+![Domain](https://img.shields.io/badge/domain-anesthesiology-blueviolet)
 
 https://helenopaiva.github.io/AnesthesiaTOC/
 
