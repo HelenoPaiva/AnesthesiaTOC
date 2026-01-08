@@ -98,7 +98,6 @@ let loadMoreBtn = null;
 let io = null;
 
 function ensureProgressiveControls() {
-  // Sentinel for intersection observer
   if (!sentinelEl) {
     sentinelEl = document.createElement("div");
     sentinelEl.style.height = "1px";
@@ -107,7 +106,6 @@ function ensureProgressiveControls() {
     els.list.parentElement.appendChild(sentinelEl);
   }
 
-  // Load more button
   if (!loadMoreWrap) {
     loadMoreWrap = document.createElement("div");
     loadMoreWrap.style.display = "none";
@@ -121,7 +119,6 @@ function ensureProgressiveControls() {
 
     loadMoreBtn.addEventListener("click", () => {
       manualExtra += MANUAL_LOAD_BATCH;
-      // increase limit and re-render
       visibleLimit = Math.min(FILTERED.length, AUTO_SCROLL_LIMIT + manualExtra);
       renderVisible();
       updateLoadMoreVisibility();
@@ -131,7 +128,6 @@ function ensureProgressiveControls() {
     els.list.parentElement.appendChild(loadMoreWrap);
   }
 
-  // Intersection observer to auto-load
   if (!io) {
     io = new IntersectionObserver((entries) => {
       const ent = entries[0];
@@ -188,7 +184,7 @@ function render(items, stars) {
       const s = loadStars();
       s.has(key) ? s.delete(key) : s.add(key);
       saveStars(s);
-      applyFilters(true); // keep current scroll limits where possible
+      applyFilters(false);
     });
 
     els.list.appendChild(div);
@@ -223,8 +219,6 @@ function renderVisible() {
   updateLoadMoreVisibility();
 }
 
-/* ---------- filtering ---------- */
-
 function computeFiltered() {
   const stars = loadStars();
   const q = els.q.value.trim();
@@ -244,23 +238,14 @@ function computeFiltered() {
   return items;
 }
 
-/**
- * applyFilters(resetLimits=true):
- * - true  => reset progressive rendering (new search/filter)
- * - false => keep limits (e.g. starring an item)
- */
 function applyFilters(resetLimits = true) {
-  const prevLen = FILTERED.length;
   FILTERED = computeFiltered();
 
   if (resetLimits) {
     manualExtra = 0;
     visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   } else {
-    // Keep visibleLimit but don't exceed new filtered size
-    // If we had fewer items before and now more, keep current visibleLimit as is
     visibleLimit = Math.min(visibleLimit, FILTERED.length);
-    // If list shrank to zero but was not reset, ensure at least initial slice
     if (FILTERED.length > 0 && visibleLimit === 0) {
       visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
     }
@@ -289,12 +274,6 @@ async function init() {
     METRICS = { sjr_year: null, by_issn: {} };
   }
 
-  // counts per journal_short (for dropdown)
-  const counts = new Map();
-  for (const it of DATA.items) {
-    counts.set(it.journal_short, (counts.get(it.journal_short) || 0) + 1);
-  }
-
   const sjrYear = METRICS.sjr_year ?? "—";
   const byIssn = METRICS.by_issn || {};
 
@@ -306,13 +285,7 @@ async function init() {
     const metric = byIssn[issn];
     const sjrVal = metric && Number.isFinite(metric.sjr) ? Number(metric.sjr) : null;
 
-    return {
-      short,
-      name,
-      sjrVal,
-      count: counts.get(short) || 0,
-      sjrText: formatSjrLabel(sjrYear, sjrVal),
-    };
+    return { short, name, sjrVal, sjrText: formatSjrLabel(sjrYear, sjrVal) };
   }).sort((a, b) => {
     const aHas = a.sjrVal != null;
     const bHas = b.sjrVal != null;
@@ -327,7 +300,8 @@ async function init() {
   for (const o of options) {
     const opt = document.createElement("option");
     opt.value = o.short;
-    opt.textContent = `${o.short} — ${o.name} — ${o.sjrText} (${o.count})`;
+    // DROP (N) here
+    opt.textContent = `${o.short} — ${o.name} — ${o.sjrText}`;
     els.journal.appendChild(opt);
   }
 
@@ -352,10 +326,8 @@ async function init() {
   updateHeader();
   setInterval(updateHeader, 30_000);
 
-  // Progressive UI controls (sentinel + load more)
   ensureProgressiveControls();
 
-  // Initial render
   FILTERED = computeFiltered();
   visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   renderVisible();
