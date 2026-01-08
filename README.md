@@ -5,8 +5,6 @@
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
 
-https://helenopaiva.github.io/AnesthesiaTOC/
-
 
 https://helenopaiva.github.io/AnesthesiaTOC/
 
