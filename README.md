@@ -4,6 +4,7 @@
 ![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
+
 [![DOI](https://zenodo.org/badge/1128458328.svg)](https://doi.org/10.5281/zenodo.18180894)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Data Source](https://img.shields.io/badge/data-Crossref%20%7C%20PubMed-orange)
