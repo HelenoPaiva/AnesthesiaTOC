@@ -71,12 +71,16 @@ function normalizeIssn(s) {
   return String(s).trim().toUpperCase().replace(/\s+/g, "");
 }
 
-function formatSjrLabel(sjrYear, sjrVal) {
+function formatSjrLabel(_sjrYear, sjrVal) {
+  // We keep year internally, but do not display it
   if (sjrVal == null || !Number.isFinite(sjrVal)) {
-    return `SJR ${sjrYear}: n/a`;
+    return `SJR: n/a`;
   }
-  return `SJR ${sjrYear}: ${sjrVal.toFixed(2)}`;
+  return `SJR: ${sjrVal.toFixed(2)}`;
 }
+
+const SJR_TOOLTIP =
+  "SCImago Journal Rank (SJR). Uses the latest year available in the dataset at update time.";
 
 /* ---------- render ---------- */
 
@@ -169,7 +173,7 @@ async function init() {
     METRICS = await mRes.json();
   } catch (e) {
     console.warn("journal_metrics.json not available yet:", e);
-    METRICS = { sjr_year: "—", by_issn: {} };
+    METRICS = { sjr_year: null, by_issn: {} };
   }
 
   // counts per journal_short
@@ -216,6 +220,9 @@ async function init() {
 
     const sjrText = formatSjrLabel(sjrYear, o.sjrVal);
     opt.textContent = `${o.short} — ${o.name} — ${sjrText} (${o.count})`;
+
+    // Tooltip (browser support varies for <option>, but this is the simplest no-HTML-change approach)
+    opt.title = SJR_TOOLTIP;
 
     // Per your decision: leave selectable even if (0)
     els.journal.appendChild(opt);
