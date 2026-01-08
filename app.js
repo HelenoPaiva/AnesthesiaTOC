@@ -102,6 +102,7 @@ let renderToken = 0;
 let renderedCount = 0;
 let activeToken = 0;
 let STARS = new Set();
+let JOURNAL_INDEX = new Map();
 
 let sentinelEl = null;
 let loadMoreWrap = null;
@@ -159,36 +160,79 @@ function ensureProgressiveControls() {
   }
 }
 
+function appendTextSpan(parent, text, className) {
+  const span = document.createElement("span");
+  if (className) span.className = className;
+  span.textContent = text;
+  parent.appendChild(span);
+}
+
 function buildItemNode(it, stars) {
-  const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
-  const starOn = stars.has(key);
+  const starOn = stars.has(it.key);
 
   const div = document.createElement("div");
   div.className = "item";
-  div.innerHTML = `
-    <div class="top">
-      <button class="star ${starOn ? "on" : ""}" aria-label="star">${starOn ? "★" : "☆"}</button>
-      <div>
-        <h3 class="title">
-          <a href="${it.url}" target="_blank" rel="noopener noreferrer">${it.title}</a>
-        </h3>
-        <div class="metaLine">
-          <span class="pill">${it.journal_short}</span>
-          ${it.aop ? `<span class="pill aop">Ahead of print</span>` : ""}
-          ${it.published ? `<span>${formatDateDMYMMM(it.published)}</span>` : `<span class="muted">no date</span>`}
-          ${it.authors ? `<span>${it.authors}</span>` : ""}
-          ${it.doi ? `<span class="muted">${it.doi}</span>` : ""}
-          ${it.pubmed_url ? `<a class="pill" href="${it.pubmed_url}" target="_blank" rel="noopener noreferrer">PubMed</a>` : ""}
-        </div>
-      </div>
-    </div>
-  `;
 
-  div.querySelector(".star").addEventListener("click", () => {
-    STARS.has(key) ? STARS.delete(key) : STARS.add(key);
-    saveStars(STARS);
-    applyFilters(false);
-  });
+  const top = document.createElement("div");
+  top.className = "top";
+
+  const starBtn = document.createElement("button");
+  starBtn.className = `star ${starOn ? "on" : ""}`;
+  starBtn.type = "button";
+  starBtn.setAttribute("aria-label", "star");
+  starBtn.dataset.key = it.key;
+  starBtn.textContent = starOn ? "★" : "☆";
+
+  const infoWrap = document.createElement("div");
+  const title = document.createElement("h3");
+  title.className = "title";
+
+  const link = document.createElement("a");
+  link.href = it.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = it.title;
+  title.appendChild(link);
+
+  const metaLine = document.createElement("div");
+  metaLine.className = "metaLine";
+
+  appendTextSpan(metaLine, it.journal_short, "pill");
+
+  if (it.aop) {
+    appendTextSpan(metaLine, "Ahead of print", "pill aop");
+  }
+
+  if (it.published) {
+    appendTextSpan(metaLine, formatDateDMYMMM(it.published));
+  } else {
+    appendTextSpan(metaLine, "no date", "muted");
+  }
+
+  if (it.authors) {
+    appendTextSpan(metaLine, it.authors);
+  }
+
+  if (it.doi) {
+    appendTextSpan(metaLine, it.doi, "muted");
+  }
+
+  if (it.pubmed_url) {
+    const pubmed = document.createElement("a");
+    pubmed.className = "pill";
+    pubmed.href = it.pubmed_url;
+    pubmed.target = "_blank";
+    pubmed.rel = "noopener noreferrer";
+    pubmed.textContent = "PubMed";
+    metaLine.appendChild(pubmed);
+  }
+
+  infoWrap.appendChild(title);
+  infoWrap.appendChild(metaLine);
+
+  top.appendChild(starBtn);
+  top.appendChild(infoWrap);
+  div.appendChild(top);
 
   return div;
 }
@@ -250,15 +294,14 @@ function computeFiltered() {
   const q = els.q.value.trim().toLowerCase();
   const j = els.journal.value;
 
-  let items = DATA.items.slice();
+  const baseItems = j ? (JOURNAL_INDEX.get(j) || []) : DATA.items;
+  let items = baseItems;
 
-  if (j) items = items.filter(it => it.journal_short === j);
   items = items.filter(it => matchesQuery(it, q));
 
   if (els.starOnly.checked) {
     items = items.filter(it => {
-      const key = it.doi || it.url || `${it.journal_short}|${it.title}`;
-      return STARS.has(key);
+      return STARS.has(it.key);
     });
   }
   return items;
@@ -292,9 +335,17 @@ async function init() {
   DATA.items.forEach((it) => {
     const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi}`.toLowerCase();
     it.searchText = hay;
+    it.key = it.doi || it.url || `${it.journal_short}|${it.title}`;
   });
 
   STARS = loadStars();
+  JOURNAL_INDEX = new Map();
+  DATA.items.forEach((it) => {
+    if (!JOURNAL_INDEX.has(it.journal_short)) {
+      JOURNAL_INDEX.set(it.journal_short, []);
+    }
+    JOURNAL_INDEX.get(it.journal_short).push(it);
+  });
 
   const srcRes = await fetch("./sources.json", { cache: "no-store" });
   SOURCES = await srcRes.json();
@@ -351,6 +402,18 @@ async function init() {
   els.q.addEventListener("input", debouncedFilter);
   els.journal.addEventListener("change", () => applyFilters(true));
   els.starOnly.addEventListener("change", () => applyFilters(true));
+
+  els.list.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const starBtn = target.closest("button.star");
+    if (!starBtn || !els.list.contains(starBtn)) return;
+    const key = starBtn.dataset.key;
+    if (!key) return;
+    STARS.has(key) ? STARS.delete(key) : STARS.add(key);
+    saveStars(STARS);
+    applyFilters(false);
+  });
 
   els.clearStars.addEventListener("click", () => {
     STARS.clear();
