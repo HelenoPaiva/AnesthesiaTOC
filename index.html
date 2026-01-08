@@ -3,69 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AnesthesiaTOC</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Anesthesiology Journal TOC Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body>
-  <header>
-    <h1>AnesthesiaTOC</h1>
+  <header class="wrap">
+    <div class="titlebar">
+      <h1>Anesthesiology TOC Dashboard</h1>
+      <p class="subtitle">A selection of the latest articles from selected sources.</p>
+      <p class="repo-link">
+  <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
+    View source on GitHub
+  </a>
+  · Customize this dashboard for your specialty, institution, or research needs.
+</p>
+    </div>
 
-    <p style="margin-top: 6px; margin-bottom: 14px;">
-      <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
-        View source on GitHub
-      </a>
-      <span>· Fork and customize this dashboard for your specialty, institution, or research needs.</span>
-    </p>
+    <div class="controls card">
+      <div class="row">
+        <label>
+          Search
+          <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." />
+        </label>
+
+        <label>
+          Journal
+          <select id="journal">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label class="chk">
+          <input id="starOnly" type="checkbox" />
+          Starred only
+        </label>
+      </div>
+
+      <div class="row meta">
+        <span id="status">Loading…</span>
+        <span class="spacer"></span>
+        <button id="clearStars" class="btn">Clear stars</button>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <div>
-      <label for="q">Search</label><br />
-      <input id="q" type="search" placeholder="Search title, authors, journal, DOI…" />
-    </div>
+  <main class="wrap">
+    <section class="card">
+      <div class="listhead">
+        <h2>Latest</h2>
+        <span id="generatedAt" class="muted"></span>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
 
-    <div style="margin-top: 10px;">
-      <label for="journal">
-        Journal
-        <span
-          title="SJR (SCImago Journal Rank) is a journal-level metric. Journals are ordered by the latest SJR available in the dataset."
-          aria-label="About SJR"
-          style="
-            display:inline-block;
-            margin-left:6px;
-            cursor:help;
-            opacity:.75;
-            font-weight:600;
-            user-select:none;
-          "
-        >ⓘ</span>
-      </label><br />
-      <select id="journal">
-        <option value="">All journals</option>
-      </select>
-    </div>
-
-    <div style="margin-top: 10px;">
-      <label style="cursor:pointer;">
-        <input type="checkbox" id="starOnly" />
-        Starred only
-      </label>
-    </div>
-  </section>
-
-  <section style="margin-top: 14px;">
-    <div id="status"></div>
-    <div id="generatedAt" style="margin-top: 6px;"></div>
-    <button id="clearStars" type="button" style="margin-top: 10px;">
-      Clear stars
-    </button>
-  </section>
-
-  <main style="margin-top: 14px;">
-    <div id="list"></div>
+    <footer class="muted foot">
+      Tip: Stars are saved locally in your browser (no login). You can fork this and add more journals in <code>sources.json</code>.
+    </footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
+
+
