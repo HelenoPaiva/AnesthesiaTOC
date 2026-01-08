@@ -1,4 +1,5 @@
-# AnesthesiaTOC - https://helenopaiva.github.io/AnesthesiaTOC/
+# AnesthesiaTOC  
+https://helenopaiva.github.io/AnesthesiaTOC/
 
 **An automated, open, web-based dashboard for continuous surveillance of anesthesiology literature**
 
@@ -8,7 +9,7 @@
 
 **AnesthesiaTOC** is a fully automated, static web dashboard designed to aggregate and display the most recent tables of contents from major anesthesiology journals in a unified, continuously updated interface.
 
-The project addresses a common challenge in anesthesiology practice and academia: maintaining awareness of newly published literature across multiple journals, subspecialties, and publication platforms without reliance on fragmented alerting systems or proprietary tools.
+The project addresses a common challenge in anesthesiology practice and academia: maintaining situational awareness of newly published literature across multiple journals and publication platforms without reliance on fragmented alerting systems, proprietary feeds, or subscription-dependent tools.
 
 The dashboard relies exclusively on **open scholarly metadata infrastructures** and **static web technologies**, requiring no backend server, database, or user authentication.
 
@@ -17,14 +18,16 @@ The dashboard relies exclusively on **open scholarly metadata infrastructures** 
 ## Key features
 
 - Automated retrieval of recent articles from selected anesthesiology journals  
-- Journal identification by ISSN, with support for multiple ISSNs per journal  
-- Tier-based journal organization (core, subspecialty, regional)  
-- Unified metadata structure (title, authors, publication date, DOI, journal, tier)  
-- Automatic de-duplication using digital object identifiers  
+- Journal identification by **ISSN** (single ISSN per journal for robustness)  
+- **Journal ordering by SCImago Journal Rank (SJR)** using the latest available metric  
+- Unified metadata structure (title, authors, publication date, DOI, journal)  
+- Automatic de-duplication using digital object identifiers (DOI)  
 - Robust publication date handling (future “issue” dates excluded)  
 - Detection and labeling of **Ahead of Print** articles  
 - Optional PubMed enrichment with direct PubMed links  
 - Client-side full-text search and journal filtering  
+- **Progressive loading / infinite scrolling** of large datasets  
+- Automatic loading up to ~1000 articles, followed by manual “Load more”  
 - Persistent local bookmarking (browser-based, no accounts)  
 - Static deployment via GitHub Pages (no server-side maintenance)
 
@@ -39,17 +42,38 @@ The system is deliberately divided into two independent layers.
 - Implemented in **Python**
 - Executed via **GitHub Actions** on a scheduled basis
 - Queries the **Crossref REST API** using journal ISSNs
+- Retrieves substantially more than 30 articles per journal (configurable)
 - Optionally resolves DOIs to PubMed identifiers using **NCBI E-utilities**
-- Produces a single static dataset (`data.json`)
+- Produces static datasets:
+  - `data.json` (article-level metadata)
+  - `journal_metrics.json` (journal-level SJR metrics)
+
+All processing occurs offline during the automated build step.
+
+---
 
 ### 2. Presentation (frontend layer)
 
 - Implemented as a static single-page web application
 - Uses **HTML, CSS, and vanilla JavaScript**
-- Loads and renders `data.json` entirely client-side
-- No tracking, cookies, or user data transmission
+- Loads and renders datasets entirely client-side
+- Progressive rendering ensures fast initial load even with large datasets
+- No tracking, cookies, analytics, or user data transmission
 
-This separation ensures reproducibility, transparency, and low operational complexity.
+This separation ensures reproducibility, transparency, and minimal operational complexity.
+
+---
+
+## Journal ranking and metrics
+
+Journal ordering in the interface is based on **SCImago Journal Rank (SJR)**:
+
+- SJR is a **journal-level** metric (not article-level)
+- The system automatically uses the **latest year available** in the upstream dataset
+- Metrics are refreshed automatically via a scheduled workflow
+- If the upstream source is temporarily unavailable, existing metrics are preserved
+
+No journal tiers or quartile labels are used.
 
 ---
 
@@ -57,6 +81,9 @@ This separation ensures reproducibility, transparency, and low operational compl
 
 - **Crossref REST API**  
   Used to retrieve bibliographic metadata for journal articles by ISSN.
+
+- **SCImago Journal Rank (SJR)**  
+  Used to obtain journal-level ranking metrics for ordering the journal list.
 
 - **NCBI E-utilities (PubMed)**  
   Used to resolve DOIs to PubMed identifiers when available.
@@ -67,29 +94,32 @@ All data sources are publicly accessible and do not require API keys for standar
 
 ## Update mechanism
 
-The dataset is regenerated automatically using **GitHub Actions** on a scheduled basis (e.g., hourly or daily, configurable in the workflow file).
+Datasets are regenerated automatically using **GitHub Actions** on a scheduled basis (configurable; typically daily or weekly).
 
 Each execution:
-1. Queries Crossref for recent articles  
+
+1. Queries Crossref for recent articles from each journal  
 2. Normalizes and de-duplicates records  
 3. Selects a non-future publication date  
 4. Identifies articles published ahead of print  
 5. Optionally enriches entries with PubMed links  
-6. Writes a new `data.json` file only when changes are detected  
+6. Updates journal-level SJR metrics when available  
+7. Writes new dataset files only when changes are detected  
 
-The web interface reflects updates immediately after deployment.
+The web interface reflects updates automatically after deployment.
 
 ---
 
-## Customization
+## Customization and reuse
 
-This project is designed to be **forked and adapted**.
+This project is explicitly designed to be **forked and adapted**.
 
 Common customization options include:
+
 - Modifying `sources.json` to add or remove journals  
-- Adapting journal tiers to local or institutional preferences  
-- Repurposing the dashboard for other medical specialties  
-- Adjusting update frequency in the GitHub Actions workflow  
+- Adapting the dashboard for other medical specialties  
+- Adjusting article volume per journal and global dataset limits  
+- Changing update frequency in GitHub Actions workflows  
 - Translating interface text or adapting date formats  
 
 No backend infrastructure changes are required.
@@ -103,7 +133,7 @@ No backend infrastructure changes are required.
 - No personal data collection  
 - All interactions occur locally in the browser  
 
-The project is suitable for public academic deployment.
+The project is suitable for public academic and institutional deployment.
 
 ---
 
@@ -111,8 +141,8 @@ The project is suitable for public academic deployment.
 
 - Literature surveillance for anesthesiology clinicians  
 - Academic and educational environments (journal clubs, residency programs)  
-- Research monitoring and topic awareness  
-- Demonstration of reproducible, low-cost academic tooling  
+- Research topic monitoring and horizon scanning  
+- Demonstration of reproducible, low-cost academic software tooling  
 
 This tool is **not intended to replace bibliographic databases** or systematic review platforms.
 
@@ -124,21 +154,20 @@ If you use, adapt, or build upon **AnesthesiaTOC** in academic work, teaching ma
 
 ### Recommended citation (Vancouver / AMA)
 
-> Oliveira H.P. **AnesthesiaTOC: an automated, web-based dashboard for continuous surveillance of anesthesiology literature** [software]. GitHub. Available at: https://github.com/HelenoPaiva/AnesthesiaTOC. Accessed YYYY-MM-DD.
+> Oliveira HP. **AnesthesiaTOC: an automated, web-based dashboard for continuous surveillance of anesthesiology literature** [software]. GitHub.  
+> Available at: https://github.com/HelenoPaiva/AnesthesiaTOC. Accessed YYYY-MM-DD.
 
 ---
 
 ## License
 
-This repository is intended for open academic use.
-License details should be specified prior to formal publication or commercialization.
+This repository is intended for open academic use.  
+License details should be finalized prior to formal publication or commercialization.
 
 ---
 
 ## Author
 
-Heleno de Paiva Oliveira, MD, PhD
-
-Anesthesiology Professor
-
+**Heleno de Paiva Oliveira, MD, PhD**  
+Professor of Anesthesiology  
 Universidade Federal do Rio Grande do Norte (UFRN), Brazil
