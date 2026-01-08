@@ -1,7 +1,7 @@
 # AnesthesiaTOC  
 
 [![Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://helenopaiva.github.io/AnesthesiaTOC/)
-![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update.yml/badge.svg)
+![GitHub Actions](https://github.com/HelenoPaiva/AnesthesiaTOC/actions/workflows/update-toc.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/badge/license-academic--use-lightgrey)
 
@@ -9,8 +9,6 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Data Source](https://img.shields.io/badge/data-Crossref%20%7C%20PubMed-orange)
 ![Domain](https://img.shields.io/badge/domain-anesthesiology-blueviolet)
-
-
 
 https://helenopaiva.github.io/AnesthesiaTOC/
 
@@ -40,7 +38,7 @@ The dashboard relies exclusively on **open scholarly metadata infrastructures** 
 - Optional PubMed enrichment with direct PubMed links  
 - Client-side full-text search and journal filtering  
 - **Progressive loading / infinite scrolling** of large datasets  
-- Automatic loading up to ~1000 articles, followed by manual “Load more”  
+- Automatic loading of large article sets (≫30 per journal), with optional “Load more”  
 - Persistent local bookmarking (browser-based, no accounts)  
 - Static deployment via GitHub Pages (no server-side maintenance)
 
@@ -55,9 +53,12 @@ The system is deliberately divided into two independent layers.
 - Implemented in **Python**
 - Executed via **GitHub Actions** on a scheduled basis
 - Queries the **Crossref REST API** using journal ISSNs
-- Retrieves substantially more than 30 articles per journal (configurable)
-- Optionally resolves DOIs to PubMed identifiers using **NCBI E-utilities**
-- Produces static datasets:
+- Retrieves a configurable number of recent articles per journal
+- Normalizes, validates, and de-duplicates records
+- Applies logic to select non-future publication dates
+- Identifies articles published **Ahead of Print**
+- Optionally resolves DOIs to PubMed identifiers via **NCBI E-utilities**
+- Generates static datasets:
   - `data.json` (article-level metadata)
   - `journal_metrics.json` (journal-level SJR metrics)
 
@@ -81,25 +82,26 @@ This separation ensures reproducibility, transparency, and minimal operational c
 
 Journal ordering in the interface is based on **SCImago Journal Rank (SJR)**:
 
-- SJR is a **journal-level** metric (not article-level)
+- SJR is treated strictly as a **journal-level metric**
 - The system automatically uses the **latest year available** in the upstream dataset
 - Metrics are refreshed automatically via a scheduled workflow
-- If the upstream source is temporarily unavailable, existing metrics are preserved
+- If the upstream source is temporarily unavailable, previously stored metrics are preserved
+- Journals without available SJR data are listed at the end of the menu
 
-No journal tiers or quartile labels are used.
+No tier system or quartile labels are used.
 
 ---
 
 ## Data sources
 
 - **Crossref REST API**  
-  Used to retrieve bibliographic metadata for journal articles by ISSN.
+  Bibliographic metadata for journal articles by ISSN.
 
 - **SCImago Journal Rank (SJR)**  
-  Used to obtain journal-level ranking metrics for ordering the journal list.
+  Journal-level bibliometric ranking used for ordering.
 
 - **NCBI E-utilities (PubMed)**  
-  Used to resolve DOIs to PubMed identifiers when available.
+  Optional DOI-to-PMID resolution and PubMed linking.
 
 All data sources are publicly accessible and do not require API keys for standard use.
 
@@ -111,15 +113,24 @@ Datasets are regenerated automatically using **GitHub Actions** on a scheduled b
 
 Each execution:
 
-1. Queries Crossref for recent articles from each journal  
+1. Queries Crossref for recent articles  
 2. Normalizes and de-duplicates records  
-3. Selects a non-future publication date  
-4. Identifies articles published ahead of print  
-5. Optionally enriches entries with PubMed links  
-6. Updates journal-level SJR metrics when available  
+3. Applies publication date validation  
+4. Detects Ahead-of-Print articles  
+5. Optionally enriches entries with PubMed identifiers  
+6. Updates journal-level SJR metrics  
 7. Writes new dataset files only when changes are detected  
 
 The web interface reflects updates automatically after deployment.
+
+---
+
+## Software registration and intellectual property
+
+The software has been **registered as a Programa de Computador** at the  
+**Instituto Nacional da Propriedade Industrial (INPI), Brazil**, under **personal ownership**, prior to journal submission.
+
+This registration establishes legal authorship and priority while remaining fully compatible with open academic dissemination and future development.
 
 ---
 
@@ -167,15 +178,15 @@ If you use, adapt, or build upon **AnesthesiaTOC** in academic work, teaching ma
 
 ### Recommended citation (Vancouver / AMA)
 
-> Oliveira HP. **AnesthesiaTOC: an automated, web-based dashboard for continuous surveillance of anesthesiology literature** [software]. GitHub.  
-> Available at: https://github.com/HelenoPaiva/AnesthesiaTOC. Accessed YYYY-MM-DD.
+> Oliveira HP. **AnesthesiaTOC: an automated, web-based dashboard for continuous surveillance of anesthesiology literature** [software]. Zenodo.  
+> https://doi.org/10.5281/zenodo.18180895
 
 ---
 
 ## License
 
 This repository is intended for open academic use.  
-License details should be finalized prior to formal publication or commercialization.
+License terms will be finalized prior to any commercial deployment.
 
 ---
 
