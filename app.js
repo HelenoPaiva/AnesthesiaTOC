@@ -1,7 +1,10 @@
 const els = {
   q: document.getElementById("q"),
   journal: document.getElementById("journal"),
+  type: document.getElementById("type"),
   starOnly: document.getElementById("starOnly"),
+  advToggle: document.getElementById("advToggle"),
+  advancedControls: document.getElementById("advancedControls"),
   list: document.getElementById("list"),
   status: document.getElementById("status"),
   generatedAt: document.getElementById("generatedAt"),
@@ -11,10 +14,20 @@ const els = {
 const STAR_KEY = "anes_toc_starred_v1";
 const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 
+// Fallback; primary source is data.json meta.categories
+const DASHBOARD_CATEGORIES = [
+  "Meta-analysis",
+  "Randomized Control Trials",
+  "Observational Studies",
+  "Guideline / Consensus",
+  "Review (Narrative / Systematic)",
+  "Editorial / Letter / Commentary",
+];
+
 /* Progressive rendering settings */
-const RENDER_BATCH = 50;           // items per auto-load step
-const AUTO_SCROLL_LIMIT = 1000;    // auto-load until this many are visible
-const MANUAL_LOAD_BATCH = 250;     // how many extra per "Load more" click
+const RENDER_BATCH = 50;
+const AUTO_SCROLL_LIMIT = 1000;
+const MANUAL_LOAD_BATCH = 250;
 
 /* ---------- date helpers ---------- */
 
@@ -88,19 +101,20 @@ function formatSjrLabel(_sjrYear, sjrVal) {
   return `SJR: ${sjrVal.toFixed(2)}`;
 }
 
-/* ---------- render (progressive) ---------- */
+/* ---------- state ---------- */
 
 let DATA = { generated_at: null, items: [], meta: {} };
 let SOURCES = [];
 let METRICS = { sjr_year: null, by_issn: {} };
 let GENERATED_MS = null;
 
-let FILTERED = [];      // current filtered list
-let visibleLimit = 0;   // how many are currently rendered
-let manualExtra = 0;    // extra beyond AUTO_SCROLL_LIMIT enabled by button
+let FILTERED = [];
+let visibleLimit = 0;
+let manualExtra = 0;
 let renderToken = 0;
 let renderedCount = 0;
 let activeToken = 0;
+
 let STARS = new Set();
 let JOURNAL_INDEX = new Map();
 
@@ -108,6 +122,11 @@ let sentinelEl = null;
 let loadMoreWrap = null;
 let loadMoreBtn = null;
 let io = null;
+
+// Advanced mode state (UI-only, OFF by default)
+let advancedOn = false;
+
+/* ---------- progressive controls ---------- */
 
 function ensureProgressiveControls() {
   if (!sentinelEl) {
@@ -160,6 +179,8 @@ function ensureProgressiveControls() {
   }
 }
 
+/* ---------- render ---------- */
+
 function appendTextSpan(parent, text, className) {
   const span = document.createElement("span");
   if (className) span.className = className;
@@ -184,6 +205,7 @@ function buildItemNode(it, stars) {
   starBtn.textContent = starOn ? "★" : "☆";
 
   const infoWrap = document.createElement("div");
+
   const title = document.createElement("h3");
   title.className = "title";
 
@@ -199,23 +221,16 @@ function buildItemNode(it, stars) {
 
   appendTextSpan(metaLine, it.journal_short, "pill");
 
-  if (it.aop) {
-    appendTextSpan(metaLine, "Ahead of print", "pill aop");
-  }
+  const cat = it.category || "Unclassified";
+  appendTextSpan(metaLine, cat, `pill cat ${it.category ? "" : "uncat"}`.trim());
 
-  if (it.published) {
-    appendTextSpan(metaLine, formatDateDMYMMM(it.published));
-  } else {
-    appendTextSpan(metaLine, "no date", "muted");
-  }
+  if (it.aop) appendTextSpan(metaLine, "Ahead of print", "pill aop");
 
-  if (it.authors) {
-    appendTextSpan(metaLine, it.authors);
-  }
+  if (it.published) appendTextSpan(metaLine, formatDateDMYMMM(it.published));
+  else appendTextSpan(metaLine, "no date", "muted");
 
-  if (it.doi) {
-    appendTextSpan(metaLine, it.doi, "muted");
-  }
+  if (it.authors) appendTextSpan(metaLine, it.authors);
+  if (it.doi) appendTextSpan(metaLine, it.doi, "muted");
 
   if (it.pubmed_url) {
     const pubmed = document.createElement("a");
@@ -257,12 +272,7 @@ function updateLoadMoreVisibility() {
   const canManual = FILTERED.length > maxAuto;
   const isAutoDone = visibleLimit >= maxAuto;
 
-  if (canManual && isAutoDone && visibleLimit < FILTERED.length) {
-    loadMoreWrap.style.display = "block";
-  } else {
-    loadMoreWrap.style.display = "none";
-  }
-
+  loadMoreWrap.style.display = (canManual && isAutoDone && visibleLimit < FILTERED.length) ? "block" : "none";
   updateStatus();
 }
 
@@ -290,20 +300,24 @@ function renderVisible() {
   updateLoadMoreVisibility();
 }
 
-function computeFiltered() {
-  const q = els.q.value.trim().toLowerCase();
-  const j = els.journal.value;
+/* ---------- filtering ---------- */
 
+function computeFiltered() {
+  const j = els.journal.value;
   const baseItems = j ? (JOURNAL_INDEX.get(j) || []) : DATA.items;
+
+  if (!advancedOn) return baseItems;
+
+  const q = els.q.value.trim().toLowerCase();
+  const selectedType = els.type.value || "";
+  const starredOnly = !!els.starOnly.checked;
+
   let items = baseItems;
 
-  items = items.filter(it => matchesQuery(it, q));
+  if (q) items = items.filter(it => matchesQuery(it, q));
+  if (selectedType) items = items.filter(it => (it.category || "") === selectedType);
+  if (starredOnly) items = items.filter(it => STARS.has(it.key));
 
-  if (els.starOnly.checked) {
-    items = items.filter(it => {
-      return STARS.has(it.key);
-    });
-  }
   return items;
 }
 
@@ -316,12 +330,33 @@ function applyFilters(resetLimits = true) {
     visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   } else {
     visibleLimit = Math.min(visibleLimit, FILTERED.length);
-    if (FILTERED.length > 0 && visibleLimit === 0) {
-      visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
-    }
+    if (FILTERED.length > 0 && visibleLimit === 0) visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   }
 
   renderVisible();
+}
+
+/* ---------- advanced UI ---------- */
+
+function clearAdvancedFilters() {
+  els.q.value = "";
+  els.type.value = "";
+  els.starOnly.checked = false;
+}
+
+function setAdvancedUI(on) {
+  advancedOn = !!on;
+
+  els.advToggle.checked = advancedOn;
+  els.advToggle.setAttribute("aria-expanded", String(advancedOn));
+
+  els.advancedControls.classList.toggle("open", advancedOn);
+  els.advancedControls.setAttribute("aria-hidden", String(!advancedOn));
+
+  els.q.disabled = !advancedOn;
+  els.type.disabled = !advancedOn;
+  els.starOnly.disabled = !advancedOn;
+  els.clearStars.disabled = !advancedOn;
 }
 
 /* ---------- init ---------- */
@@ -332,18 +367,19 @@ async function init() {
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
   GENERATED_MS = DATA.generated_at ? Date.parse(DATA.generated_at) : null;
+
   DATA.items.forEach((it) => {
-    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi}`.toLowerCase();
+    const pts = Array.isArray(it.pubmed_publication_types) ? it.pubmed_publication_types.join(" ") : "";
+    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi} ${it.category || ""} ${pts}`.toLowerCase();
     it.searchText = hay;
     it.key = it.doi || it.url || `${it.journal_short}|${it.title}`;
   });
 
   STARS = loadStars();
+
   JOURNAL_INDEX = new Map();
   DATA.items.forEach((it) => {
-    if (!JOURNAL_INDEX.has(it.journal_short)) {
-      JOURNAL_INDEX.set(it.journal_short, []);
-    }
+    if (!JOURNAL_INDEX.has(it.journal_short)) JOURNAL_INDEX.set(it.journal_short, []);
     JOURNAL_INDEX.get(it.journal_short).push(it);
   });
 
@@ -353,8 +389,7 @@ async function init() {
   try {
     const mRes = await fetch("./journal_metrics.json", { cache: "no-store" });
     METRICS = await mRes.json();
-  } catch (e) {
-    console.warn("journal_metrics.json not available yet:", e);
+  } catch {
     METRICS = { sjr_year: null, by_issn: {} };
   }
 
@@ -365,29 +400,39 @@ async function init() {
     const short = s.short || s.name;
     const name = s.name;
     const issn = normalizeIssn(s.issn);
-
     const metric = byIssn[issn];
     const sjrVal = metric && Number.isFinite(metric.sjr) ? Number(metric.sjr) : null;
-
     return { short, name, sjrVal, sjrText: formatSjrLabel(sjrYear, sjrVal) };
   }).sort((a, b) => {
     const aHas = a.sjrVal != null;
     const bHas = b.sjrVal != null;
-    if (aHas && bHas) {
-      if (b.sjrVal !== a.sjrVal) return b.sjrVal - a.sjrVal;
-    } else if (aHas !== bHas) {
-      return aHas ? -1 : 1;
-    }
+    if (aHas && bHas && b.sjrVal !== a.sjrVal) return b.sjrVal - a.sjrVal;
+    if (aHas !== bHas) return aHas ? -1 : 1;
     return a.short.localeCompare(b.short);
   });
 
   for (const o of options) {
     const opt = document.createElement("option");
     opt.value = o.short;
-    // DROP (N) here
     opt.textContent = `${o.short} — ${o.name} — ${o.sjrText}`;
     els.journal.appendChild(opt);
   }
+
+  const cats = (DATA.meta && Array.isArray(DATA.meta.categories) && DATA.meta.categories.length)
+    ? DATA.meta.categories
+    : DASHBOARD_CATEGORIES;
+
+  while (els.type.options.length > 1) els.type.remove(1);
+  for (const c of cats) {
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    els.type.appendChild(opt);
+  }
+
+  // Advanced OFF by default (and cleared)
+  clearAdvancedFilters();
+  setAdvancedUI(false);
 
   function updateHeader() {
     if (!DATA.generated_at || !GENERATED_MS) {
@@ -397,22 +442,50 @@ async function init() {
     els.generatedAt.textContent =
       `Updated: ${formatDateTimeDMYMMM(DATA.generated_at)} UTC · ${relativeFromMs(GENERATED_MS)}`;
   }
+  updateHeader();
+  setInterval(updateHeader, 30_000);
 
   const debouncedFilter = debounce(() => applyFilters(true), 150);
-  els.q.addEventListener("input", debouncedFilter);
-  els.journal.addEventListener("change", () => applyFilters(true));
-  els.starOnly.addEventListener("change", () => applyFilters(true));
 
+  // Journal always applies
+  els.journal.addEventListener("change", () => applyFilters(true));
+
+  // Advanced controls apply only when advanced is on
+  els.q.addEventListener("input", () => { if (advancedOn) debouncedFilter(); });
+  els.type.addEventListener("change", () => { if (advancedOn) applyFilters(true); });
+  els.starOnly.addEventListener("change", () => { if (advancedOn) applyFilters(true); });
+
+  // Toggle behavior:
+  // ON  -> show curtain, enable controls, DO NOT filter automatically
+  // OFF -> clear advanced filters, hide curtain, disable controls, show everything
+  els.advToggle.addEventListener("change", () => {
+    const on = !!els.advToggle.checked;
+    if (on) {
+      setAdvancedUI(true);
+      return;
+    }
+    clearAdvancedFilters();
+    setAdvancedUI(false);
+    applyFilters(true);
+  });
+
+  // Star clicks always allowed; starred-only filter only meaningful when advancedOn
   els.list.addEventListener("click", (event) => {
     const target = event.target;
     if (!(target instanceof Element)) return;
     const starBtn = target.closest("button.star");
     if (!starBtn || !els.list.contains(starBtn)) return;
+
     const key = starBtn.dataset.key;
     if (!key) return;
-    STARS.has(key) ? STARS.delete(key) : STARS.add(key);
+
+    if (STARS.has(key)) STARS.delete(key);
+    else STARS.add(key);
+
     saveStars(STARS);
-    applyFilters(false);
+
+    if (advancedOn && els.starOnly.checked) applyFilters(true);
+    else applyFilters(false);
   });
 
   els.clearStars.addEventListener("click", () => {
@@ -420,9 +493,6 @@ async function init() {
     localStorage.removeItem(STAR_KEY);
     applyFilters(true);
   });
-
-  updateHeader();
-  setInterval(updateHeader, 30_000);
 
   ensureProgressiveControls();
 
