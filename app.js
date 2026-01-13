@@ -1,10 +1,7 @@
 const els = {
   q: document.getElementById("q"),
   journal: document.getElementById("journal"),
-  type: document.getElementById("type"),
   starOnly: document.getElementById("starOnly"),
-  advToggle: document.getElementById("advToggle"),
-  advancedControls: document.getElementById("advancedControls"),
   list: document.getElementById("list"),
   status: document.getElementById("status"),
   generatedAt: document.getElementById("generatedAt"),
@@ -14,49 +11,10 @@ const els = {
 const STAR_KEY = "anes_toc_starred_v1";
 const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 
-// Canonical dashboard categories (fallback; primary source is data.json meta.categories)
-const DASHBOARD_CATEGORIES = [
-  "Meta-analysis",
-  "Randomized Control Trials",
-  "Observational Studies",
-  "Guideline / Consensus",
-  "Review (Narrative / Systematic)",
-  "Editorial / Letter / Commentary",
-];
-
-const CATEGORY_RULES = [
-  { label: "Meta-analysis", test: /meta-?analysis/i },
-  { label: "Randomized Control Trials", test: /randomi[sz]ed.*control(?:led)?\s*trial|randomi[sz]ed\s*trial/i },
-  { label: "Observational Studies", test: /observational|cohort|case[-\s]?control/i },
-  { label: "Guideline / Consensus", test: /guideline|consensus/i },
-  { label: "Review (Narrative / Systematic)", test: /systematic\s+review|narrative\s+review|\breview\b/i },
-  { label: "Editorial / Letter / Commentary", test: /editorial|commentary|\bletter\b/i },
-];
-
-function mapCategoryFromLabel(label) {
-  if (!label) return "";
-  const text = String(label).trim();
-  const match = CATEGORY_RULES.find(rule => rule.test.test(text));
-  return match ? match.label : "";
-}
-
-function inferCategoryFromTitle(title) {
-  if (!title) return "";
-  const match = CATEGORY_RULES.find(rule => rule.test.test(title));
-  return match ? match.label : "";
-}
-
-function resolveCategory(item) {
-  const fromCategory = mapCategoryFromLabel(item.category);
-  if (fromCategory) return fromCategory;
-  const fromTitle = inferCategoryFromTitle(item.title);
-  return fromTitle || "";
-}
-
 /* Progressive rendering settings */
-const RENDER_BATCH = 50;
-const AUTO_SCROLL_LIMIT = 1000;
-const MANUAL_LOAD_BATCH = 250;
+const RENDER_BATCH = 50;           // items per auto-load step
+const AUTO_SCROLL_LIMIT = 1000;    // auto-load until this many are visible
+const MANUAL_LOAD_BATCH = 250;     // how many extra per "Load more" click
 
 /* ---------- date helpers ---------- */
 
@@ -130,20 +88,19 @@ function formatSjrLabel(_sjrYear, sjrVal) {
   return `SJR: ${sjrVal.toFixed(2)}`;
 }
 
-/* ---------- state ---------- */
+/* ---------- render (progressive) ---------- */
 
 let DATA = { generated_at: null, items: [], meta: {} };
 let SOURCES = [];
 let METRICS = { sjr_year: null, by_issn: {} };
 let GENERATED_MS = null;
 
-let FILTERED = [];
-let visibleLimit = 0;
-let manualExtra = 0;
+let FILTERED = [];      // current filtered list
+let visibleLimit = 0;   // how many are currently rendered
+let manualExtra = 0;    // extra beyond AUTO_SCROLL_LIMIT enabled by button
 let renderToken = 0;
 let renderedCount = 0;
 let activeToken = 0;
-
 let STARS = new Set();
 let JOURNAL_INDEX = new Map();
 
@@ -151,11 +108,6 @@ let sentinelEl = null;
 let loadMoreWrap = null;
 let loadMoreBtn = null;
 let io = null;
-
-// Advanced mode state (UI-only, OFF by default)
-let advancedOn = false;
-
-/* ---------- progressive controls ---------- */
 
 function ensureProgressiveControls() {
   if (!sentinelEl) {
@@ -208,8 +160,6 @@ function ensureProgressiveControls() {
   }
 }
 
-/* ---------- render ---------- */
-
 function appendTextSpan(parent, text, className) {
   const span = document.createElement("span");
   if (className) span.className = className;
@@ -234,7 +184,6 @@ function buildItemNode(it, stars) {
   starBtn.textContent = starOn ? "★" : "☆";
 
   const infoWrap = document.createElement("div");
-
   const title = document.createElement("h3");
   title.className = "title";
 
@@ -250,17 +199,23 @@ function buildItemNode(it, stars) {
 
   appendTextSpan(metaLine, it.journal_short, "pill");
 
-  // Category chip (PubMed metadata-derived at build time)
-  const cat = it.category || "Unclassified";
-  appendTextSpan(metaLine, cat, `pill cat ${it.category ? "" : "uncat"}`.trim());
+  if (it.aop) {
+    appendTextSpan(metaLine, "Ahead of print", "pill aop");
+  }
 
-  if (it.aop) appendTextSpan(metaLine, "Ahead of print", "pill aop");
+  if (it.published) {
+    appendTextSpan(metaLine, formatDateDMYMMM(it.published));
+  } else {
+    appendTextSpan(metaLine, "no date", "muted");
+  }
 
-  if (it.published) appendTextSpan(metaLine, formatDateDMYMMM(it.published));
-  else appendTextSpan(metaLine, "no date", "muted");
+  if (it.authors) {
+    appendTextSpan(metaLine, it.authors);
+  }
 
-  if (it.authors) appendTextSpan(metaLine, it.authors);
-  if (it.doi) appendTextSpan(metaLine, it.doi, "muted");
+  if (it.doi) {
+    appendTextSpan(metaLine, it.doi, "muted");
+  }
 
   if (it.pubmed_url) {
     const pubmed = document.createElement("a");
@@ -302,7 +257,12 @@ function updateLoadMoreVisibility() {
   const canManual = FILTERED.length > maxAuto;
   const isAutoDone = visibleLimit >= maxAuto;
 
-  loadMoreWrap.style.display = (canManual && isAutoDone && visibleLimit < FILTERED.length) ? "block" : "none";
+  if (canManual && isAutoDone && visibleLimit < FILTERED.length) {
+    loadMoreWrap.style.display = "block";
+  } else {
+    loadMoreWrap.style.display = "none";
+  }
+
   updateStatus();
 }
 
@@ -330,26 +290,20 @@ function renderVisible() {
   updateLoadMoreVisibility();
 }
 
-/* ---------- filtering ---------- */
-
 function computeFiltered() {
-  // Journal selection is always allowed (it is NOT part of Advanced)
-  const j = els.journal.value;
-  const baseItems = j ? (JOURNAL_INDEX.get(j) || []) : DATA.items;
-
-  // When Advanced is OFF: no advanced filters at all (search/type/starred)
-  if (!advancedOn) return baseItems;
-
   const q = els.q.value.trim().toLowerCase();
-  const selectedType = els.type.value || "";
-  const starredOnly = !!els.starOnly.checked;
+  const j = els.journal.value;
 
+  const baseItems = j ? (JOURNAL_INDEX.get(j) || []) : DATA.items;
   let items = baseItems;
 
-  if (q) items = items.filter(it => matchesQuery(it, q));
-  if (selectedType) items = items.filter(it => (it.category || "") === selectedType);
-  if (starredOnly) items = items.filter(it => STARS.has(it.key));
+  items = items.filter(it => matchesQuery(it, q));
 
+  if (els.starOnly.checked) {
+    items = items.filter(it => {
+      return STARS.has(it.key);
+    });
+  }
   return items;
 }
 
@@ -362,34 +316,12 @@ function applyFilters(resetLimits = true) {
     visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   } else {
     visibleLimit = Math.min(visibleLimit, FILTERED.length);
-    if (FILTERED.length > 0 && visibleLimit === 0) visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
+    if (FILTERED.length > 0 && visibleLimit === 0) {
+      visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
+    }
   }
 
   renderVisible();
-}
-
-/* ---------- advanced UI (curtain + disabled controls) ---------- */
-
-function clearAdvancedFilters() {
-  els.q.value = "";
-  els.type.value = "";
-  els.starOnly.checked = false;
-}
-
-function setAdvancedUI(on) {
-  advancedOn = !!on;
-
-  els.advToggle.checked = advancedOn;
-  els.advToggle.setAttribute("aria-expanded", String(advancedOn));
-
-  // Curtain animation via CSS class
-  els.advancedControls.classList.toggle("open", advancedOn);
-  els.advancedControls.setAttribute("aria-hidden", String(!advancedOn));
-
-  // Not selectable when hidden
-  els.q.disabled = !advancedOn;
-  els.type.disabled = !advancedOn;
-  els.starOnly.disabled = !advancedOn;
 }
 
 /* ---------- init ---------- */
@@ -400,33 +332,29 @@ async function init() {
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
   GENERATED_MS = DATA.generated_at ? Date.parse(DATA.generated_at) : null;
-
-   // Precompute category, searchText + stable key
   DATA.items.forEach((it) => {
-    it.category = resolveCategory(it);
-    const pts = Array.isArray(it.pubmed_publication_types) ? it.pubmed_publication_types.join(" ") : "";
-    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi} ${it.category || ""} ${pts}`.toLowerCase();
+    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi}`.toLowerCase();
     it.searchText = hay;
     it.key = it.doi || it.url || `${it.journal_short}|${it.title}`;
   });
 
   STARS = loadStars();
-
-  // Journal index (journal_short)
   JOURNAL_INDEX = new Map();
   DATA.items.forEach((it) => {
-    if (!JOURNAL_INDEX.has(it.journal_short)) JOURNAL_INDEX.set(it.journal_short, []);
+    if (!JOURNAL_INDEX.has(it.journal_short)) {
+      JOURNAL_INDEX.set(it.journal_short, []);
+    }
     JOURNAL_INDEX.get(it.journal_short).push(it);
   });
 
-  // Load sources + metrics
   const srcRes = await fetch("./sources.json", { cache: "no-store" });
   SOURCES = await srcRes.json();
 
   try {
     const mRes = await fetch("./journal_metrics.json", { cache: "no-store" });
     METRICS = await mRes.json();
-  } catch {
+  } catch (e) {
+    console.warn("journal_metrics.json not available yet:", e);
     METRICS = { sjr_year: null, by_issn: {} };
   }
 
@@ -437,48 +365,30 @@ async function init() {
     const short = s.short || s.name;
     const name = s.name;
     const issn = normalizeIssn(s.issn);
+
     const metric = byIssn[issn];
     const sjrVal = metric && Number.isFinite(metric.sjr) ? Number(metric.sjr) : null;
+
     return { short, name, sjrVal, sjrText: formatSjrLabel(sjrYear, sjrVal) };
   }).sort((a, b) => {
     const aHas = a.sjrVal != null;
     const bHas = b.sjrVal != null;
-    if (aHas && bHas && b.sjrVal !== a.sjrVal) return b.sjrVal - a.sjrVal;
-    if (aHas !== bHas) return aHas ? -1 : 1;
+    if (aHas && bHas) {
+      if (b.sjrVal !== a.sjrVal) return b.sjrVal - a.sjrVal;
+    } else if (aHas !== bHas) {
+      return aHas ? -1 : 1;
+    }
     return a.short.localeCompare(b.short);
   });
 
   for (const o of options) {
     const opt = document.createElement("option");
     opt.value = o.short;
+    // DROP (N) here
     opt.textContent = `${o.short} — ${o.name} — ${o.sjrText}`;
     els.journal.appendChild(opt);
   }
 
-   // Populate type selector with canonical categories (mapped from meta when possible)
-  const mappedCats = new Set();
-  if (DATA.meta && Array.isArray(DATA.meta.categories)) {
-    for (const c of DATA.meta.categories) {
-      const mapped = mapCategoryFromLabel(c);
-      if (mapped) mappedCats.add(mapped);
-    }
-  }
-  for (const c of DASHBOARD_CATEGORIES) mappedCats.add(c);
-  const cats = [...mappedCats];
-
-  while (els.type.options.length > 1) els.type.remove(1);
-  for (const c of cats) {
-    const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c;
-    els.type.appendChild(opt);
-  }
-
-  // Advanced OFF by default: hidden + disabled + cleared
-  clearAdvancedFilters();
-  setAdvancedUI(false);
-
-  // Header timestamps
   function updateHeader() {
     if (!DATA.generated_at || !GENERATED_MS) {
       els.generatedAt.textContent = "";
@@ -487,52 +397,22 @@ async function init() {
     els.generatedAt.textContent =
       `Updated: ${formatDateTimeDMYMMM(DATA.generated_at)} UTC · ${relativeFromMs(GENERATED_MS)}`;
   }
-  updateHeader();
-  setInterval(updateHeader, 30_000);
 
-  // Debounced search (only when advanced is on)
   const debouncedFilter = debounce(() => applyFilters(true), 150);
-
-  // Journal always applies
+  els.q.addEventListener("input", debouncedFilter);
   els.journal.addEventListener("change", () => applyFilters(true));
+  els.starOnly.addEventListener("change", () => applyFilters(true));
 
-  // Advanced controls apply only when advanced is on
-  els.q.addEventListener("input", () => { if (advancedOn) debouncedFilter(); });
-  els.type.addEventListener("change", () => { if (advancedOn) applyFilters(true); });
-  els.starOnly.addEventListener("change", () => { if (advancedOn) applyFilters(true); });
-
-  // Toggle behavior:
-  // ON  -> show curtain, enable controls, DO NOT filter automatically
-  // OFF -> clear advanced filters, hide curtain, disable controls, show everything
-  els.advToggle.addEventListener("change", () => {
-    const on = !!els.advToggle.checked;
-    if (on) {
-      setAdvancedUI(true);
-      return; // no filtering on toggle-on
-    }
-    clearAdvancedFilters();
-    setAdvancedUI(false);
-    applyFilters(true);
-  });
-
-  // Star click handling
   els.list.addEventListener("click", (event) => {
     const target = event.target;
     if (!(target instanceof Element)) return;
     const starBtn = target.closest("button.star");
     if (!starBtn || !els.list.contains(starBtn)) return;
-
     const key = starBtn.dataset.key;
     if (!key) return;
-
-    if (STARS.has(key)) STARS.delete(key);
-    else STARS.add(key);
-
+    STARS.has(key) ? STARS.delete(key) : STARS.add(key);
     saveStars(STARS);
-
-    // If starred-only is active, refresh the filtered list
-    if (advancedOn && els.starOnly.checked) applyFilters(true);
-    else applyFilters(false);
+    applyFilters(false);
   });
 
   els.clearStars.addEventListener("click", () => {
@@ -541,9 +421,11 @@ async function init() {
     applyFilters(true);
   });
 
+  updateHeader();
+  setInterval(updateHeader, 30_000);
+
   ensureProgressiveControls();
 
-  // Initial render
   FILTERED = computeFiltered();
   visibleLimit = Math.min(RENDER_BATCH, FILTERED.length);
   renderVisible();
@@ -554,4 +436,3 @@ init().catch(err => {
   els.status.textContent = "Failed to load data.json";
   els.list.innerHTML = `<div class="muted">Error loading data.</div>`;
 });
-
