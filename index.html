@@ -15,20 +15,15 @@
       <h1>Anesthesiology TOC Dashboard</h1>
       <p class="subtitle">A selection of the latest articles from selected sources.</p>
       <p class="repo-link">
-  <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
-    View source on GitHub
-  </a>
-  · Customize this dashboard for your specialty, institution, or research needs.
-</p>
+        <a href="https://github.com/HelenoPaiva/AnesthesiaTOC" target="_blank" rel="noopener noreferrer">
+          View source on GitHub
+        </a>
+        · Customize this dashboard for your specialty, institution, or research needs.
+      </p>
     </div>
 
     <div class="controls card">
       <div class="row">
-        <label>
-          Search
-          <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." />
-        </label>
-
         <label>
           Journal
           <select id="journal">
@@ -36,16 +31,43 @@
           </select>
         </label>
 
-        <label class="chk">
-          <input id="starOnly" type="checkbox" />
-          Starred only
+        <label class="switch" title="Show/hide advanced filters">
+          <span>Advanced</span>
+          <input id="advToggle" type="checkbox" aria-controls="advancedControls" aria-expanded="false" />
+          <span class="slider" aria-hidden="true"></span>
         </label>
       </div>
 
+      <!-- Curtain panel: ALL advanced controls live here -->
+      <div id="advancedControls" class="advanced-panel" aria-hidden="true">
+        <div class="row">
+          <label>
+            Search
+            <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." disabled />
+          </label>
+
+          <label>
+            Article type
+            <select id="type" disabled>
+              <option value="">All</option>
+            </select>
+          </label>
+
+          <label class="chk">
+            <input id="starOnly" type="checkbox" disabled />
+            Starred only
+          </label>
+
+          <button id="clearStars" class="btn" type="button" disabled>
+            Clear stars
+          </button>
+        </div>
+      </div>
+
+      <!-- Always-visible status only -->
       <div class="row meta">
         <span id="status">Loading…</span>
         <span class="spacer"></span>
-        <button id="clearStars" class="btn">Clear stars</button>
       </div>
     </div>
   </header>
