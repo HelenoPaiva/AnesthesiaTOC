@@ -1,7 +1,10 @@
 const els = {
   q: document.getElementById("q"),
   journal: document.getElementById("journal"),
+  type: document.getElementById("type"),
   starOnly: document.getElementById("starOnly"),
+  advToggle: document.getElementById("advToggle"),
+  advancedControls: document.getElementById("advancedControls"),
   list: document.getElementById("list"),
   status: document.getElementById("status"),
   generatedAt: document.getElementById("generatedAt"),
@@ -9,7 +12,21 @@ const els = {
 };
 
 const STAR_KEY = "anes_toc_starred_v1";
+const ADV_KEY = "anes_toc_advanced_v1";
 const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+
+// Canonical dashboard categories (must match build_data.py output)
+const DASHBOARD_CATEGORIES = [
+  "Systematic Review",
+  "Meta-analysis",
+  "Randomized Controlled Trial",
+  "Observational Study",
+  "Cohort Study",
+  "Case-Control Study",
+  "Guideline / Consensus",
+  "Narrative Review",
+  "Editorial / Commentary",
+];
 
 /* Progressive rendering settings */
 const RENDER_BATCH = 50;           // items per auto-load step
@@ -199,6 +216,10 @@ function buildItemNode(it, stars) {
 
   appendTextSpan(metaLine, it.journal_short, "pill");
 
+  // Dashboard category chip (derived from PubMed metadata at build time)
+  const cat = it.category || "Unclassified";
+  appendTextSpan(metaLine, cat, `pill cat ${it.category ? "" : "uncat"}`.trim());
+
   if (it.aop) {
     appendTextSpan(metaLine, "Ahead of print", "pill aop");
   }
@@ -291,7 +312,11 @@ function renderVisible() {
 }
 
 function computeFiltered() {
-  const q = els.q.value.trim().toLowerCase();
+  const advancedOn = !!els.advToggle?.checked;
+  const q = advancedOn ? els.q.value.trim().toLowerCase() : "";
+  const selectedType = advancedOn ? (els.type.value || "") : "";
+  const starredOnly = advancedOn ? !!els.starOnly.checked : false;
+
   const j = els.journal.value;
 
   const baseItems = j ? (JOURNAL_INDEX.get(j) || []) : DATA.items;
@@ -299,11 +324,14 @@ function computeFiltered() {
 
   items = items.filter(it => matchesQuery(it, q));
 
-  if (els.starOnly.checked) {
-    items = items.filter(it => {
-      return STARS.has(it.key);
-    });
+  if (selectedType) {
+    items = items.filter(it => (it.category || "") === selectedType);
   }
+
+  if (starredOnly) {
+    items = items.filter(it => STARS.has(it.key));
+  }
+
   return items;
 }
 
@@ -332,13 +360,16 @@ async function init() {
   const res = await fetch("./data.json", { cache: "no-store" });
   DATA = await res.json();
   GENERATED_MS = DATA.generated_at ? Date.parse(DATA.generated_at) : null;
+
   DATA.items.forEach((it) => {
-    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi}`.toLowerCase();
+    const pts = Array.isArray(it.pubmed_publication_types) ? it.pubmed_publication_types.join(" ") : "";
+    const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi} ${it.category || ""} ${pts}`.toLowerCase();
     it.searchText = hay;
     it.key = it.doi || it.url || `${it.journal_short}|${it.title}`;
   });
 
   STARS = loadStars();
+
   JOURNAL_INDEX = new Map();
   DATA.items.forEach((it) => {
     if (!JOURNAL_INDEX.has(it.journal_short)) {
@@ -384,7 +415,6 @@ async function init() {
   for (const o of options) {
     const opt = document.createElement("option");
     opt.value = o.short;
-    // DROP (N) here
     opt.textContent = `${o.short} — ${o.name} — ${o.sjrText}`;
     els.journal.appendChild(opt);
   }
@@ -398,10 +428,60 @@ async function init() {
       `Updated: ${formatDateTimeDMYMMM(DATA.generated_at)} UTC · ${relativeFromMs(GENERATED_MS)}`;
   }
 
+  // Populate article type selector (canonical 9 categories)
+  const cats = (DATA.meta && Array.isArray(DATA.meta.categories) && DATA.meta.categories.length)
+    ? DATA.meta.categories
+    : DASHBOARD_CATEGORIES;
+
+  while (els.type.options.length > 1) els.type.remove(1);
+  for (const c of cats) {
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    els.type.appendChild(opt);
+  }
+
+  function setAdvanced(on, { clearFilters } = { clearFilters: false }) {
+    const isOn = !!on;
+
+    if (els.advToggle) {
+      els.advToggle.checked = isOn;
+      els.advToggle.setAttribute("aria-expanded", String(isOn));
+    }
+    if (els.advancedControls) {
+      els.advancedControls.hidden = !isOn;
+    }
+
+    try { localStorage.setItem(ADV_KEY, isOn ? "1" : "0"); } catch {}
+
+    if (!isOn && clearFilters) {
+      // Requirement: when Advanced is off, nothing is filtered.
+      els.q.value = "";
+      els.type.value = "";
+      els.starOnly.checked = false;
+    }
+  }
+
+  // Restore advanced state (default off). If off, clear to avoid hidden filtering.
+  const advSaved = (() => {
+    try { return localStorage.getItem(ADV_KEY); } catch { return null; }
+  })();
+  const advOn = advSaved === "1";
+  setAdvanced(advOn, { clearFilters: !advOn });
+
   const debouncedFilter = debounce(() => applyFilters(true), 150);
   els.q.addEventListener("input", debouncedFilter);
   els.journal.addEventListener("change", () => applyFilters(true));
+  els.type.addEventListener("change", () => applyFilters(true));
   els.starOnly.addEventListener("change", () => applyFilters(true));
+
+  if (els.advToggle) {
+    els.advToggle.addEventListener("change", () => {
+      const on = !!els.advToggle.checked;
+      setAdvanced(on, { clearFilters: !on });
+      applyFilters(true);
+    });
+  }
 
   els.list.addEventListener("click", (event) => {
     const target = event.target;
