@@ -16,16 +16,42 @@ const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV
 
 // Canonical dashboard categories (fallback; primary source is data.json meta.categories)
 const DASHBOARD_CATEGORIES = [
-  "Systematic Review",
   "Meta-analysis",
-  "Randomized Controlled Trial",
-  "Observational Study",
-  "Cohort Study",
-  "Case-Control Study",
+  "Randomized Control Trials",
+  "Observational Studies",
   "Guideline / Consensus",
-  "Narrative Review",
-  "Editorial / Commentary",
+  "Review (Narrative / Systematic)",
+  "Editorial / Letter / Commentary",
 ];
+
+const CATEGORY_RULES = [
+  { label: "Meta-analysis", test: /meta-?analysis/i },
+  { label: "Randomized Control Trials", test: /randomi[sz]ed.*control(?:led)?\s*trial|randomi[sz]ed\s*trial/i },
+  { label: "Observational Studies", test: /observational|cohort|case[-\s]?control/i },
+  { label: "Guideline / Consensus", test: /guideline|consensus/i },
+  { label: "Review (Narrative / Systematic)", test: /systematic\s+review|narrative\s+review|\breview\b/i },
+  { label: "Editorial / Letter / Commentary", test: /editorial|commentary|\bletter\b/i },
+];
+
+function mapCategoryFromLabel(label) {
+  if (!label) return "";
+  const text = String(label).trim();
+  const match = CATEGORY_RULES.find(rule => rule.test.test(text));
+  return match ? match.label : "";
+}
+
+function inferCategoryFromTitle(title) {
+  if (!title) return "";
+  const match = CATEGORY_RULES.find(rule => rule.test.test(title));
+  return match ? match.label : "";
+}
+
+function resolveCategory(item) {
+  const fromCategory = mapCategoryFromLabel(item.category);
+  if (fromCategory) return fromCategory;
+  const fromTitle = inferCategoryFromTitle(item.title);
+  return fromTitle || "";
+}
 
 /* Progressive rendering settings */
 const RENDER_BATCH = 50;
@@ -375,8 +401,9 @@ async function init() {
   DATA = await res.json();
   GENERATED_MS = DATA.generated_at ? Date.parse(DATA.generated_at) : null;
 
-  // Precompute searchText + stable key
+   // Precompute category, searchText + stable key
   DATA.items.forEach((it) => {
+    it.category = resolveCategory(it);
     const pts = Array.isArray(it.pubmed_publication_types) ? it.pubmed_publication_types.join(" ") : "";
     const hay = `${it.title} ${it.authors} ${it.journal} ${it.doi} ${it.category || ""} ${pts}`.toLowerCase();
     it.searchText = hay;
@@ -428,10 +455,16 @@ async function init() {
     els.journal.appendChild(opt);
   }
 
-  // Populate type selector from data.json meta if present
-  const cats = (DATA.meta && Array.isArray(DATA.meta.categories) && DATA.meta.categories.length)
-    ? DATA.meta.categories
-    : DASHBOARD_CATEGORIES;
+   // Populate type selector with canonical categories (mapped from meta when possible)
+  const mappedCats = new Set();
+  if (DATA.meta && Array.isArray(DATA.meta.categories)) {
+    for (const c of DATA.meta.categories) {
+      const mapped = mapCategoryFromLabel(c);
+      if (mapped) mappedCats.add(mapped);
+    }
+  }
+  for (const c of DASHBOARD_CATEGORIES) mappedCats.add(c);
+  const cats = [...mappedCats];
 
   while (els.type.options.length > 1) els.type.remove(1);
   for (const c of cats) {
@@ -521,3 +554,4 @@ init().catch(err => {
   els.status.textContent = "Failed to load data.json";
   els.list.innerHTML = `<div class="muted">Error loading data.</div>`;
 });
+
