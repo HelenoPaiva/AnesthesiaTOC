@@ -28,14 +28,25 @@ jobs:
 
       - name: Build data.json
         env:
-          # Polite identification for Crossref
-          CROSSREF_UA: AnesTOC-Dashboard/1.0 (mailto:${{ secrets.CROSSREF_MAILTO }})
+          # Polite identification for Crossref (required by Crossref etiquette)
+          # Set repo secret: CROSSREF_MAILTO (e.g., your academic email)
+          CROSSREF_UA: "AnesTOC-Dashboard/1.0 (mailto:${{ secrets.CROSSREF_MAILTO }})"
 
-          # Reuse the same email for NCBI (recommended)
-          NCBI_EMAIL: ${{ secrets.CROSSREF_MAILTO }}
+          # NCBI recommends including an email; set repo secret: NCBI_EMAIL
+          # If you don't want a second secret, you can reuse CROSSREF_MAILTO here.
+          NCBI_EMAIL: "${{ secrets.NCBI_EMAIL }}"
 
-          # Optional but recommended: cap PubMed DOI→PMID lookups per run
-          PMID_LOOKUP_BUDGET: "80"
+          # Keep PubMed traffic modest (tune as needed)
+          PMID_LOOKUP_BUDGET: "120"
+          PMID_SLEEP_SECONDS: "0.34"
+
+          # PubMed efetch batching (publication types)
+          EFETCH_BATCH_SIZE: "100"
+          EFETCH_SLEEP_SECONDS: "0.34"
+
+          # Optional output caps (safe defaults)
+          CROSSREF_ROWS_PER_JOURNAL: "200"
+          GLOBAL_MAX_ITEMS: "3000"
         run: |
           python scripts/build_data.py
 
