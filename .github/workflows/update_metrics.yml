@@ -26,15 +26,16 @@ jobs:
           pip install requests
 
       - name: Build journal_metrics.json
+        env:
+          # Stable UA reduces chances of being blocked by upstream sites
+          SJR_UA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         run: |
           python scripts/build_metrics.py
 
       - name: Commit if changed (including new files)
         run: |
-          # Stage the file even if it's new/untracked
           git add journal_metrics.json
 
-          # If nothing staged, stop
           if git diff --cached --quiet; then
             echo "No changes."
             exit 0
