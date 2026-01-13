@@ -17,6 +17,7 @@ body {
 }
 
 .wrap { max-width: 1100px; margin: 0 auto; padding: 18px; }
+
 h1 { margin: 0 0 6px 0; font-size: 26px; }
 .subtitle { margin: 0; color: var(--muted); }
 
@@ -29,11 +30,26 @@ h1 { margin: 0 0 6px 0; font-size: 26px; }
 }
 
 .controls { margin-top: 14px; }
-.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; }
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+
 .row.meta { align-items: center; margin-top: 10px; }
+
 .spacer { flex: 1; }
 
-label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 13px; }
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 input, select {
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--line);
@@ -43,8 +59,16 @@ input, select {
   outline: none;
   min-width: 220px;
 }
+
 select { min-width: 160px; }
-.chk { flex-direction: row; align-items: center; gap: 10px; padding: 10px 6px; }
+
+.chk {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+}
+
 .chk input { min-width: auto; }
 
 .btn {
@@ -55,36 +79,55 @@ select { min-width: 160px; }
   border-radius: 10px;
   cursor: pointer;
 }
+
 .btn:hover { background: var(--btn2); }
 
 .listhead { display: flex; align-items: baseline; gap: 12px; }
 .listhead h2 { margin: 0; font-size: 18px; }
+
 .muted { color: var(--muted); }
 
 .list { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+
 .item {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(255,255,255,0.04);
 }
+
 .item .top { display: flex; gap: 10px; align-items: start; }
+
 .star {
-  width: 34px; height: 34px;
+  width: 34px;
+  height: 34px;
   border-radius: 10px;
   border: 1px solid var(--line);
   background: rgba(255,255,255,0.06);
   cursor: pointer;
-  display: grid; place-items: center;
+  display: grid;
+  place-items: center;
   user-select: none;
 }
-.star.on { background: rgba(255,215,0,0.15); border-color: rgba(255,215,0,0.35); }
+
+.star.on {
+  background: rgba(255,215,0,0.15);
+  border-color: rgba(255,215,0,0.35);
+}
 
 .title { margin: 0; font-size: 15px; line-height: 1.25; }
 .title a { color: var(--text); text-decoration: none; }
 .title a:hover { text-decoration: underline; }
 
-.metaLine { margin-top: 6px; font-size: 13px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.metaLine {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .pill {
   padding: 2px 8px;
   border: 1px solid var(--line);
@@ -92,7 +135,10 @@ select { min-width: 160px; }
 }
 
 .foot { margin: 14px 0 30px; font-size: 13px; }
-code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 /* Make native selects behave in dark mode (helps Safari/iOS) */
 select, input {
@@ -120,4 +166,78 @@ select option {
 
 .repo-link a:hover {
   text-decoration: underline;
+}
+
+/* Advanced toggle switch */
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  user-select: none;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.switch .slider {
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  position: relative;
+  transition: background 180ms ease;
+}
+
+.switch .slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  transition: transform 180ms ease;
+}
+
+.switch input:checked + .slider {
+  background: rgba(125,183,255,0.25);
+}
+
+.switch input:checked + .slider::after {
+  transform: translateX(20px);
+}
+
+/* Curtain-style Advanced panel (collapsed when Advanced is OFF) */
+.advanced-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 220ms ease, opacity 180ms ease, transform 220ms ease;
+  pointer-events: none; /* not clickable when closed */
+  margin-top: 6px;
+}
+
+.advanced-panel.open {
+  max-height: 420px; /* allow wrap on small screens */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.advanced-panel .row {
+  padding-top: 6px;
 }
