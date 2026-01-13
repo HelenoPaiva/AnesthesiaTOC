@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Build unified TOC data.json from Crossref by ISSN, with PubMed enrichment
-and Ahead-of-Print (AOP) detection.
+(PMID + Publication Types) and Ahead-of-Print (AOP) detection.
 
 Pagination strategy (simple & robust for static hosting):
 - Pull N recent items per journal (default 200) from Crossref
@@ -9,7 +9,15 @@ Pagination strategy (simple & robust for static hosting):
 - Sort by date desc
 - Cap output to a global max (default 3000)
 
-Front-end will infinite-scroll render progressively (auto up to 1000 shown).
+Classification strategy (reproducible, reviewer-friendly):
+1) Prefer PubMed Publication Types (when PMID available)
+2) If PubMed missing/unhelpful, attempt title-based heuristics
+3) Else: Unclassified
+
+Output fields added:
+- pmid, pubmed_url
+- pubmed_publication_types (raw)
+- category (one of the dashboard categories or "Unclassified")
 """
 
 from __future__ import annotations
@@ -23,10 +31,12 @@ from datetime import datetime, timezone, date as _date
 from typing import Any, Dict, List, Optional, Union
 
 import requests
+from xml.etree import ElementTree as ET
 
 
 CROSSREF_API = "https://api.crossref.org/works"
 NCBI_ESEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+NCBI_EFETCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
 USER_AGENT = os.getenv(
     "CROSSREF_UA",
@@ -43,6 +53,21 @@ GLOBAL_MAX_ITEMS = int(os.getenv("GLOBAL_MAX_ITEMS", "3000"))
 # PubMed DOI->PMID lookups budget (avoid hammering NCBI)
 PMID_LOOKUP_BUDGET = int(os.getenv("PMID_LOOKUP_BUDGET", "120"))
 PMID_SLEEP_SECONDS = float(os.getenv("PMID_SLEEP_SECONDS", "0.34"))
+
+# PubMed efetch batching (publication types)
+EFETCH_BATCH_SIZE = int(os.getenv("EFETCH_BATCH_SIZE", "100"))
+EFETCH_SLEEP_SECONDS = float(os.getenv("EFETCH_SLEEP_SECONDS", "0.34"))
+
+# Dashboard categories (requested consolidated schema)
+CAT_META = "Meta-analysis"
+CAT_RCT = "Randomized Control Trials"
+CAT_OBS = "Observational Studies"
+CAT_GUIDE = "Guideline / Consensus"
+CAT_REVIEW = "Review (Narrative / Systematic)"
+CAT_EDITORIAL = "Editorial / Letter / Commentary"
+CAT_UNK = "Unclassified"
+
+DASHBOARD_CATEGORIES = [CAT_META, CAT_RCT, CAT_OBS, CAT_GUIDE, CAT_REVIEW, CAT_EDITORIAL]
 
 
 def iso_now() -> str:
@@ -162,6 +187,163 @@ def doi_to_pmid(doi: str) -> Optional[str]:
     return ids[0] if ids else None
 
 
+def efetch_publication_types(pmids: List[str]) -> Dict[str, List[str]]:
+    """
+    Return mapping pmid -> list of PublicationType values using PubMed efetch (XML).
+    """
+    out: Dict[str, List[str]] = {}
+    if not pmids:
+        return out
+
+    params = {
+        "db": "pubmed",
+        "id": ",".join(pmids),
+        "retmode": "xml",
+        "tool": "AnesTOC-Dashboard",
+    }
+    if NCBI_EMAIL:
+        params["email"] = NCBI_EMAIL
+    headers = {"User-Agent": USER_AGENT}
+
+    r = requests.get(NCBI_EFETCH, params=params, headers=headers, timeout=45)
+    r.raise_for_status()
+
+    root = ET.fromstring(r.text)
+
+    for art in root.findall(".//PubmedArticle"):
+        pmid_el = art.find(".//MedlineCitation/PMID")
+        if pmid_el is None or not pmid_el.text:
+            continue
+        pmid = pmid_el.text.strip()
+        pts = []
+        for pt in art.findall(".//MedlineCitation/Article/PublicationTypeList/PublicationType"):
+            if pt.text:
+                pts.append(pt.text.strip())
+        out[pmid] = pts
+
+    # Some responses can include PubmedBookArticle; include defensively
+    for art in root.findall(".//PubmedBookArticle"):
+        pmid_el = art.find(".//BookDocument/PMID")
+        if pmid_el is None or not pmid_el.text:
+            continue
+        pmid = pmid_el.text.strip()
+        pts = []
+        for pt in art.findall(".//BookDocument/PublicationTypeList/PublicationType"):
+            if pt.text:
+                pts.append(pt.text.strip())
+        out[pmid] = pts
+
+    return out
+
+
+# --------- classification ---------
+
+PUBMED_TYPE_TO_CATEGORY = {
+    # Meta
+    "Meta-Analysis": CAT_META,
+
+    # RCT / trials (grouped)
+    "Randomized Controlled Trial": CAT_RCT,
+    "Clinical Trial": CAT_RCT,
+    "Clinical Trial, Phase I": CAT_RCT,
+    "Clinical Trial, Phase II": CAT_RCT,
+    "Clinical Trial, Phase III": CAT_RCT,
+    "Clinical Trial, Phase IV": CAT_RCT,
+    "Controlled Clinical Trial": CAT_RCT,
+
+    # Observational (grouped: cohort + case-control under observational)
+    "Observational Study": CAT_OBS,
+    "Cohort Studies": CAT_OBS,
+    "Case-Control Studies": CAT_OBS,
+    "Cross-Sectional Studies": CAT_OBS,
+
+    # Guidelines / consensus
+    "Practice Guideline": CAT_GUIDE,
+    "Guideline": CAT_GUIDE,
+    "Consensus Development Conference": CAT_GUIDE,
+    "Consensus Development Conference, NIH": CAT_GUIDE,
+
+    # Reviews (grouped: systematic + narrative)
+    "Systematic Review": CAT_REVIEW,
+    "Review": CAT_REVIEW,
+
+    # Editorial / correspondence (grouped)
+    "Editorial": CAT_EDITORIAL,
+    "Comment": CAT_EDITORIAL,
+    "Letter": CAT_EDITORIAL,
+}
+
+
+TITLE_RULES: List[tuple[str, str]] = [
+    # Meta-analysis (highest priority)
+    (CAT_META, r"\bmeta[- ]analysis\b|\bnetwork meta[- ]analysis\b|\bmetaanalysis\b"),
+
+    # RCT / trials
+    (CAT_RCT, r"\brandomi[sz]ed\b|\brandomi[sz]ation\b|\bcontrolled trial\b|\brct\b|\btrial\b"),
+
+    # Guideline / Consensus
+    (CAT_GUIDE, r"\bpractice guideline\b|\bguideline(s)?\b|\bconsensus\b|\bposition statement\b|\brecommendations\b"),
+
+    # Reviews (systematic/narrative grouped)
+    (CAT_REVIEW, r"\bsystematic review\b|\breview\b|\bscoping review\b|\brapid review\b"),
+
+    # Editorial / Letter / Commentary
+    (CAT_EDITORIAL, r"\beditorial\b|\bcommentary\b|\bcorrespondence\b|\bletter\b|\bcomment\b|\breply\b"),
+
+    # Observational (cohort/case-control grouped here)
+    (CAT_OBS, r"\bobservational\b|\bcohort\b|\bcase[- ]control\b|\bcross[- ]sectional\b|\bregistry\b"),
+]
+
+
+def category_from_pubmed_types(pub_types: List[str]) -> Optional[str]:
+    if not pub_types:
+        return None
+
+    # Direct mapping with precedence by importance
+    # Meta > RCT > Guide > Review > Editorial > Observational
+    precedence = [CAT_META, CAT_RCT, CAT_GUIDE, CAT_REVIEW, CAT_EDITORIAL, CAT_OBS]
+
+    mapped: List[str] = []
+    for pt in pub_types:
+        cat = PUBMED_TYPE_TO_CATEGORY.get(pt)
+        if cat:
+            mapped.append(cat)
+
+    if not mapped:
+        return None
+
+    for cat in precedence:
+        if cat in mapped:
+            return cat
+    return mapped[0]
+
+
+def category_from_title(title: str) -> Optional[str]:
+    if not title:
+        return None
+    t = title.lower()
+    for cat, pattern in TITLE_RULES:
+        if re.search(pattern, t, flags=re.IGNORECASE):
+            return cat
+    return None
+
+
+def choose_category(pub_types: Optional[List[str]], title: str) -> str:
+    pub_types = pub_types or []
+    cat = category_from_pubmed_types(pub_types)
+    if cat:
+        return cat
+
+    # PubMed often returns generic types like "Journal Article"; try title rules before Unclassified
+    cat2 = category_from_title(title)
+    if cat2:
+        return cat2
+
+    return CAT_UNK
+
+
+# --------- item assembly ---------
+
 def to_item(journal: str, short: str, raw: Dict[str, Any]) -> Dict[str, Any]:
     doi = raw.get("DOI", "") or ""
     url = raw.get("URL") or (f"https://doi.org/{doi}" if doi else "")
@@ -178,16 +360,23 @@ def to_item(journal: str, short: str, raw: Dict[str, Any]) -> Dict[str, Any]:
         elif min(later) > online:
             aop = True
 
+    title = clean_title(raw)
+
     return {
         "journal": journal,
         "journal_short": short,
-        "title": clean_title(raw),
+        "title": title,
         "authors": join_authors(raw),
         "published": pick_date(raw),
         "doi": doi,
         "url": url,
         "aop": aop,
         "source": "crossref",
+        # PubMed enrichment fields (populated later if available)
+        "pmid": None,
+        "pubmed_url": None,
+        "pubmed_publication_types": [],
+        "category": None,
     }
 
 
@@ -241,8 +430,10 @@ def main() -> int:
         reverse=True
     )
 
-    # PubMed enrichment (optional budget)
+    # PubMed enrichment step 1: DOI -> PMID (budgeted)
+    pmids_to_fetch: List[str] = []
     lookups = 0
+
     for it in deduped:
         if lookups >= PMID_LOOKUP_BUDGET:
             break
@@ -254,12 +445,49 @@ def main() -> int:
             if pmid:
                 it["pmid"] = pmid
                 it["pubmed_url"] = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+                pmids_to_fetch.append(pmid)
             lookups += 1
             time.sleep(PMID_SLEEP_SECONDS)
         except Exception as e:
             print(f"[WARN] PubMed lookup failed for {doi}: {e}", file=sys.stderr)
             lookups += 1
             time.sleep(PMID_SLEEP_SECONDS)
+
+    # PubMed enrichment step 2: efetch Publication Types for collected PMIDs
+    pmid_to_types: Dict[str, List[str]] = {}
+    if pmids_to_fetch:
+        # De-duplicate while keeping order
+        seen_pm = set()
+        pmids_unique = []
+        for p in pmids_to_fetch:
+            if p not in seen_pm:
+                seen_pm.add(p)
+                pmids_unique.append(p)
+
+        batch_size = max(1, min(EFETCH_BATCH_SIZE, 200))
+        for i in range(0, len(pmids_unique), batch_size):
+            batch = pmids_unique[i:i + batch_size]
+            try:
+                got = efetch_publication_types(batch)
+                pmid_to_types.update(got)
+                time.sleep(EFETCH_SLEEP_SECONDS)
+            except Exception as e:
+                print(f"[WARN] PubMed efetch failed for PMIDs batch starting {batch[0]}: {e}", file=sys.stderr)
+                time.sleep(EFETCH_SLEEP_SECONDS)
+
+    # Assign pubmed_publication_types + final category (PubMed-first, then title)
+    for it in deduped:
+        pmid = it.get("pmid")
+        pub_types = pmid_to_types.get(pmid, []) if pmid else []
+        it["pubmed_publication_types"] = pub_types
+
+        # Choose category with fallback title heuristics before Unclassified
+        it["category"] = choose_category(pub_types, it.get("title") or "")
+
+        # Normalize None fields (keep JSON clean)
+        if not pmid:
+            it.pop("pmid", None)
+            it.pop("pubmed_url", None)
 
     # Hard cap output size
     if len(deduped) > GLOBAL_MAX_ITEMS:
@@ -271,13 +499,19 @@ def main() -> int:
         "meta": {
             "rows_per_journal": CROSSREF_ROWS_PER_JOURNAL,
             "global_max_items": GLOBAL_MAX_ITEMS,
+            "pmid_lookup_budget": PMID_LOOKUP_BUDGET,
+            "categories": DASHBOARD_CATEGORIES,
         },
     }
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {len(deduped)} items -> data.json (rows/journal={CROSSREF_ROWS_PER_JOURNAL}, cap={GLOBAL_MAX_ITEMS})")
+    print(
+        f"Wrote {len(deduped)} items -> data.json "
+        f"(rows/journal={CROSSREF_ROWS_PER_JOURNAL}, cap={GLOBAL_MAX_ITEMS}, "
+        f"pmid_budget={PMID_LOOKUP_BUDGET})"
+    )
     return 0
 
 
