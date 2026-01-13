@@ -47,6 +47,49 @@ select { min-width: 160px; }
 .chk { flex-direction: row; align-items: center; gap: 10px; padding: 10px 6px; }
 .chk input { min-width: auto; }
 
+/* Advanced toggle switch */
+.switch {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  user-select: none;
+}
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch .slider {
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  position: relative;
+  transition: background 150ms ease;
+}
+.switch .slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  transition: transform 150ms ease;
+}
+.switch input:checked + .slider {
+  background: rgba(125,183,255,0.25);
+}
+.switch input:checked + .slider::after {
+  transform: translateX(20px);
+}
+
+.advanced { margin-top: 6px; }
+
 .btn {
   background: var(--btn);
   border: 1px solid var(--line);
@@ -89,6 +132,15 @@ select { min-width: 160px; }
   padding: 2px 8px;
   border: 1px solid var(--line);
   border-radius: 999px;
+}
+
+/* Category chip */
+.pill.cat {
+  background: rgba(125,183,255,0.12);
+}
+.pill.uncat {
+  background: rgba(255,255,255,0.04);
+  opacity: 0.85;
 }
 
 .foot { margin: 14px 0 30px; font-size: 13px; }
