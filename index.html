@@ -38,23 +38,26 @@
         </label>
       </div>
 
-      <div id="advancedControls" class="row advanced" hidden>
-        <label>
-          Search
-          <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." />
-        </label>
+      <!-- Curtain panel: present in DOM, but collapsed when closed -->
+      <div id="advancedControls" class="advanced-panel" aria-hidden="true">
+        <div class="row">
+          <label>
+            Search
+            <input id="q" type="search" placeholder="airway, neuraxial, PONV, rocuronium..." disabled />
+          </label>
 
-        <label>
-          Article type
-          <select id="type">
-            <option value="">All</option>
-          </select>
-        </label>
+          <label>
+            Article type
+            <select id="type" disabled>
+              <option value="">All</option>
+            </select>
+          </label>
 
-        <label class="chk">
-          <input id="starOnly" type="checkbox" />
-          Starred only
-        </label>
+          <label class="chk">
+            <input id="starOnly" type="checkbox" disabled />
+            Starred only
+          </label>
+        </div>
       </div>
 
       <div class="row meta">
