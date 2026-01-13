@@ -21,12 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # If you're deploying the repo root as-is (static site), you can upload it directly.
-      # If you have a build step (Jekyll, npm, etc), put it here and upload the built folder instead.
-
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # Upload the repo root as the Pages artifact (static site).
+      # If you later add a build step, change this to upload the build output directory.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -42,7 +41,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
