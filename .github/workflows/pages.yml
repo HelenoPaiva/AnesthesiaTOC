@@ -1,0 +1,44 @@
+name: pages build and deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # If you're deploying the repo root as-is (static site), you can upload it directly.
+      # If you have a build step (Jekyll, npm, etc), put it here and upload the built folder instead.
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
