@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-15T06:39:07+00:00",
+  "generated_at": "2026-01-15T07:28:59+00:00",
   "items": [
     {
       "journal": "British Journal of Anaesthesia",
@@ -1034,19 +1034,6 @@
     {
       "journal": "Regional Anesthesia & Pain Medicine",
       "journal_short": "RAPM",
-      "title": "Does anesthetic type matter for C-sections? Neuraxial versus general anesthesia impact on children’s long-term development",
-      "authors": "D’Souza R., Labandeyra H.",
-      "published": "2026-01-14",
-      "doi": "10.1136/rapm-2025-107534",
-      "url": "https://doi.org/10.1136/rapm-2025-107534",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Regional Anesthesia & Pain Medicine",
-      "journal_short": "RAPM",
       "title": "Letter to the editor: risk of dementia following gabapentin prescription in patients with chronic low back pain",
       "authors": "Sinha A., Conliffe T.",
       "published": "2026-01-14",
@@ -1056,6 +1043,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "Regional Anesthesia & Pain Medicine",
+      "journal_short": "RAPM",
+      "title": "Does anesthetic type matter for C-sections? Neuraxial versus general anesthesia impact on children’s long-term development",
+      "authors": "D’Souza R., Labandeyra H.",
+      "published": "2026-01-14",
+      "doi": "10.1136/rapm-2025-107534",
+      "url": "https://doi.org/10.1136/rapm-2025-107534",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Regional Anesthesia & Pain Medicine",
@@ -1560,9 +1560,10 @@
       "pmid": "41022208",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41022208/",
       "pubmed_publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "Randomized Controlled Trial"
       ],
-      "category": "Unclassified"
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Korean Journal of Anesthesiology",
@@ -3700,19 +3701,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Comparison of pericapsular nerve group block and supra-inguinal fascia iliaca compartment block for preoperative analgesia in elderly patients with hip fracture: A prospective, randomized controlled study",
-      "authors": "Liao H., Wan Z., Su J., Han D., Lin W., Yu M., Sun G., Song F., Zhou J.",
-      "published": "2026-01-10",
-      "doi": "10.1016/j.jclinane.2025.112082",
-      "url": "https://doi.org/10.1016/j.jclinane.2025.112082",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "Methodological quality of systematic reviews on the quadratus lumborum block for cesarean section: An overview of systematic reviews",
       "authors": "Dost B., Beldagli M., Karapinar Y., Turunc E., Turan E., De Cassai A.",
       "published": "2026-01-10",
@@ -3722,6 +3710,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Comparison of pericapsular nerve group block and supra-inguinal fascia iliaca compartment block for preoperative analgesia in elderly patients with hip fracture: A prospective, randomized controlled study",
+      "authors": "Liao H., Wan Z., Su J., Han D., Lin W., Yu M., Sun G., Song F., Zhou J.",
+      "published": "2026-01-10",
+      "doi": "10.1016/j.jclinane.2025.112082",
+      "url": "https://doi.org/10.1016/j.jclinane.2025.112082",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Journal of Clinical Anesthesia",
@@ -5663,11 +5664,11 @@
     {
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
-      "title": "Low-dose fentanyl analgesia modified by calcium channel blockers in cardiac surgery: RETRACTION",
+      "title": "Hepatocellular integrity after parenteral nutrition: comparison of a fish-oil-containing lipid emulsion with an olive-soybean oil-based lipid emulsion: RETRACTION",
       "authors": "",
       "published": "2026-01-07",
-      "doi": "10.1097/eja.0000000000002334",
-      "url": "https://doi.org/10.1097/eja.0000000000002334",
+      "doi": "10.1097/eja.0000000000002336",
+      "url": "https://doi.org/10.1097/eja.0000000000002336",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -5676,11 +5677,11 @@
     {
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
-      "title": "Hepatocellular integrity after parenteral nutrition: comparison of a fish-oil-containing lipid emulsion with an olive-soybean oil-based lipid emulsion: RETRACTION",
+      "title": "Low-dose fentanyl analgesia modified by calcium channel blockers in cardiac surgery: RETRACTION",
       "authors": "",
       "published": "2026-01-07",
-      "doi": "10.1097/eja.0000000000002336",
-      "url": "https://doi.org/10.1097/eja.0000000000002336",
+      "doi": "10.1097/eja.0000000000002334",
+      "url": "https://doi.org/10.1097/eja.0000000000002334",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -7990,19 +7991,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Pathogenicity assessment of seven RYR1 variants in patients with confirmed susceptibility to malignant hyperthermia in the Netherlands",
-      "authors": "van den Bersselaar L., Schiemann A., Yang C., Voermans N., Malagon I., Scheffer G., Bjorksten A., Gillies R., Hellblom A., Kamsteeg E. et al.",
-      "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2024.11.043",
-      "url": "https://doi.org/10.1016/j.bja.2024.11.043",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Erector spinae plane block versus paravertebral block for major oncological breast surgery. Comment on Br J Anaesth 2025; 135: 772–8",
       "authors": "Bao Z.",
       "published": "2026-01-02",
@@ -8038,6 +8026,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Pathogenicity assessment of seven RYR1 variants in patients with confirmed susceptibility to malignant hyperthermia in the Netherlands",
+      "authors": "van den Bersselaar L., Schiemann A., Yang C., Voermans N., Malagon I., Scheffer G., Bjorksten A., Gillies R., Hellblom A., Kamsteeg E. et al.",
+      "published": "2026-01-02",
+      "doi": "10.1016/j.bja.2024.11.043",
+      "url": "https://doi.org/10.1016/j.bja.2024.11.043",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -8250,11 +8251,11 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Risk factors, outcomes, and early prediction of cardiac surgery-associated acute kidney injury: a post hoc subgroup analysis of the Epidemiology of Surgery Associated Acute Kidney Injury study",
-      "authors": "Strauß C., Albert F., Bormann E., Engelman D., Bellomo R., Zarbock A.",
+      "title": "The cutaneous sympathetic blockade associated with labour epidural analgesia. Response to Br J Anaesth 2026; 136: 388–9",
+      "authors": "Mullington C., Iacona G., Rolph A., Manteigas H., Low D., Strutton P.",
       "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.08.043",
-      "url": "https://doi.org/10.1016/j.bja.2025.08.043",
+      "doi": "10.1016/j.bja.2025.11.047",
+      "url": "https://doi.org/10.1016/j.bja.2025.11.047",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -8276,11 +8277,11 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "The cutaneous sympathetic blockade associated with labour epidural analgesia. Response to Br J Anaesth 2026; 136: 388–9",
-      "authors": "Mullington C., Iacona G., Rolph A., Manteigas H., Low D., Strutton P.",
+      "title": "Risk factors, outcomes, and early prediction of cardiac surgery-associated acute kidney injury: a post hoc subgroup analysis of the Epidemiology of Surgery Associated Acute Kidney Injury study",
+      "authors": "Strauß C., Albert F., Bormann E., Engelman D., Bellomo R., Zarbock A.",
       "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.11.047",
-      "url": "https://doi.org/10.1016/j.bja.2025.11.047",
+      "doi": "10.1016/j.bja.2025.08.043",
+      "url": "https://doi.org/10.1016/j.bja.2025.08.043",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -8458,6 +8459,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Risk of perioperative cardiorespiratory complications and mortality associated with preoperative glucagon-like peptide-1 receptor agonist use in type 2 diabetes mellitus: a nationwide propensity-score matched study",
+      "authors": "Wu H., Chen J., Cata J., Hsieh C., Cherng Y., Tai Y.",
+      "published": "2026-01-02",
+      "doi": "10.1016/j.bja.2025.08.003",
+      "url": "https://doi.org/10.1016/j.bja.2025.08.003",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "A direct central amygdala–ventral tegmental area GABAergic circuit modulates anaesthesia through dopaminergic disinhibition in mice",
       "authors": "Wang D., Li J., Li H., Zhao G., Wu H., Zhang X., Wang Y., Wang S., Li B., Li H. et al.",
       "published": "2026-01-02",
@@ -8528,19 +8542,6 @@
       "published": "2026-01-02",
       "doi": "10.1016/j.bja.2025.10.025",
       "url": "https://doi.org/10.1016/j.bja.2025.10.025",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Risk of perioperative cardiorespiratory complications and mortality associated with preoperative glucagon-like peptide-1 receptor agonist use in type 2 diabetes mellitus: a nationwide propensity-score matched study",
-      "authors": "Wu H., Chen J., Cata J., Hsieh C., Cherng Y., Tai Y.",
-      "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.08.003",
-      "url": "https://doi.org/10.1016/j.bja.2025.08.003",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -8718,6 +8719,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Effects of Dexmedetomidine on Outcomes After Cardiac Surgery (DOCS): a randomised double-blind, placebo-controlled trial",
+      "authors": "Lei C., Zheng Z., Han J., Wang L., Zhai W., Li C., Hou L., Yu S., Liu J., Xu X. et al.",
+      "published": "2026-01-02",
+      "doi": "10.1016/j.bja.2025.09.026",
+      "url": "https://doi.org/10.1016/j.bja.2025.09.026",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "Continuous versus bolus norepinephrine administration and arterial blood pressure stability during induction of general anaesthesia in high-risk noncardiac surgery patients. Comment on Br J Anaesth 2025; 135: 878–85",
       "authors": "Dadashpour N., Golestanieraghi M.",
       "published": "2026-01-02",
@@ -8744,19 +8758,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Effects of Dexmedetomidine on Outcomes After Cardiac Surgery (DOCS): a randomised double-blind, placebo-controlled trial",
-      "authors": "Lei C., Zheng Z., Han J., Wang L., Zhai W., Li C., Hou L., Yu S., Liu J., Xu X. et al.",
-      "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.09.026",
-      "url": "https://doi.org/10.1016/j.bja.2025.09.026",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Viscoelastic coagulation testing in bleeding trauma patients: a retrospective analysis and development of a treatment algorithm",
       "authors": "Hofmann N., Schöchl H., Oberladstätter D., Zipperle J., Schmitt F., von der Forst M., Martin C., Gratz J.",
       "published": "2026-01-02",
@@ -8770,19 +8771,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Association of peripheral nerve blocks with increased postoperative pain and opioid use in orthopaedic surgery. Comment on Br J Anaesth 2025; 135: 1286-96",
-      "authors": "Giannakis P., Riebesell S., Wang J., Dworkin R., Sideris A., Poeran J.",
-      "published": "2026-01-02",
-      "doi": "10.1016/j.bja.2025.09.037",
-      "url": "https://doi.org/10.1016/j.bja.2025.09.037",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "The role of the anaesthetist in mitigating the environmental impacts of nitrous oxide: a narrative review",
       "authors": "Balmaks E., O'Shea M., McGain F.",
       "published": "2026-01-02",
@@ -8792,6 +8780,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Review (Narrative / Systematic)"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Association of peripheral nerve blocks with increased postoperative pain and opioid use in orthopaedic surgery. Comment on Br J Anaesth 2025; 135: 1286-96",
+      "authors": "Giannakis P., Riebesell S., Wang J., Dworkin R., Sideris A., Poeran J.",
+      "published": "2026-01-02",
+      "doi": "10.1016/j.bja.2025.09.037",
+      "url": "https://doi.org/10.1016/j.bja.2025.09.037",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -11526,19 +11527,6 @@
     {
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
-      "title": "Lung protective ventilation",
-      "authors": "Jae J., Saran J.",
-      "published": "2026-01-01",
-      "doi": "10.1097/eja.0000000000002223",
-      "url": "https://doi.org/10.1097/eja.0000000000002223",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "European Journal of Anaesthesiology",
-      "journal_short": "EJA",
       "title": "Reply to: the role of supraglottic airway devices for caesarean section under general anaesthesia",
       "authors": "Sharpe P., Mushambi M.",
       "published": "2026-01-01",
@@ -11548,6 +11536,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "European Journal of Anaesthesiology",
+      "journal_short": "EJA",
+      "title": "Lung protective ventilation",
+      "authors": "Jae J., Saran J.",
+      "published": "2026-01-01",
+      "doi": "10.1097/eja.0000000000002223",
+      "url": "https://doi.org/10.1097/eja.0000000000002223",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -12306,19 +12307,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "The effect of hyperoxia on disordered breathing during recovery from general anesthesia: A single-blinded, crossover, non-randomized -controlled, trial",
-      "authors": "Kutscher S., Finnsson E., Tian L., Panousis P., Chung B., Doufas A.",
-      "published": "2026-01-01",
-      "doi": "10.1016/j.jclinane.2025.112057",
-      "url": "https://doi.org/10.1016/j.jclinane.2025.112057",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "The laryngeal mask airway for prone procedures",
       "authors": "Bessette J., Cotte Cabarcas J.",
       "published": "2026-01-01",
@@ -12328,6 +12316,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "The effect of hyperoxia on disordered breathing during recovery from general anesthesia: A single-blinded, crossover, non-randomized -controlled, trial",
+      "authors": "Kutscher S., Finnsson E., Tian L., Panousis P., Chung B., Doufas A.",
+      "published": "2026-01-01",
+      "doi": "10.1016/j.jclinane.2025.112057",
+      "url": "https://doi.org/10.1016/j.jclinane.2025.112057",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Journal of Clinical Anesthesia",
@@ -12566,19 +12567,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Comment on “The usefulness of the modified steep ramp test as a practical exercise test for preoperative risk assessment in patients scheduled for pancreatic surgery”",
-      "authors": "Zhang L., Luo Z., Lin R.",
-      "published": "2026-01-01",
-      "doi": "10.1016/j.jclinane.2025.111964",
-      "url": "https://doi.org/10.1016/j.jclinane.2025.111964",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "Preoperative test requests for elective surgeries of different complexity: Appropriateness and interhospital variability",
       "authors": "Sánchez-Hidalgo A., Urreta Barallobre I., Bolibar Ribas I., Bassas Parga E., Arrieta Bernaras M., Gutiérrez Sánchez G., Sánchez Cirera D., González Moraga F., Gorostiza I., de Frutos Parra R. et al.",
       "published": "2026-01-01",
@@ -12597,6 +12585,19 @@
       "published": "2026-01-01",
       "doi": "10.1016/j.jclinane.2025.112079",
       "url": "https://doi.org/10.1016/j.jclinane.2025.112079",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Comment on “The usefulness of the modified steep ramp test as a practical exercise test for preoperative risk assessment in patients scheduled for pancreatic surgery”",
+      "authors": "Zhang L., Luo Z., Lin R.",
+      "published": "2026-01-01",
+      "doi": "10.1016/j.jclinane.2025.111964",
+      "url": "https://doi.org/10.1016/j.jclinane.2025.111964",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -20977,19 +20978,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Abandoning desflurane is just part of the solution to anaesthesia sustainability",
-      "authors": "Ip V., Zieleskiewicz L., Bouvet L.",
-      "published": "2025-12-01",
-      "doi": "10.1016/j.bja.2025.09.001",
-      "url": "https://doi.org/10.1016/j.bja.2025.09.001",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Editorial Board",
       "authors": "",
       "published": "2025-12-01",
@@ -20999,6 +20987,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Abandoning desflurane is just part of the solution to anaesthesia sustainability",
+      "authors": "Ip V., Zieleskiewicz L., Bouvet L.",
+      "published": "2025-12-01",
+      "doi": "10.1016/j.bja.2025.09.001",
+      "url": "https://doi.org/10.1016/j.bja.2025.09.001",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -21094,11 +21095,11 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Using entrustment-supervision scales in anaesthetic assessments",
-      "authors": "Hughes W., Westall H., Gale T.",
+      "title": "Postoperative hypotension: a complex but modifiable target to improve perioperative care after noncardiac surgery",
+      "authors": "Vail E., Daghmouri M., Deniau B.",
       "published": "2025-12-01",
-      "doi": "10.1016/j.bja.2025.08.062",
-      "url": "https://doi.org/10.1016/j.bja.2025.08.062",
+      "doi": "10.1016/j.bja.2025.09.018",
+      "url": "https://doi.org/10.1016/j.bja.2025.09.018",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -21107,11 +21108,11 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Postoperative hypotension: a complex but modifiable target to improve perioperative care after noncardiac surgery",
-      "authors": "Vail E., Daghmouri M., Deniau B.",
+      "title": "Using entrustment-supervision scales in anaesthetic assessments",
+      "authors": "Hughes W., Westall H., Gale T.",
       "published": "2025-12-01",
-      "doi": "10.1016/j.bja.2025.09.018",
-      "url": "https://doi.org/10.1016/j.bja.2025.09.018",
+      "doi": "10.1016/j.bja.2025.08.062",
+      "url": "https://doi.org/10.1016/j.bja.2025.08.062",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -21198,19 +21199,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Population-based multistate modelling of peritraumatic opioid use among trauma patients from the Norwegian Trauma Registry. Comment on Br J Anaesth 2025; 135: 390–400",
-      "authors": "Ding W.",
-      "published": "2025-12-01",
-      "doi": "10.1016/j.bja.2025.08.057",
-      "url": "https://doi.org/10.1016/j.bja.2025.08.057",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Contents",
       "authors": "",
       "published": "2025-12-01",
@@ -21220,6 +21208,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Population-based multistate modelling of peritraumatic opioid use among trauma patients from the Norwegian Trauma Registry. Comment on Br J Anaesth 2025; 135: 390–400",
+      "authors": "Ding W.",
+      "published": "2025-12-01",
+      "doi": "10.1016/j.bja.2025.08.057",
+      "url": "https://doi.org/10.1016/j.bja.2025.08.057",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -21237,19 +21238,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Association of peripheral nerve blocks with increased postoperative pain and opioid use in orthopaedic surgery. Comment on Br J Anaesth 2025; 135: 1286–96",
-      "authors": "Edward R.",
-      "published": "2025-12-01",
-      "doi": "10.1016/j.bja.2025.09.010",
-      "url": "https://doi.org/10.1016/j.bja.2025.09.010",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Pyridoxine: a potential third-line agent for prevention of postoperative nausea and vomiting",
       "authors": "Lasso Andrade F., Uribe Vallejo E.",
       "published": "2025-12-01",
@@ -21259,6 +21247,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Association of peripheral nerve blocks with increased postoperative pain and opioid use in orthopaedic surgery. Comment on Br J Anaesth 2025; 135: 1286–96",
+      "authors": "Edward R.",
+      "published": "2025-12-01",
+      "doi": "10.1016/j.bja.2025.09.010",
+      "url": "https://doi.org/10.1016/j.bja.2025.09.010",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
