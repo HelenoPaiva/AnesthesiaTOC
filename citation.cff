@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+
+title: "Anestesia TOC Dashboars"
+abstract: >
+ AnesthesiaTOC is a fully automated, static web dashboard designed
+ to aggregate and display the most recent tables of contents from major
+ anesthesiology journals in a unified, continuously updated interface.
+
+authors:
+  - family-names: Oliveira
+    given-names: Heleno Paiva 
+    orcid: https://orcid.org/0000-0001-7335-3438
+
+version: 1.0.0
+date-released: 2026-01-25
+
+doi: 10.5281/zenodo.18180895
+
+url: https://helenopaiva.github.io/AnesthesiaTOC/
+repository-code: https://github.com/HelenoPaiva/AnesthesiaTOC/
+
+keywords:
+  - toc
+  - indexing
+  - journal-article
+
+license: MIT
