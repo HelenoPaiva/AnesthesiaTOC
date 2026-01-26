@@ -2,7 +2,7 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18180894-blue)](https://doi.org/10.5281/zenodo.18180894)
 [![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://helenopaiva.github.io/AnesthesiaTOC/)
-[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/Retraction-Radar)](https://github.com/HelenoPaiva/Retraction-Radar/releases/tag/v1.0.0)
+[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/Retraction-Radar)](https://github.com/HelenoPaiva/AnesthesiaTOC/releases/tag/v1.0.0)
 ![Last commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/github/license/HelenoPaiva/AnesthesiaTOC)
 
