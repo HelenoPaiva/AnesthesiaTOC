@@ -2,10 +2,9 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18180894-blue)](https://doi.org/10.5281/zenodo.18180894)
 [![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://helenopaiva.github.io/AnesthesiaTOC/)
-[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/Retraction-Radar)](https://github.com/HelenoPaiva/AnesthesiaTOC/releases/tag/v1.0.0)
+[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/AnesthesiaTOC)](https://github.com/HelenoPaiva/AnesthesiaTOC/releases/tag/v1.0.0)
 ![Last commit](https://img.shields.io/github/last-commit/HelenoPaiva/AnesthesiaTOC)
 ![License](https://img.shields.io/github/license/HelenoPaiva/AnesthesiaTOC)
-
 
 https://helenopaiva.github.io/AnesthesiaTOC/
 
@@ -124,10 +123,17 @@ The web interface reflects updates automatically after deployment.
 
 ## Software registration and intellectual property
 
-The software has been **registered as a Programa de Computador** at the  
-**Instituto Nacional da Propriedade Industrial (INPI), Brazil**, under **personal ownership**, prior to journal submission.
+This software is **formally registered as a Programa de Computador** at the  
+**Instituto Nacional da Propriedade Industrial (INPI), Brazil**, under the Brazilian Software Law (Lei nº 9.609/1998).
 
-This registration establishes legal authorship and priority while remaining fully compatible with open academic dissemination and future development.
+**INPI registration details:**
+- **Title:** Anesthesia TOC Dashboard  
+- **Registration number:** BR512026000086-6  
+- **Date of registration:** 08 January 2026  
+- **Rightsholder (Titular):** Heleno de Paiva Oliveira  
+- **Authors:** Heleno de Paiva Oliveira; Anna Carolina Batista Dantas  
+
+The INPI registration establishes legal authorship, ownership, and priority, while remaining fully compatible with open-source distribution and academic reuse.
 
 ---
 
@@ -169,21 +175,15 @@ This tool is **not intended to replace bibliographic databases** or systematic r
 
 ---
 
-## How to cite
-
-If you use, adapt, or build upon **AnesthesiaTOC** in academic work, teaching materials, or derivative projects, please cite it as a research software resource.
-
-### Recommended citation (Vancouver / AMA)
-
-> Oliveira HP. **AnesthesiaTOC: an automated, web-based dashboard for continuous surveillance of anesthesiology literature** [software]. Zenodo.  
-> https://doi.org/10.5281/zenodo.18180895
-
----
-
 ## License
 
-This repository is intended for open academic use.  
-License terms will be finalized prior to any commercial deployment.
+This software is released under the **MIT License**.
+
+The author retains full copyright and ownership, as established by the
+INPI registration (BR512026000086-6), while granting broad permission for
+use, modification, and redistribution under the terms of the MIT License.
+
+Commercial use is permitted under the license terms.
 
 ---
 
