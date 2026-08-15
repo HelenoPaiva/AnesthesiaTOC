@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T02:52:50+00:00",
+  "generated_at": "2026-08-15T03:40:21+00:00",
   "items": [
     {
       "journal": "Regional Anesthesia & Pain Medicine",
@@ -96,8 +96,12 @@
       "url": "https://doi.org/10.1016/j.bja.2026.06.055",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
+      "pmid": "42601296",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42601296/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -126,8 +130,12 @@
       "url": "https://doi.org/10.1016/j.bja.2026.07.023",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
+      "pmid": "42601295",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42601295/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -157,7 +165,11 @@
       "url": "https://doi.org/10.1016/j.bja.2026.06.038",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42601298",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42601298/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Observational Studies"
     },
     {
@@ -180,19 +192,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "NEOLab: a dedicated multidisciplinary airway training space",
-      "authors": "Abraham-Thomas N., Shah S., Vaughan D., Chaggar R.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.027",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.027",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Decision-making processes in older patients that require, but do not undergo, emergency laparotomy in the UK: a multicentre observational study",
       "authors": "Price A., Knight S., McLennan E., Reeves N., Chandler S., Boyle J., Pearce L., Moug S.",
       "published": "2026-08-14",
@@ -208,6 +207,19 @@
         "Observational Study"
       ],
       "category": "Observational Studies"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "NEOLab: a dedicated multidisciplinary airway training space",
+      "authors": "Abraham-Thomas N., Shah S., Vaughan D., Chaggar R.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.027",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.027",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -484,23 +496,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Propofol-based versus volatile anaesthesia for cancer surgery: a meta-analysis of randomised trials",
-      "authors": "Carron M., Tamburini E., Dalla Massara L., Congedi S., Linassi F.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.048",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.048",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42161720",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42161720/",
-      "pubmed_publication_types": [
-        "Letter"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Effect of two-session remote ischaemic preconditioning on myocardial injury after noncardiac surgery in patients undergoing abdominal surgery: a randomised clinical trial",
       "authors": "Zheng Z., Wang F., Wang X., Shi J., Zhang S., Zheng Y., Jiang B., Huang Y., Zhao Y., Lin C. et al.",
       "published": "2026-08-14",
@@ -520,6 +515,23 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Propofol-based versus volatile anaesthesia for cancer surgery: a meta-analysis of randomised trials",
+      "authors": "Carron M., Tamburini E., Dalla Massara L., Congedi S., Linassi F.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.048",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.048",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42161720",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42161720/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "Racial and geographic differences of opioid overdose deaths involving additional drugs of abuse: analysis of US mortality database",
       "authors": "Calumpit M., Hin C., Rachapudi M., Kwan C., Choi J., Sumerlin T., Shang L., Zhang B., Yeung D., Uy L. et al.",
       "published": "2026-08-14",
@@ -531,6 +543,36 @@
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42103500/",
       "pubmed_publication_types": [
         "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Tracheal tubes incorporating optical capnography",
+      "authors": "Norris A., Agbiki T., Korposh S., Assiri A., Matic G., Gardner D., Morgan S.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.031",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.031",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Timing matters: the delicate balance in amino acids infusion duration in cardiac surgery",
+      "authors": "Stoppe C.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.03.031",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.031",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42025565",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42025565/",
+      "pubmed_publication_types": [
+        "Editorial"
       ],
       "category": "Editorial / Letter / Commentary"
     },
@@ -568,36 +610,6 @@
         "Letter"
       ],
       "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Timing matters: the delicate balance in amino acids infusion duration in cardiac surgery",
-      "authors": "Stoppe C.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.031",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.031",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42025565",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42025565/",
-      "pubmed_publication_types": [
-        "Editorial"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Tracheal tubes incorporating optical capnography",
-      "authors": "Norris A., Agbiki T., Korposh S., Assiri A., Matic G., Gardner D., Morgan S.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.031",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.031",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -649,37 +661,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Preoperative beta blocker use and postoperative ischaemic stroke risk in noncardiac surgery: a multicentre retrospective cohort study",
-      "authors": "Rudolph M., Borngaesser F., Zmily O., Mpody C., Wongtangman K., Wachtendorf L., Khandaker R., Suleiman A., Binda D., Ramishvili T. et al.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2025.11.027",
-      "url": "https://doi.org/10.1016/j.bja.2025.11.027",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "41506973",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41506973/",
-      "pubmed_publication_types": [
-        "Journal Article",
-        "Multicenter Study"
-      ],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Five-yr evaluation of the UCLH massive open online course ‘Airway Matters’",
-      "authors": "Dev E., Varma A., Hoogenboom E.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.035",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.035",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Clinical meaning of the modified Cormack–Lehane grade during direct laryngoscopy and Macintosh videolaryngoscopy",
       "authors": "Taboada M., Fernández J., Ferreiroa E., Varela S., Amate J., Bermúdez M., Estévez M., Ruido R., Bedoya A., Otero F. et al.",
       "published": "2026-08-14",
@@ -710,6 +691,37 @@
         "Letter"
       ],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Preoperative beta blocker use and postoperative ischaemic stroke risk in noncardiac surgery: a multicentre retrospective cohort study",
+      "authors": "Rudolph M., Borngaesser F., Zmily O., Mpody C., Wongtangman K., Wachtendorf L., Khandaker R., Suleiman A., Binda D., Ramishvili T. et al.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2025.11.027",
+      "url": "https://doi.org/10.1016/j.bja.2025.11.027",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41506973",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41506973/",
+      "pubmed_publication_types": [
+        "Journal Article",
+        "Multicenter Study"
+      ],
+      "category": "Observational Studies"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Five-yr evaluation of the UCLH massive open online course ‘Airway Matters’",
+      "authors": "Dev E., Varma A., Hoogenboom E.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.035",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.035",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -753,15 +765,15 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Kappa opioid receptor internalisation-induced p38 nuclear translocation suppresses glioma progression: methodological considerations and future directions. Comment on Br J Anaesth 2025; 134: 759–71",
-      "authors": "Zhang W., Guo H., Zhou J.",
+      "title": "Substantial nitrous oxide loss from a centrally piped hospital supply system: single-centre quantitative analysis",
+      "authors": "Hirata M., Seki H.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.038",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.038",
+      "doi": "10.1016/j.bja.2026.03.076",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.076",
       "aop": false,
       "source": "crossref",
-      "pmid": "42103506",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42103506/",
+      "pmid": "42135090",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42135090/",
       "pubmed_publication_types": [
         "Letter"
       ],
@@ -805,15 +817,15 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Substantial nitrous oxide loss from a centrally piped hospital supply system: single-centre quantitative analysis",
-      "authors": "Hirata M., Seki H.",
+      "title": "Kappa opioid receptor internalisation-induced p38 nuclear translocation suppresses glioma progression: methodological considerations and future directions. Comment on Br J Anaesth 2025; 134: 759–71",
+      "authors": "Zhang W., Guo H., Zhou J.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.076",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.076",
+      "doi": "10.1016/j.bja.2026.03.038",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.038",
       "aop": false,
       "source": "crossref",
-      "pmid": "42135090",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42135090/",
+      "pmid": "42103506",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42103506/",
       "pubmed_publication_types": [
         "Letter"
       ],
@@ -886,23 +898,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Videolaryngoscopy: the new standard for double-lumen tube placement?",
-      "authors": "Rowland M., Burjek N., Jagannathan N.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.030",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.030",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42034556",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42034556/",
-      "pubmed_publication_types": [
-        "Editorial"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "What we used, what we saw, what we did: towards a shared language for videolaryngoscopy",
       "authors": "Fernández-Vaquero M., Chaggar R., Gómez-Ríos M., Cook T.",
       "published": "2026-08-14",
@@ -933,15 +928,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "In situ simulation managing the critical airway: are we on the right trach?",
-      "authors": "Quek J., Niciu C.",
+      "title": "Videolaryngoscopy: the new standard for double-lumen tube placement?",
+      "authors": "Rowland M., Burjek N., Jagannathan N.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.017",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.017",
+      "doi": "10.1016/j.bja.2026.03.030",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.030",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
+      "pmid": "42034556",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42034556/",
+      "pubmed_publication_types": [
+        "Editorial"
+      ],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -972,6 +971,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "In situ simulation managing the critical airway: are we on the right trach?",
+      "authors": "Quek J., Niciu C.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.017",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.017",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "Regional anaesthesia modalities for primary total hip arthroplasty: tailoring the technique to the surgical approach. Response to Br J Anaesth 2026; 136: 1638-1639",
       "authors": "Lee K., Tsai S., Chen C., Wu P., Chen W.",
       "published": "2026-08-14",
@@ -981,23 +993,6 @@
       "source": "crossref",
       "pmid": "42062157",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42062157/",
-      "pubmed_publication_types": [
-        "Letter"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Conditional versus expected power in trial design: the concept of assurance illustrated in mortality trials",
-      "authors": "Huber M.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.074",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.074",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42140819",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42140819/",
       "pubmed_publication_types": [
         "Letter"
       ],
@@ -1019,6 +1014,23 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Conditional versus expected power in trial design: the concept of assurance illustrated in mortality trials",
+      "authors": "Huber M.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.03.074",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.074",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42140819",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42140819/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "Corrigendum to ‘Morphine and hydromorphone pharmacodynamics in human volunteers: population-based modelling of interindividual response variability and utility’ (Br J Anaesth 2026; 136: 1459-71)",
       "authors": "Olofsen E., Meissner K., Dahan A., Kharasch E.",
       "published": "2026-08-14",
@@ -1032,36 +1044,6 @@
         "Published Erratum"
       ],
       "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Ease of use evaluation of low-cost 3D-printed videolaryngoscopes",
-      "authors": "MacManus A., Impiumi A., Browne G., Monaghan M., Gorman L., McCaul C.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.012",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.012",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Responsibility cannot be abdicated: a mandate for Patient-Centred Precision Care in perioperative brain health",
-      "authors": "Barroso A., Meco B., Moll V., Guay C., Radtke F.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.02.009",
-      "url": "https://doi.org/10.1016/j.bja.2026.02.009",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "41813450",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41813450/",
-      "pubmed_publication_types": [
-        "Editorial"
-      ],
-      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1093,6 +1075,36 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Ease of use evaluation of low-cost 3D-printed videolaryngoscopes",
+      "authors": "MacManus A., Impiumi A., Browne G., Monaghan M., Gorman L., McCaul C.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.04.012",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.012",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Responsibility cannot be abdicated: a mandate for Patient-Centred Precision Care in perioperative brain health",
+      "authors": "Barroso A., Meco B., Moll V., Guay C., Radtke F.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.02.009",
+      "url": "https://doi.org/10.1016/j.bja.2026.02.009",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41813450",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41813450/",
+      "pubmed_publication_types": [
+        "Editorial"
+      ],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1174,19 +1186,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Ultrasound Identification of front-of-neck blood vessels: a prospective cohort study",
-      "authors": "Goh J., Lokon A., Siddiqui N., Zasso F., You-Ten K.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.009",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.009",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Association of duration of amino acids infusion and renal protection: a secondary analysis of the PROTECTION trial",
       "authors": "Landoni G., Oriani A., Ti L., Losiggio R., Bradic N., Pruna A., Burrell A., Pieri M., Hodgson C., D’Amico F. et al.",
       "published": "2026-08-14",
@@ -1205,19 +1204,15 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "The Video Classification of Intubation (VCI) score for videolaryngoscopy: accuracy and clinical utility remain uncertain. Comment on Br J Anaesth 2026; 136: 1616–24",
-      "authors": "Petzoldt M., Wünsch V., Grün C., Sasu P., Köhl V.",
+      "title": "Ultrasound Identification of front-of-neck blood vessels: a prospective cohort study",
+      "authors": "Goh J., Lokon A., Siddiqui N., Zasso F., You-Ten K.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.083",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.083",
+      "doi": "10.1016/j.bja.2026.04.009",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.009",
       "aop": false,
       "source": "crossref",
-      "pmid": "42156310",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42156310/",
-      "pubmed_publication_types": [
-        "Letter"
-      ],
-      "category": "Editorial / Letter / Commentary"
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1241,19 +1236,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Remimazolam-induced dysfunction of thalamic reticular nucleus impairs auditory gating during postanaesthetic recovery in mice",
-      "authors": "Wang S., Li Z., Wang X., Xu M., Fan S., Liu X., Qin L., Zhao P.",
+      "title": "The Video Classification of Intubation (VCI) score for videolaryngoscopy: accuracy and clinical utility remain uncertain. Comment on Br J Anaesth 2026; 136: 1616–24",
+      "authors": "Petzoldt M., Wünsch V., Grün C., Sasu P., Köhl V.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.01.050",
-      "url": "https://doi.org/10.1016/j.bja.2026.01.050",
+      "doi": "10.1016/j.bja.2026.03.083",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.083",
       "aop": false,
       "source": "crossref",
-      "pmid": "42025564",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42025564/",
+      "pmid": "42156310",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42156310/",
       "pubmed_publication_types": [
-        "Journal Article"
+        "Letter"
       ],
-      "category": "Unclassified"
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1271,6 +1266,23 @@
         "Letter"
       ],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Remimazolam-induced dysfunction of thalamic reticular nucleus impairs auditory gating during postanaesthetic recovery in mice",
+      "authors": "Wang S., Li Z., Wang X., Xu M., Fan S., Liu X., Qin L., Zhao P.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.01.050",
+      "url": "https://doi.org/10.1016/j.bja.2026.01.050",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42025564",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42025564/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -1935,8 +1947,12 @@
       "url": "https://doi.org/10.1016/j.bjane.2026.844816",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
+      "pmid": "42600937",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42600937/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
     },
     {
       "journal": "Brazilian Journal of Anesthesiology",
@@ -2877,19 +2893,6 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Peritibial fascial infiltration block for postoperative analgesia management: Two case reports",
-      "authors": "Ulusoy E., Eglen M., Kaciroglu A., Aydin M., Dikici M., Ekinci M.",
-      "published": "2026-08-13",
-      "doi": "10.4103/sja.sja_224_25",
-      "url": "https://doi.org/10.4103/sja.sja_224_25",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
       "title": "Knowledge and attitude of nursing students toward pain management and opioids: A cross-sectional survey in the western region Saudi Arabia",
       "authors": "Alashari R., Alasmari M., Alsheikh M., Alharthy B., Tayeb B.",
       "published": "2026-08-13",
@@ -2899,6 +2902,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Observational Studies"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
+      "title": "Peritibial fascial infiltration block for postoperative analgesia management: Two case reports",
+      "authors": "Ulusoy E., Eglen M., Kaciroglu A., Aydin M., Dikici M., Ekinci M.",
+      "published": "2026-08-13",
+      "doi": "10.4103/sja.sja_224_25",
+      "url": "https://doi.org/10.4103/sja.sja_224_25",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Saudi Journal of Anaesthesia",
@@ -3046,11 +3062,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Development, validation, and usefulness of patient information leaflet for women undergoing Caesarean section",
-      "authors": "Rai A., Darshika, Gill R., Saxena P., Kaur J., Parmar S., Sukhija A.",
+      "title": "A total spinal block: A rare but life-threatening complication of thoracic paravertebral block",
+      "authors": "Gupta T., Rawat A., Kumar G., Gautam A.",
       "published": "2026-08-13",
-      "doi": "10.4103/sja.sja_465_25",
-      "url": "https://doi.org/10.4103/sja.sja_465_25",
+      "doi": "10.4103/sja.sja_490_25",
+      "url": "https://doi.org/10.4103/sja.sja_490_25",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -3072,11 +3088,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "A total spinal block: A rare but life-threatening complication of thoracic paravertebral block",
-      "authors": "Gupta T., Rawat A., Kumar G., Gautam A.",
+      "title": "Development, validation, and usefulness of patient information leaflet for women undergoing Caesarean section",
+      "authors": "Rai A., Darshika, Gill R., Saxena P., Kaur J., Parmar S., Sukhija A.",
       "published": "2026-08-13",
-      "doi": "10.4103/sja.sja_490_25",
-      "url": "https://doi.org/10.4103/sja.sja_490_25",
+      "doi": "10.4103/sja.sja_465_25",
+      "url": "https://doi.org/10.4103/sja.sja_465_25",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -3462,19 +3478,6 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Perfusion index as primary predictor of successful caudal block in infraumbilical and lower limb pediatric surgeries: A prospective observational study",
-      "authors": "Bejugama S., Khatavkar S.",
-      "published": "2026-08-13",
-      "doi": "10.4103/sja.sja_379_25",
-      "url": "https://doi.org/10.4103/sja.sja_379_25",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
       "title": "L3 paravertebral block combined with retro-psoas compartment block versus femoral nerve block for postoperative analgesia in total knee arthroplasty: A randomized controlled trial",
       "authors": "Li H., Ma Y., Xu S., Guo R., Wang Y.",
       "published": "2026-08-13",
@@ -3497,6 +3500,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
+      "title": "Perfusion index as primary predictor of successful caudal block in infraumbilical and lower limb pediatric surgeries: A prospective observational study",
+      "authors": "Bejugama S., Khatavkar S.",
+      "published": "2026-08-13",
+      "doi": "10.4103/sja.sja_379_25",
+      "url": "https://doi.org/10.4103/sja.sja_379_25",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "Saudi Journal of Anaesthesia",
@@ -4177,6 +4193,19 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
+      "title": "CON: OR Extubation Should Be the Default Practice for All Low-Risk Cardiac Surgery Patients",
+      "authors": "Cardonell B., Grewal A.",
+      "published": "2026-08-12",
+      "doi": "10.1053/j.jvca.2026.04.040",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.040",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
       "title": "Does Equal Volume Ensure Mechanistic Parity Between Erector Spinae Plane Block and Paravertebral Block?",
       "authors": "Yan L., Zhang W.",
       "published": "2026-08-12",
@@ -4208,19 +4237,6 @@
       "published": "2026-08-12",
       "doi": "10.1053/j.jvca.2026.05.005",
       "url": "https://doi.org/10.1053/j.jvca.2026.05.005",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
-      "title": "CON: OR Extubation Should Be the Default Practice for All Low-Risk Cardiac Surgery Patients",
-      "authors": "Cardonell B., Grewal A.",
-      "published": "2026-08-12",
-      "doi": "10.1053/j.jvca.2026.04.040",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.040",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -4567,6 +4583,19 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
+      "title": "Postoperative Respiratory Support After Cardiac Surgery: The BREASE ARC International Survey",
+      "authors": "Hirwe A., Nesseler N., Kunst G., Sangalli F., Bouglé A., Dureau P.",
+      "published": "2026-08-12",
+      "doi": "10.1053/j.jvca.2026.04.023",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.023",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
       "title": "Near-Flat End-Tidal Carbon Dioxide During Mechanically Ventilated Cardiopulmonary Resuscitation in Pulmonary Atresia With Collateral-Dependent Pulmonary Blood Flow",
       "authors": "Tong Y., Wei R., Liu W., Liu H.",
       "published": "2026-08-12",
@@ -4589,19 +4618,6 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Meta-analysis"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
-      "title": "Postoperative Respiratory Support After Cardiac Surgery: The BREASE ARC International Survey",
-      "authors": "Hirwe A., Nesseler N., Kunst G., Sangalli F., Bouglé A., Dureau P.",
-      "published": "2026-08-12",
-      "doi": "10.1053/j.jvca.2026.04.023",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.023",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -6231,19 +6247,6 @@
     {
       "journal": "Anesthesia & Analgesia",
       "journal_short": "A&A",
-      "title": "Maternal Intensive Care Unit Utilization by Mode of Delivery in the United States: A Retrospective Cohort Study",
-      "authors": "Himmelwright R., Davidson A., Federspiel J., Fuller M., Krishnamoorthy V., Bauer M., Habib A., Meng M.",
-      "published": "2026-08-10",
-      "doi": "10.1213/ane.0000000000008237",
-      "url": "https://doi.org/10.1213/ane.0000000000008237",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "Anesthesia & Analgesia",
-      "journal_short": "A&A",
       "title": "From Routine Bolus to Precision Biomarker: Calcium Supplementation During Cardiac Surgery",
       "authors": "Toton M., Rolfzen M., Korenke M.",
       "published": "2026-08-10",
@@ -6266,6 +6269,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Anesthesia & Analgesia",
+      "journal_short": "A&A",
+      "title": "Maternal Intensive Care Unit Utilization by Mode of Delivery in the United States: A Retrospective Cohort Study",
+      "authors": "Himmelwright R., Davidson A., Federspiel J., Fuller M., Krishnamoorthy V., Bauer M., Habib A., Meng M.",
+      "published": "2026-08-10",
+      "doi": "10.1213/ane.0000000000008237",
+      "url": "https://doi.org/10.1213/ane.0000000000008237",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "Anesthesia & Analgesia",
@@ -7804,19 +7820,6 @@
     {
       "journal": "Anesthesia & Analgesia",
       "journal_short": "A&A",
-      "title": "Opioid-Sparing Anesthesia Technique for Supratentorial Craniotomy in Geriatric Patients: A Randomized Open-Labeled Preliminary Study",
-      "authors": "Kapoor I., Prabhakar H., Mahajan C., Ganjoo P., Tandon M., Kalaivani M.",
-      "published": "2026-08-07",
-      "doi": "10.1213/ane.0000000000007855",
-      "url": "https://doi.org/10.1213/ane.0000000000007855",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Anesthesia & Analgesia",
-      "journal_short": "A&A",
       "title": "Strengthening the Evidence on Intraoperative Occult Hypoxemia",
       "authors": "Jabaley C., Wong A., O’Reilly-Shah V.",
       "published": "2026-08-07",
@@ -7826,6 +7829,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Anesthesia & Analgesia",
+      "journal_short": "A&A",
+      "title": "Opioid-Sparing Anesthesia Technique for Supratentorial Craniotomy in Geriatric Patients: A Randomized Open-Labeled Preliminary Study",
+      "authors": "Kapoor I., Prabhakar H., Mahajan C., Ganjoo P., Tandon M., Kalaivani M.",
+      "published": "2026-08-07",
+      "doi": "10.1213/ane.0000000000007855",
+      "url": "https://doi.org/10.1213/ane.0000000000007855",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Anesthesia & Analgesia",
@@ -9102,6 +9118,19 @@
       "category": "Unclassified"
     },
     {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Bayesian updating of malignant hyperthermia susceptibility using documented triggering anaesthetic exposure",
+      "authors": "Kertai M., Zhao X., Bastarache L., Roberts D., Jewell E., Bertucci-Richter E., Zöllner S., Douville N.",
+      "published": "2026-08-06",
+      "doi": "10.1016/j.bja.2026.04.079",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.079",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
       "journal": "Anesthesia & Analgesia",
       "journal_short": "A&A",
       "title": "Preoperative Neutrophil-to-Albumin Ratio and Clinically Documented Phantom Limb Pain After Nontraumatic Lower-Limb Amputation: A Retrospective Cohort Study",
@@ -9585,11 +9614,11 @@
     {
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
-      "title": "Hepatocellular integrity after parenteral nutrition: comparison of a fish-oil-containing lipid emulsion with an olive-soybean oil-based lipid emulsion: RETRACTION",
+      "title": "Low-dose fentanyl analgesia modified by calcium channel blockers in cardiac surgery: RETRACTION",
       "authors": "",
       "published": "2026-08-06",
-      "doi": "10.1097/eja.0000000000002336",
-      "url": "https://doi.org/10.1097/eja.0000000000002336",
+      "doi": "10.1097/eja.0000000000002334",
+      "url": "https://doi.org/10.1097/eja.0000000000002334",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -9598,11 +9627,11 @@
     {
       "journal": "European Journal of Anaesthesiology",
       "journal_short": "EJA",
-      "title": "Low-dose fentanyl analgesia modified by calcium channel blockers in cardiac surgery: RETRACTION",
+      "title": "Hepatocellular integrity after parenteral nutrition: comparison of a fish-oil-containing lipid emulsion with an olive-soybean oil-based lipid emulsion: RETRACTION",
       "authors": "",
       "published": "2026-08-06",
-      "doi": "10.1097/eja.0000000000002334",
-      "url": "https://doi.org/10.1097/eja.0000000000002334",
+      "doi": "10.1097/eja.0000000000002336",
+      "url": "https://doi.org/10.1097/eja.0000000000002336",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -14616,11 +14645,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Systemic Heparinization After Neuraxial Anesthesia in Vascular Surgery: A Multicenter Retrospective Analysis",
-      "authors": "Archibald D., Zhou J., Cordovani D., Meng D., Derzi S., Mah R., Dillane D., Ho A., Phelan R., Stambulic T. et al.",
+      "title": "Operating Room Extubation in Major Aortic Surgery: Policy Change Leading to Improved Recovery",
+      "authors": "Magouliotis D., Sicouri S., Baudo M., Yamashita Y., Patel S., Herman C., Ahmad B., Berguson M., Ramlawi B.",
       "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.03.041",
-      "url": "https://doi.org/10.1053/j.jvca.2026.03.041",
+      "doi": "10.1053/j.jvca.2026.05.009",
+      "url": "https://doi.org/10.1053/j.jvca.2026.05.009",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -14629,11 +14658,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Operating Room Extubation in Major Aortic Surgery: Policy Change Leading to Improved Recovery",
-      "authors": "Magouliotis D., Sicouri S., Baudo M., Yamashita Y., Patel S., Herman C., Ahmad B., Berguson M., Ramlawi B.",
+      "title": "Systemic Heparinization After Neuraxial Anesthesia in Vascular Surgery: A Multicenter Retrospective Analysis",
+      "authors": "Archibald D., Zhou J., Cordovani D., Meng D., Derzi S., Mah R., Dillane D., Ho A., Phelan R., Stambulic T. et al.",
       "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.05.009",
-      "url": "https://doi.org/10.1053/j.jvca.2026.05.009",
+      "doi": "10.1053/j.jvca.2026.03.041",
+      "url": "https://doi.org/10.1053/j.jvca.2026.03.041",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -15383,19 +15412,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Direct evidence of nitrous oxide leakage from a centrally piped hospital supply system using pipeline pressure monitoring: a single-centre analysis",
-      "authors": "Yasuda M., Hirata M., Seki H.",
-      "published": "2026-07-31",
-      "doi": "10.1016/j.bja.2026.06.034",
-      "url": "https://doi.org/10.1016/j.bja.2026.06.034",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Paediatric videolaryngoscopy versus direct laryngoscopy in prehospital tracheal intubation: a two-centre retrospective cohort study",
       "authors": "Vassallo J., Rawlinson D., Gill S., Chatterjee J., Lockey D.",
       "published": "2026-07-31",
@@ -15414,6 +15430,19 @@
       "published": "2026-07-31",
       "doi": "10.1016/j.bja.2026.06.032",
       "url": "https://doi.org/10.1016/j.bja.2026.06.032",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Direct evidence of nitrous oxide leakage from a centrally piped hospital supply system using pipeline pressure monitoring: a single-centre analysis",
+      "authors": "Yasuda M., Hirata M., Seki H.",
+      "published": "2026-07-31",
+      "doi": "10.1016/j.bja.2026.06.034",
+      "url": "https://doi.org/10.1016/j.bja.2026.06.034",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -15591,11 +15620,11 @@
     {
       "journal": "Anesthesiology",
       "journal_short": "ANES",
-      "title": "Orchestrating Communication in the Expanding Anesthesia Enterprise",
-      "authors": "Ortega R., Jalihal P., Faragon C., Zhao H.",
+      "title": "Anesthesia Workstation Performance in Pediatric Ventilation: Part 2. Characteristics during Pressure Support Ventilation and Oxygen Rise Times",
+      "authors": "Spaeth J., Trost M., Flamm B., Wenzel C., Schumann S.",
       "published": "2026-07-30",
-      "doi": "10.1097/aln.0000000000006185",
-      "url": "https://doi.org/10.1097/aln.0000000000006185",
+      "doi": "10.1097/aln.0000000000006150",
+      "url": "https://doi.org/10.1097/aln.0000000000006150",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -15604,11 +15633,11 @@
     {
       "journal": "Anesthesiology",
       "journal_short": "ANES",
-      "title": "Anesthesia Workstation Performance in Pediatric Ventilation: Part 2. Characteristics during Pressure Support Ventilation and Oxygen Rise Times",
-      "authors": "Spaeth J., Trost M., Flamm B., Wenzel C., Schumann S.",
+      "title": "Orchestrating Communication in the Expanding Anesthesia Enterprise",
+      "authors": "Ortega R., Jalihal P., Faragon C., Zhao H.",
       "published": "2026-07-30",
-      "doi": "10.1097/aln.0000000000006150",
-      "url": "https://doi.org/10.1097/aln.0000000000006150",
+      "doi": "10.1097/aln.0000000000006185",
+      "url": "https://doi.org/10.1097/aln.0000000000006185",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -16852,19 +16881,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Using the ascertain dementia eight-item questionnaire to identify at-risk older surgical patients",
-      "authors": "Yan E., Alhamdah Y., Butris N., Kapoor P., He D., Lovblom L., Tartaglia M., Tang-Wai D., Saripella A., Islam S. et al.",
-      "published": "2026-07-25",
-      "doi": "10.1016/j.jclinane.2026.112256",
-      "url": "https://doi.org/10.1016/j.jclinane.2026.112256",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "General vs. non-general anesthesia for transcatheter aortic valve replacement: A real-world target trial emulation study",
       "authors": "Mohamed M., Abu-Shawer O., Makhlouf M., Taher A., Badwan O., Helou M., Ikram J.",
       "published": "2026-07-25",
@@ -16874,6 +16890,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Using the ascertain dementia eight-item questionnaire to identify at-risk older surgical patients",
+      "authors": "Yan E., Alhamdah Y., Butris N., Kapoor P., He D., Lovblom L., Tartaglia M., Tang-Wai D., Saripella A., Islam S. et al.",
+      "published": "2026-07-25",
+      "doi": "10.1016/j.jclinane.2026.112256",
+      "url": "https://doi.org/10.1016/j.jclinane.2026.112256",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Journal of Clinical Anesthesia",
@@ -17091,19 +17120,6 @@
       "published": "2026-07-24",
       "doi": "10.1016/j.bja.2026.06.010",
       "url": "https://doi.org/10.1016/j.bja.2026.06.010",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Phase 1 single-centre, placebo and levobupivacaine controlled study in healthy volunteers to assess the safety, tolerability, efficacy, and pharmacokinetics of LL10, a novel long-acting local anaesthetic. Response to Br J Anaesth 2026; 137: 287–8",
-      "authors": "Fang L., Liu J., Liu J., Zhang W.",
-      "published": "2026-07-24",
-      "doi": "10.1016/j.bja.2026.05.055",
-      "url": "https://doi.org/10.1016/j.bja.2026.05.055",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -17632,11 +17648,11 @@
     {
       "journal": "Anesthesia & Analgesia",
       "journal_short": "A&A",
-      "title": "Making the Surgical Safety Checklist Even Safer: A Team Timeout Checklist to Improve Information Exchange and Interprofessional Communication Before Skin Incision",
-      "authors": "Weiss M., Reimer C., Budnitskiy A., Kleber C., Stehr S., Piegeler T.",
+      "title": "Trends and Variations in Tracheal Intubation for Acute Respiration Failure in Critically Ill Patients in the United States",
+      "authors": "Karamchandani K., Iancau A., Rosero E.",
       "published": "2026-07-22",
-      "doi": "10.1213/ane.0000000000008224",
-      "url": "https://doi.org/10.1213/ane.0000000000008224",
+      "doi": "10.1213/ane.0000000000008154",
+      "url": "https://doi.org/10.1213/ane.0000000000008154",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -17645,11 +17661,11 @@
     {
       "journal": "Anesthesia & Analgesia",
       "journal_short": "A&A",
-      "title": "Trends and Variations in Tracheal Intubation for Acute Respiration Failure in Critically Ill Patients in the United States",
-      "authors": "Karamchandani K., Iancau A., Rosero E.",
+      "title": "Making the Surgical Safety Checklist Even Safer: A Team Timeout Checklist to Improve Information Exchange and Interprofessional Communication Before Skin Incision",
+      "authors": "Weiss M., Reimer C., Budnitskiy A., Kleber C., Stehr S., Piegeler T.",
       "published": "2026-07-22",
-      "doi": "10.1213/ane.0000000000008154",
-      "url": "https://doi.org/10.1213/ane.0000000000008154",
+      "doi": "10.1213/ane.0000000000008224",
+      "url": "https://doi.org/10.1213/ane.0000000000008224",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -18152,11 +18168,11 @@
     {
       "journal": "Anaesthesia",
       "journal_short": "ANAES-UK",
-      "title": "Three‐dimensional facial phenotyping for difficult facemask ventilation: from association to clinical utility",
-      "authors": "Xu Z., Yang L., Wang F.",
+      "title": "Three‐dimensional face scans and difficult facemask ventilation – closing the loop from definition to recognition to decision‐making",
+      "authors": "Petzoldt M., Gundler C., Wünsch V.",
       "published": "2026-07-21",
-      "doi": "10.1111/anae.70298",
-      "url": "https://doi.org/10.1111/anae.70298",
+      "doi": "10.1111/anae.70297",
+      "url": "https://doi.org/10.1111/anae.70297",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -18165,11 +18181,11 @@
     {
       "journal": "Anaesthesia",
       "journal_short": "ANAES-UK",
-      "title": "Three‐dimensional face scans and difficult facemask ventilation – closing the loop from definition to recognition to decision‐making",
-      "authors": "Petzoldt M., Gundler C., Wünsch V.",
+      "title": "Three‐dimensional facial phenotyping for difficult facemask ventilation: from association to clinical utility",
+      "authors": "Xu Z., Yang L., Wang F.",
       "published": "2026-07-21",
-      "doi": "10.1111/anae.70297",
-      "url": "https://doi.org/10.1111/anae.70297",
+      "doi": "10.1111/anae.70298",
+      "url": "https://doi.org/10.1111/anae.70298",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -21272,19 +21288,6 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Perioperative pain relief in percutaneous nephrolithotomy: A randomised trial of ultrasound-guided erector spinae plane block compared to peri-tubal anaesthetic infiltration",
-      "authors": "Varma P., Chaudhary R., Gandhi K., Sharma A., Arora S.",
-      "published": "2026-07-07",
-      "doi": "10.4103/sja.sja_44_26",
-      "url": "https://doi.org/10.4103/sja.sja_44_26",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
       "title": "Intrathecal phenol neurolysis for refractory perineal cancer pain: A case report",
       "authors": "Díaz E., Ramírez C., Fernández G., Martínez J.",
       "published": "2026-07-07",
@@ -21294,6 +21297,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
+      "title": "Perioperative pain relief in percutaneous nephrolithotomy: A randomised trial of ultrasound-guided erector spinae plane block compared to peri-tubal anaesthetic infiltration",
+      "authors": "Varma P., Chaudhary R., Gandhi K., Sharma A., Arora S.",
+      "published": "2026-07-07",
+      "doi": "10.4103/sja.sja_44_26",
+      "url": "https://doi.org/10.4103/sja.sja_44_26",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Saudi Journal of Anaesthesia",
@@ -21311,19 +21327,6 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "NIM TriVantage™ electromyogram endotracheal tube kinking and the preclusion using a tube stand in patients undergoing thyroid surgery",
-      "authors": "Suzuki K., Kawashima S., Kobayashi A., Kimura T., Nakajima Y., Kinoshita H.",
-      "published": "2026-07-07",
-      "doi": "10.4103/sja.sja_324_26",
-      "url": "https://doi.org/10.4103/sja.sja_324_26",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
       "title": "Conscious sedation as a potential optimal anesthetic regimen for endoscopic retrograde cholangiopancreatography in elderly frail patients: A prospective, single-blind, randomized controlled trial",
       "authors": "Li C., Zeng N., Wang F., Zhang Y., Ma D., Hou H.",
       "published": "2026-07-07",
@@ -21333,6 +21336,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
+      "title": "NIM TriVantage™ electromyogram endotracheal tube kinking and the preclusion using a tube stand in patients undergoing thyroid surgery",
+      "authors": "Suzuki K., Kawashima S., Kobayashi A., Kimura T., Nakajima Y., Kinoshita H.",
+      "published": "2026-07-07",
+      "doi": "10.4103/sja.sja_324_26",
+      "url": "https://doi.org/10.4103/sja.sja_324_26",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Saudi Journal of Anaesthesia",
@@ -26823,19 +26839,6 @@
     {
       "journal": "Canadian Journal of Anesthesia",
       "journal_short": "CJA",
-      "title": "Impact of a block room on presurgical operating room time in joint arthroplasty",
-      "authors": "End C., Noorduyn S., Zheng J., Makar H., Ho E., Khemani E.",
-      "published": "2026-06-17",
-      "doi": "10.1007/s12630-026-03137-z",
-      "url": "https://doi.org/10.1007/s12630-026-03137-z",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Canadian Journal of Anesthesia",
-      "journal_short": "CJA",
       "title": "In Reply: Anesthesiologist-led surgical progressive care unit in Winnipeg, Manitoba, Canada",
       "authors": "Homsy M., Dale-Gandar J., Schwarz S., Flexman A., MacDonell S.",
       "published": "2026-06-17",
@@ -26845,6 +26848,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "Canadian Journal of Anesthesia",
+      "journal_short": "CJA",
+      "title": "Impact of a block room on presurgical operating room time in joint arthroplasty",
+      "authors": "End C., Noorduyn S., Zheng J., Makar H., Ho E., Khemani E.",
+      "published": "2026-06-17",
+      "doi": "10.1007/s12630-026-03137-z",
+      "url": "https://doi.org/10.1007/s12630-026-03137-z",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Canadian Journal of Anesthesia",
@@ -27499,19 +27515,6 @@
     {
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
-      "title": "Preoperative anxiety in children: bridging the gap between perception and observation",
-      "authors": "Oliveira B., Ikeda D., Nogueira P., Leite M.",
-      "published": "2026-06-12",
-      "doi": "10.1016/j.bjane.2026.844734",
-      "url": "https://doi.org/10.1016/j.bjane.2026.844734",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Brazilian Journal of Anesthesiology",
-      "journal_short": "BJAN",
       "title": "Erector spinae plane block versus thoracic paravertebral block in pediatric patients undergoing percutaneous nephrolithotomy: a prospective randomized clinical trial",
       "authors": "Nabil F., Mandour A., Abdelgawad A., Tamer D., Shahat A., Anwar M., Osman H.",
       "published": "2026-06-12",
@@ -27521,6 +27524,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Brazilian Journal of Anesthesiology",
+      "journal_short": "BJAN",
+      "title": "Preoperative anxiety in children: bridging the gap between perception and observation",
+      "authors": "Oliveira B., Ikeda D., Nogueira P., Leite M.",
+      "published": "2026-06-12",
+      "doi": "10.1016/j.bjane.2026.844734",
+      "url": "https://doi.org/10.1016/j.bjane.2026.844734",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "Brazilian Journal of Anesthesiology",
@@ -29267,19 +29283,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Analgesic efficacy and safety of erector spinae plane block after sternotomy and minimally invasive cardiac surgery: A systematic review and Meta-analysis of randomized trials",
-      "authors": "Perez-Moreno D., Forero M., Contreras M., Mora-Arteaga J.",
-      "published": "2026-06-04",
-      "doi": "10.1016/j.jclinane.2026.112240",
-      "url": "https://doi.org/10.1016/j.jclinane.2026.112240",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Meta-analysis"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "On the Cover - P. Wang et al.",
       "authors": "",
       "published": "2026-06-04",
@@ -29289,6 +29292,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Analgesic efficacy and safety of erector spinae plane block after sternotomy and minimally invasive cardiac surgery: A systematic review and Meta-analysis of randomized trials",
+      "authors": "Perez-Moreno D., Forero M., Contreras M., Mora-Arteaga J.",
+      "published": "2026-06-04",
+      "doi": "10.1016/j.jclinane.2026.112240",
+      "url": "https://doi.org/10.1016/j.jclinane.2026.112240",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Meta-analysis"
     },
     {
       "journal": "Korean Journal of Anesthesiology",
@@ -34246,19 +34262,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Dexmedetomidine in oxycodone patient-controlled analgesia after lumbar spinal fusion: A randomized, double-blind, placebo-controlled trial",
-      "authors": "Mäkelä S., Gröhn J., Rantakokko J., Löyttyniemi E., Peltoniemi M., Aantaa R., Liukas A., Saari T., Uusalo P.",
-      "published": "2026-04-25",
-      "doi": "10.1016/j.jclinane.2026.112191",
-      "url": "https://doi.org/10.1016/j.jclinane.2026.112191",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "Are patient factors associated with adverse perioperative outcomes in GLP-1 receptor agonist users? A retrospective cohort study",
       "authors": "Fanizza J., Moghaddam A., Atrash A.",
       "published": "2026-04-25",
@@ -34268,6 +34271,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Observational Studies"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Dexmedetomidine in oxycodone patient-controlled analgesia after lumbar spinal fusion: A randomized, double-blind, placebo-controlled trial",
+      "authors": "Mäkelä S., Gröhn J., Rantakokko J., Löyttyniemi E., Peltoniemi M., Aantaa R., Liukas A., Saari T., Uusalo P.",
+      "published": "2026-04-25",
+      "doi": "10.1016/j.jclinane.2026.112191",
+      "url": "https://doi.org/10.1016/j.jclinane.2026.112191",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Korean Journal of Anesthesiology",
@@ -35221,11 +35237,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Thoracic spinal anesthesia for emergency derivative colostomy in a turner syndrome patient",
-      "authors": "Scimia P., De Cato A., Frischia M., Gentili L.",
+      "title": "Neffy: A latest needle-free epinephrine",
+      "authors": "Chittoria K., Mukesh A., Sharma A.",
       "published": "2026-04-21",
-      "doi": "10.4103/sja.sja_124_26",
-      "url": "https://doi.org/10.4103/sja.sja_124_26",
+      "doi": "10.4103/sja.sja_597_25",
+      "url": "https://doi.org/10.4103/sja.sja_597_25",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -35234,11 +35250,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Neffy: A latest needle-free epinephrine",
-      "authors": "Chittoria K., Mukesh A., Sharma A.",
+      "title": "Thoracic spinal anesthesia for emergency derivative colostomy in a turner syndrome patient",
+      "authors": "Scimia P., De Cato A., Frischia M., Gentili L.",
       "published": "2026-04-21",
-      "doi": "10.4103/sja.sja_597_25",
-      "url": "https://doi.org/10.4103/sja.sja_597_25",
+      "doi": "10.4103/sja.sja_124_26",
+      "url": "https://doi.org/10.4103/sja.sja_124_26",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
