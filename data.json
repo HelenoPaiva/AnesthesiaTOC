@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T08:38:26+00:00",
+  "generated_at": "2026-08-18T09:35:12+00:00",
   "items": [
     {
       "journal": "British Journal of Anaesthesia",
@@ -52,6 +52,23 @@
       "source": "crossref",
       "pmid": "42361313",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42361313/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Anesthesia & Analgesia",
+      "journal_short": "A&A",
+      "title": "Diversity Science in Perioperative Medicine: Key Concepts and Guidance for Publishing and Reviewing",
+      "authors": "Kraus M., Schools-Cropper A., Faloye A., Wixson M., Purnell T.",
+      "published": "2026-08-18",
+      "doi": "10.1213/ane.0000000000007999",
+      "url": "https://doi.org/10.1213/ane.0000000000007999",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42224704",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42224704/",
       "pubmed_publication_types": [
         "Journal Article"
       ],
@@ -639,6 +656,25 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Protection of the nasotracheal tube tip with a red rubber catheter in adults undergoing nasotracheal intubation: A randomized controlled trial",
+      "authors": "Bailard N., Mercier D., Riccio C., Vu C., Hsu P., Reinhardt R., Nakonezny P., Hagberg C.",
+      "published": "2026-08-18",
+      "doi": "10.1016/j.jclinane.2025.112109",
+      "url": "https://doi.org/10.1016/j.jclinane.2025.112109",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41447924",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41447924/",
+      "pubmed_publication_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Multicenter Study"
+      ],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Korean Journal of Anesthesiology",
@@ -1281,23 +1317,6 @@
         "Randomized Controlled Trial"
       ],
       "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Anesthesia & Analgesia",
-      "journal_short": "A&A",
-      "title": "Diversity Science in Perioperative Medicine: Key Concepts and Guidance for Publishing and Reviewing",
-      "authors": "Kraus M., Schools-Cropper A., Faloye A., Wixson M., Purnell T.",
-      "published": "2026-08-17",
-      "doi": "10.1213/ane.0000000000007999",
-      "url": "https://doi.org/10.1213/ane.0000000000007999",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42224704",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42224704/",
-      "pubmed_publication_types": [
-        "Journal Article"
-      ],
-      "category": "Unclassified"
     },
     {
       "journal": "Anesthesia & Analgesia",
@@ -2063,12 +2082,7 @@
       "url": "https://doi.org/10.1016/j.jclinane.2025.112053",
       "aop": false,
       "source": "crossref",
-      "pmid": "41218482",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41218482/",
-      "pubmed_publication_types": [
-        "Journal Article",
-        "Observational Study"
-      ],
+      "pubmed_publication_types": [],
       "category": "Observational Studies"
     },
     {
@@ -3400,6 +3414,19 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Videolaryngoscopy: the new standard for double-lumen tube placement?",
+      "authors": "Rowland M., Burjek N., Jagannathan N.",
+      "published": "2026-08-14",
+      "doi": "10.1016/j.bja.2026.03.030",
+      "url": "https://doi.org/10.1016/j.bja.2026.03.030",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "What we used, what we saw, what we did: towards a shared language for videolaryngoscopy",
       "authors": "Fernández-Vaquero M., Chaggar R., Gómez-Ríos M., Cook T.",
       "published": "2026-08-14",
@@ -3426,11 +3453,11 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Videolaryngoscopy: the new standard for double-lumen tube placement?",
-      "authors": "Rowland M., Burjek N., Jagannathan N.",
+      "title": "In situ simulation managing the critical airway: are we on the right trach?",
+      "authors": "Quek J., Niciu C.",
       "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.03.030",
-      "url": "https://doi.org/10.1016/j.bja.2026.03.030",
+      "doi": "10.1016/j.bja.2026.04.017",
+      "url": "https://doi.org/10.1016/j.bja.2026.04.017",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -3457,19 +3484,6 @@
       "published": "2026-08-14",
       "doi": "10.1016/j.bja.2026.04.010",
       "url": "https://doi.org/10.1016/j.bja.2026.04.010",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "In situ simulation managing the critical airway: are we on the right trach?",
-      "authors": "Quek J., Niciu C.",
-      "published": "2026-08-14",
-      "doi": "10.1016/j.bja.2026.04.017",
-      "url": "https://doi.org/10.1016/j.bja.2026.04.017",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -6611,11 +6625,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Total Intravenous Anesthesia Versus Sevoflurane-Based Inhalation Anesthesia Within an Enhanced Recovery After Cardiac Surgery (ERACS) Protocol",
-      "authors": "Fazekas A., Flo Forner A., Brondani A., Meineri M., Ender J., Zakhary W.",
+      "title": "Articles to Appear in Future Issues",
+      "authors": "",
       "published": "2026-08-12",
-      "doi": "10.1053/j.jvca.2026.06.005",
-      "url": "https://doi.org/10.1053/j.jvca.2026.06.005",
+      "doi": "10.1053/s1053-0770(26)00594-x",
+      "url": "https://doi.org/10.1053/s1053-0770(26)00594-x",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -6637,11 +6651,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Articles to Appear in Future Issues",
-      "authors": "",
+      "title": "Total Intravenous Anesthesia Versus Sevoflurane-Based Inhalation Anesthesia Within an Enhanced Recovery After Cardiac Surgery (ERACS) Protocol",
+      "authors": "Fazekas A., Flo Forner A., Brondani A., Meineri M., Ender J., Zakhary W.",
       "published": "2026-08-12",
-      "doi": "10.1053/s1053-0770(26)00594-x",
-      "url": "https://doi.org/10.1053/s1053-0770(26)00594-x",
+      "doi": "10.1053/j.jvca.2026.06.005",
+      "url": "https://doi.org/10.1053/j.jvca.2026.06.005",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -12344,11 +12358,11 @@
     {
       "journal": "Current Opinion in Anesthesiology",
       "journal_short": "COA",
-      "title": "Delirium postcardiac surgery: etiologies and potential mitigation strategies",
-      "authors": "Rove J., Fuchita M., Lum H., Stevens-Lapsley J., Robinson T.",
+      "title": "Fraction of inspired oxygen in thoracic surgery: how much is too much?",
+      "authors": "Gorky J., de Lima A., Popescu W.",
       "published": "2026-08-04",
-      "doi": "10.1097/aco.0000000000001601",
-      "url": "https://doi.org/10.1097/aco.0000000000001601",
+      "doi": "10.1097/aco.0000000000001597",
+      "url": "https://doi.org/10.1097/aco.0000000000001597",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -12357,11 +12371,11 @@
     {
       "journal": "Current Opinion in Anesthesiology",
       "journal_short": "COA",
-      "title": "Fraction of inspired oxygen in thoracic surgery: how much is too much?",
-      "authors": "Gorky J., de Lima A., Popescu W.",
+      "title": "Delirium postcardiac surgery: etiologies and potential mitigation strategies",
+      "authors": "Rove J., Fuchita M., Lum H., Stevens-Lapsley J., Robinson T.",
       "published": "2026-08-04",
-      "doi": "10.1097/aco.0000000000001597",
-      "url": "https://doi.org/10.1097/aco.0000000000001597",
+      "doi": "10.1097/aco.0000000000001601",
+      "url": "https://doi.org/10.1097/aco.0000000000001601",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -15321,19 +15335,6 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Postcardiotomy Acute Liver Injury: A Retrospective Cohort",
-      "authors": "Marianello D., De Matteis F., Sanfilippo F., Biuzzi C., Galasso L., Ginetti F., Montesi G., Rizzo M., Cartocci A., Conte S. et al.",
-      "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.05.031",
-      "url": "https://doi.org/10.1053/j.jvca.2026.05.031",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
       "title": "Comparing Echocardiography and Right Heart Catheterization for Mortality Prediction in Pulmonary Hypertension",
       "authors": "Costanza L., Stead T., Joyce M., Maslow M., Maslow A.",
       "published": "2026-08-01",
@@ -15343,6 +15344,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
+      "title": "Postcardiotomy Acute Liver Injury: A Retrospective Cohort",
+      "authors": "Marianello D., De Matteis F., Sanfilippo F., Biuzzi C., Galasso L., Ginetti F., Montesi G., Rizzo M., Cartocci A., Conte S. et al.",
+      "published": "2026-08-01",
+      "doi": "10.1053/j.jvca.2026.05.031",
+      "url": "https://doi.org/10.1053/j.jvca.2026.05.031",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -34587,19 +34601,6 @@
     {
       "journal": "Journal of Clinical Anesthesia",
       "journal_short": "JCLINANES",
-      "title": "Dexmedetomidine in oxycodone patient-controlled analgesia after lumbar spinal fusion: A randomized, double-blind, placebo-controlled trial",
-      "authors": "Mäkelä S., Gröhn J., Rantakokko J., Löyttyniemi E., Peltoniemi M., Aantaa R., Liukas A., Saari T., Uusalo P.",
-      "published": "2026-04-25",
-      "doi": "10.1016/j.jclinane.2026.112191",
-      "url": "https://doi.org/10.1016/j.jclinane.2026.112191",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
       "title": "Are patient factors associated with adverse perioperative outcomes in GLP-1 receptor agonist users? A retrospective cohort study",
       "authors": "Fanizza J., Moghaddam A., Atrash A.",
       "published": "2026-04-25",
@@ -34609,6 +34610,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Observational Studies"
+    },
+    {
+      "journal": "Journal of Clinical Anesthesia",
+      "journal_short": "JCLINANES",
+      "title": "Dexmedetomidine in oxycodone patient-controlled analgesia after lumbar spinal fusion: A randomized, double-blind, placebo-controlled trial",
+      "authors": "Mäkelä S., Gröhn J., Rantakokko J., Löyttyniemi E., Peltoniemi M., Aantaa R., Liukas A., Saari T., Uusalo P.",
+      "published": "2026-04-25",
+      "doi": "10.1016/j.jclinane.2026.112191",
+      "url": "https://doi.org/10.1016/j.jclinane.2026.112191",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
     },
     {
       "journal": "Korean Journal of Anesthesiology",
@@ -39302,19 +39316,6 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
-      "title": "Protection of the nasotracheal tube tip with a red rubber catheter in adults undergoing nasotracheal intubation: A randomized controlled trial",
-      "authors": "Bailard N., Mercier D., Riccio C., Vu C., Hsu P., Reinhardt R., Nakonezny P., Hagberg C.",
-      "published": "2026-02-01",
-      "doi": "10.1016/j.jclinane.2025.112109",
-      "url": "https://doi.org/10.1016/j.jclinane.2025.112109",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
     },
     {
       "journal": "Journal of Clinical Anesthesia",
