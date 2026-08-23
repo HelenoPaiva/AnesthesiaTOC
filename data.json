@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T16:27:28+00:00",
+  "generated_at": "2026-08-23T17:21:26+00:00",
   "items": [
     {
       "journal": "Anesthesiology",
@@ -74,6 +74,23 @@
         "Journal Article"
       ],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Pain Practice",
+      "journal_short": "PAINPRAC",
+      "title": "Greater Occipital Nerve Block as Preventive Treatment in Migraine: A Time‐To‐Event Analysis",
+      "authors": "Giuliani G., Viganò A., Papini F., Petolicchio B., Toscano M., Vicenzini E., Di Piero V., Altieri M.",
+      "published": "2026-08-23",
+      "doi": "10.1111/papr.70041",
+      "url": "https://doi.org/10.1111/papr.70041",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "40375814",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40375814/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
+      "category": "Unclassified"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -959,40 +976,6 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
-      "title": "Direct inhibition of cystathionine-β-synthase by isoflurane contributes to delayed neurocognitive recovery after isoflurane general anaesthesia in mice: interpreting reduced freezing after isoflurane. Comment on Br J Anaesth 2025; 135: 360–74",
-      "authors": "Ji J., Xu Y., Zeng S., Chen C.",
-      "published": "2026-08-22",
-      "doi": "10.1016/j.bja.2026.05.020",
-      "url": "https://doi.org/10.1016/j.bja.2026.05.020",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42409688",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42409688/",
-      "pubmed_publication_types": [
-        "Letter"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Retraction notice to “Intrathecal lentivirus-mediated RNA interference targeting nerve growth factor attenuates myocardial ischaemia–reperfusion injury in rat” [Br J Anaesth 123 (2019) 439–449]",
-      "authors": "Dou M., Ma Z., Cheng X., Zou G., Xu Y., Huang C., Xiong W., He S., Zhang Y.",
-      "published": "2026-08-22",
-      "doi": "10.1016/j.bja.2026.08.003",
-      "url": "https://doi.org/10.1016/j.bja.2026.08.003",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42629136",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42629136/",
-      "pubmed_publication_types": [
-        "Published Erratum"
-      ],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
       "title": "Haemodynamic responses to tracheal intubation are context-dependent rather than patient-specific: a multicentre cohort study",
       "authors": "Heybati K., Xie G., Deng J., Walkey A., Gajic O., Yadav H.",
       "published": "2026-08-22",
@@ -1026,6 +1009,40 @@
         "Consensus Statement"
       ],
       "category": "Guideline / Consensus"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Direct inhibition of cystathionine-β-synthase by isoflurane contributes to delayed neurocognitive recovery after isoflurane general anaesthesia in mice: interpreting reduced freezing after isoflurane. Comment on Br J Anaesth 2025; 135: 360–74",
+      "authors": "Ji J., Xu Y., Zeng S., Chen C.",
+      "published": "2026-08-22",
+      "doi": "10.1016/j.bja.2026.05.020",
+      "url": "https://doi.org/10.1016/j.bja.2026.05.020",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42409688",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42409688/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
+      "title": "Retraction notice to “Intrathecal lentivirus-mediated RNA interference targeting nerve growth factor attenuates myocardial ischaemia–reperfusion injury in rat” [Br J Anaesth 123 (2019) 439–449]",
+      "authors": "Dou M., Ma Z., Cheng X., Zou G., Xu Y., Huang C., Xiong W., He S., Zhang Y.",
+      "published": "2026-08-22",
+      "doi": "10.1016/j.bja.2026.08.003",
+      "url": "https://doi.org/10.1016/j.bja.2026.08.003",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42629136",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42629136/",
+      "pubmed_publication_types": [
+        "Published Erratum"
+      ],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -2038,13 +2055,8 @@
       "url": "https://doi.org/10.1097/eja.0000000000002302",
       "aop": false,
       "source": "crossref",
-      "pmid": "41122054",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41122054/",
-      "pubmed_publication_types": [
-        "Journal Article",
-        "Systematic Review"
-      ],
-      "category": "Review (Narrative / Systematic)"
+      "pubmed_publication_types": [],
+      "category": "Guideline / Consensus"
     },
     {
       "journal": "Canadian Journal of Anesthesia",
@@ -2400,6 +2412,19 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
+      "title": "Your “clinical trial” from submission to decision",
+      "authors": "Eldawlatly A.",
+      "published": "2026-08-20",
+      "doi": "10.4103/sja.sja_284_26",
+      "url": "https://doi.org/10.4103/sja.sja_284_26",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
       "title": "Comparison between dexamethasone and dexmedetomidine combined with bupivacaine on pain relief after shoulder arthroscopy: A randomized clinical trial",
       "authors": "Abd El Sabour A., Attia A., Abdelsalam M., Baset H., Ali W.",
       "published": "2026-08-20",
@@ -2422,19 +2447,6 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
-      "title": "Your “clinical trial” from submission to decision",
-      "authors": "Eldawlatly A.",
-      "published": "2026-08-20",
-      "doi": "10.4103/sja.sja_284_26",
-      "url": "https://doi.org/10.4103/sja.sja_284_26",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Randomized Control Trials"
     },
     {
       "journal": "Saudi Journal of Anaesthesia",
@@ -2608,11 +2620,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Endoscopic control for bronchial blockers: Experimental evaluation of single-lung ventilation strategies in simulation-based models",
-      "authors": "Rajhi H.",
+      "title": "Comparative efficacy of high-flow nasal cannula versus conventional oxygen delivery during procedural sedation for ovum pickup in assisted reproductive technology",
+      "authors": "Mohan V., Hooda B., Singh S., Dwivedi D., Davis J.",
       "published": "2026-08-20",
-      "doi": "10.4103/sja.sja_263_26",
-      "url": "https://doi.org/10.4103/sja.sja_263_26",
+      "doi": "10.4103/sja.sja_180_26",
+      "url": "https://doi.org/10.4103/sja.sja_180_26",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -2621,11 +2633,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Comparative efficacy of high-flow nasal cannula versus conventional oxygen delivery during procedural sedation for ovum pickup in assisted reproductive technology",
-      "authors": "Mohan V., Hooda B., Singh S., Dwivedi D., Davis J.",
+      "title": "Endoscopic control for bronchial blockers: Experimental evaluation of single-lung ventilation strategies in simulation-based models",
+      "authors": "Rajhi H.",
       "published": "2026-08-20",
-      "doi": "10.4103/sja.sja_180_26",
-      "url": "https://doi.org/10.4103/sja.sja_180_26",
+      "doi": "10.4103/sja.sja_263_26",
+      "url": "https://doi.org/10.4103/sja.sja_263_26",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -4805,11 +4817,24 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "Cadaveric dissection studies in regional anesthesia – A comprehensive bibliographic analysis",
-      "authors": "Nair A., Navveen P., Nath R., Diwan S.",
+      "title": "“Ten Optimal Physiological Parameters” to keep the patient safe perioperatively: A narrative review",
+      "authors": "Çekmen N., Oba Ş., Haka D.",
       "published": "2026-08-18",
-      "doi": "10.4103/sja.sja_724_25",
-      "url": "https://doi.org/10.4103/sja.sja_724_25",
+      "doi": "10.4103/sja.sja_599_25",
+      "url": "https://doi.org/10.4103/sja.sja_599_25",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Review (Narrative / Systematic)"
+    },
+    {
+      "journal": "Saudi Journal of Anaesthesia",
+      "journal_short": "SJA",
+      "title": "A unique method for one-lung ventilation in pediatric thoracic surgery: Suction catheter and single-lumen tube approach: A case report",
+      "authors": "Abid D., Al Oufi H.",
+      "published": "2026-08-18",
+      "doi": "10.4103/sja.sja_873_25",
+      "url": "https://doi.org/10.4103/sja.sja_873_25",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -4831,24 +4856,11 @@
     {
       "journal": "Saudi Journal of Anaesthesia",
       "journal_short": "SJA",
-      "title": "“Ten Optimal Physiological Parameters” to keep the patient safe perioperatively: A narrative review",
-      "authors": "Çekmen N., Oba Ş., Haka D.",
+      "title": "Cadaveric dissection studies in regional anesthesia – A comprehensive bibliographic analysis",
+      "authors": "Nair A., Navveen P., Nath R., Diwan S.",
       "published": "2026-08-18",
-      "doi": "10.4103/sja.sja_599_25",
-      "url": "https://doi.org/10.4103/sja.sja_599_25",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Review (Narrative / Systematic)"
-    },
-    {
-      "journal": "Saudi Journal of Anaesthesia",
-      "journal_short": "SJA",
-      "title": "A unique method for one-lung ventilation in pediatric thoracic surgery: Suction catheter and single-lumen tube approach: A case report",
-      "authors": "Abid D., Al Oufi H.",
-      "published": "2026-08-18",
-      "doi": "10.4103/sja.sja_873_25",
-      "url": "https://doi.org/10.4103/sja.sja_873_25",
+      "doi": "10.4103/sja.sja_724_25",
+      "url": "https://doi.org/10.4103/sja.sja_724_25",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -10213,32 +10225,6 @@
     {
       "journal": "Anesthesiology",
       "journal_short": "ANES",
-      "title": "Eyes on the Heart",
-      "authors": "Moitra V., Glance L.",
-      "published": "2026-08-11",
-      "doi": "10.1097/aln.0000000000006203",
-      "url": "https://doi.org/10.1097/aln.0000000000006203",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Anesthesiology",
-      "journal_short": "ANES",
-      "title": "Cardiac Opioid System and Its Role in Heart Failure and Ischemia–Reperfusion Injury",
-      "authors": "Lasch A., Celik M., Torregroza C., Huhn R., Schäfer M., Treskatsch S.",
-      "published": "2026-08-11",
-      "doi": "10.1097/aln.0000000000006139",
-      "url": "https://doi.org/10.1097/aln.0000000000006139",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Anesthesiology",
-      "journal_short": "ANES",
       "title": "Instructions for Obtaining Anesthesiology Continuing Medical Education (CME) Credit",
       "authors": "",
       "published": "2026-08-11",
@@ -10257,6 +10243,32 @@
       "published": "2026-08-11",
       "doi": "10.1097/aln.0000000000006285",
       "url": "https://doi.org/10.1097/aln.0000000000006285",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Anesthesiology",
+      "journal_short": "ANES",
+      "title": "Eyes on the Heart",
+      "authors": "Moitra V., Glance L.",
+      "published": "2026-08-11",
+      "doi": "10.1097/aln.0000000000006203",
+      "url": "https://doi.org/10.1097/aln.0000000000006203",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Anesthesiology",
+      "journal_short": "ANES",
+      "title": "Cardiac Opioid System and Its Role in Heart Failure and Ischemia–Reperfusion Injury",
+      "authors": "Lasch A., Celik M., Torregroza C., Huhn R., Schäfer M., Treskatsch S.",
+      "published": "2026-08-11",
+      "doi": "10.1097/aln.0000000000006139",
+      "url": "https://doi.org/10.1097/aln.0000000000006139",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -17961,19 +17973,6 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Postcardiotomy Acute Liver Injury: A Retrospective Cohort",
-      "authors": "Marianello D., De Matteis F., Sanfilippo F., Biuzzi C., Galasso L., Ginetti F., Montesi G., Rizzo M., Cartocci A., Conte S. et al.",
-      "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.05.031",
-      "url": "https://doi.org/10.1053/j.jvca.2026.05.031",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
       "title": "Comparing Echocardiography and Right Heart Catheterization for Mortality Prediction in Pulmonary Hypertension",
       "authors": "Costanza L., Stead T., Joyce M., Maslow M., Maslow A.",
       "published": "2026-08-01",
@@ -17983,6 +17982,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
+      "title": "Postcardiotomy Acute Liver Injury: A Retrospective Cohort",
+      "authors": "Marianello D., De Matteis F., Sanfilippo F., Biuzzi C., Galasso L., Ginetti F., Montesi G., Rizzo M., Cartocci A., Conte S. et al.",
+      "published": "2026-08-01",
+      "doi": "10.1053/j.jvca.2026.05.031",
+      "url": "https://doi.org/10.1053/j.jvca.2026.05.031",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -19110,19 +19122,6 @@
       "published": "2026-07-31",
       "doi": "10.1136/rapm-2026-108263",
       "url": "https://doi.org/10.1136/rapm-2026-108263",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Pain Practice",
-      "journal_short": "PAINPRAC",
-      "title": "Greater Occipital Nerve Block as Preventive Treatment in Migraine: A Time‐To‐Event Analysis",
-      "authors": "Giuliani G., Viganò A., Papini F., Petolicchio B., Toscano M., Vicenzini E., Di Piero V., Altieri M.",
-      "published": "2026-07-31",
-      "doi": "10.1111/papr.70041",
-      "url": "https://doi.org/10.1111/papr.70041",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
