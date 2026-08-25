@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T13:51:56+00:00",
+  "generated_at": "2026-08-25T14:46:30+00:00",
   "items": [
     {
       "journal": "Anesthesiology",
@@ -11,7 +11,11 @@
       "url": "https://doi.org/10.1097/aln.0000000000006256",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42461097",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42461097/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Randomized Control Trials"
     },
     {
@@ -24,8 +28,14 @@
       "url": "https://doi.org/10.1097/eja.0000000000002373",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
+      "pmid": "42080744",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42080744/",
+      "pubmed_publication_types": [
+        "Journal Article",
+        "Practice Guideline",
+        "Review"
+      ],
+      "category": "Guideline / Consensus"
     },
     {
       "journal": "European Journal of Anaesthesiology",
@@ -54,7 +64,11 @@
       "url": "https://doi.org/10.1097/eja.0000000000002411",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42080742",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42080742/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Unclassified"
     },
     {
@@ -170,7 +184,11 @@
       "url": "https://doi.org/10.1097/eja.0000000000002381",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42080754",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42080754/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Guideline / Consensus"
     },
     {
@@ -251,7 +269,11 @@
       "url": "https://doi.org/10.1097/eja.0000000000002377",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42080741",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42080741/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Unclassified"
     },
     {
@@ -281,7 +303,11 @@
       "url": "https://doi.org/10.1097/eja.0000000000002387",
       "aop": false,
       "source": "crossref",
-      "pubmed_publication_types": [],
+      "pmid": "42080756",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42080756/",
+      "pubmed_publication_types": [
+        "Journal Article"
+      ],
       "category": "Unclassified"
     },
     {
@@ -491,6 +517,24 @@
         "Journal Article"
       ],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Pain Practice",
+      "journal_short": "PAINPRAC",
+      "title": "Non‐Invasive Vagus Nerve Stimulation in Cluster Headache: A Clinical Practice Guideline",
+      "authors": "Goadsby P., Feoktistov A., Anitescu M., Day M., Staats P.",
+      "published": "2026-08-25",
+      "doi": "10.1111/papr.70084",
+      "url": "https://doi.org/10.1111/papr.70084",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "41133770",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41133770/",
+      "pubmed_publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "category": "Review (Narrative / Systematic)"
     },
     {
       "journal": "Paediatric Anaesthesia",
@@ -1783,6 +1827,23 @@
     {
       "journal": "British Journal of Anaesthesia",
       "journal_short": "BJA",
+      "title": "Clinical effectiveness of perioperative oxygen therapy strategies in children. Response to Br J Anaesth 2026; 137: 311–2",
+      "authors": "Tomassini S., Elfeky A., Couper K., Yeung J.",
+      "published": "2026-08-22",
+      "doi": "10.1016/j.bja.2026.05.035",
+      "url": "https://doi.org/10.1016/j.bja.2026.05.035",
+      "aop": false,
+      "source": "crossref",
+      "pmid": "42493392",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42493392/",
+      "pubmed_publication_types": [
+        "Letter"
+      ],
+      "category": "Editorial / Letter / Commentary"
+    },
+    {
+      "journal": "British Journal of Anaesthesia",
+      "journal_short": "BJA",
       "title": "European Malignant Hyperthermia Group 2025 guidelines for the investigation of malignant hyperthermia susceptibility: the indispensable educational loop from guidelines to rescue. Response to Br J Anaesth 2026; 137: 339–41",
       "authors": "Rüffert H., Girard T.",
       "published": "2026-08-22",
@@ -1809,23 +1870,6 @@
       "source": "crossref",
       "pmid": "42425796",
       "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42425796/",
-      "pubmed_publication_types": [
-        "Letter"
-      ],
-      "category": "Editorial / Letter / Commentary"
-    },
-    {
-      "journal": "British Journal of Anaesthesia",
-      "journal_short": "BJA",
-      "title": "Clinical effectiveness of perioperative oxygen therapy strategies in children. Response to Br J Anaesth 2026; 137: 311–2",
-      "authors": "Tomassini S., Elfeky A., Couper K., Yeung J.",
-      "published": "2026-08-22",
-      "doi": "10.1016/j.bja.2026.05.035",
-      "url": "https://doi.org/10.1016/j.bja.2026.05.035",
-      "aop": false,
-      "source": "crossref",
-      "pmid": "42493392",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42493392/",
       "pubmed_publication_types": [
         "Letter"
       ],
@@ -2023,12 +2067,8 @@
       "url": "https://doi.org/10.1016/j.bja.2026.05.015",
       "aop": false,
       "source": "crossref",
-      "pmid": "42414113",
-      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42414113/",
-      "pubmed_publication_types": [
-        "Editorial"
-      ],
-      "category": "Editorial / Letter / Commentary"
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
     },
     {
       "journal": "British Journal of Anaesthesia",
@@ -10496,32 +10536,6 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "CON: OR Extubation Should Be the Default Practice for All Low-Risk Cardiac Surgery Patients",
-      "authors": "Cardonell B., Grewal A.",
-      "published": "2026-08-12",
-      "doi": "10.1053/j.jvca.2026.04.040",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.040",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
-      "title": "In-Hospital Mortality and Associated Risk Factors in Cardiac Surgery–Related Perioperative Acute Kidney Injury Patients Treated with Continuous Renal Replacement Therapy: A Retrospective Cohort Study",
-      "authors": "Bai J., Wei L., Liu M., Ding N., Cui H., Wei X., Shao B., Fu P., Zhao C., Ren Z. et al.",
-      "published": "2026-08-12",
-      "doi": "10.1053/j.jvca.2026.04.020",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.020",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Observational Studies"
-    },
-    {
-      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
-      "journal_short": "JCVA",
       "title": "Clinical Outcomes of a Goal-Directed Ultra-Fast-Track Anesthesia Pathway Targeting Operating Room Extubation in Cardiac Surgery: A Propensity Score–Matched Cohort Analysis",
       "authors": "Jin B., Guo J., Wang L., Su D., Yao Y.",
       "published": "2026-08-12",
@@ -10544,6 +10558,32 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Randomized Control Trials"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
+      "title": "CON: OR Extubation Should Be the Default Practice for All Low-Risk Cardiac Surgery Patients",
+      "authors": "Cardonell B., Grewal A.",
+      "published": "2026-08-12",
+      "doi": "10.1053/j.jvca.2026.04.040",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.040",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Unclassified"
+    },
+    {
+      "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
+      "journal_short": "JCVA",
+      "title": "In-Hospital Mortality and Associated Risk Factors in Cardiac Surgery–Related Perioperative Acute Kidney Injury Patients Treated with Continuous Renal Replacement Therapy: A Retrospective Cohort Study",
+      "authors": "Bai J., Wei L., Liu M., Ding N., Cui H., Wei X., Shao B., Fu P., Zhao C., Ren Z. et al.",
+      "published": "2026-08-12",
+      "doi": "10.1053/j.jvca.2026.04.020",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.020",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Observational Studies"
     },
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
@@ -18686,11 +18726,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Con: Viscoelastic Testing Should Not Be Used Routinely but Selectively in Cardiac Surgery",
-      "authors": "Cameron M., Awad T.",
+      "title": "Advances in Cardiovascular Pharmacotherapy. VIII. Angiotensin II in Vasodilatory Shock",
+      "authors": "Pagel P., Hang D., Freed J., Crystal G.",
       "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.04.039",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.039",
+      "doi": "10.1053/j.jvca.2026.04.027",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.027",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -18699,11 +18739,11 @@
     {
       "journal": "Journal of Cardiothoracic and Vascular Anesthesia",
       "journal_short": "JCVA",
-      "title": "Advances in Cardiovascular Pharmacotherapy. VIII. Angiotensin II in Vasodilatory Shock",
-      "authors": "Pagel P., Hang D., Freed J., Crystal G.",
+      "title": "Con: Viscoelastic Testing Should Not Be Used Routinely but Selectively in Cardiac Surgery",
+      "authors": "Cameron M., Awad T.",
       "published": "2026-08-01",
-      "doi": "10.1053/j.jvca.2026.04.027",
-      "url": "https://doi.org/10.1053/j.jvca.2026.04.027",
+      "doi": "10.1053/j.jvca.2026.04.039",
+      "url": "https://doi.org/10.1053/j.jvca.2026.04.039",
       "aop": false,
       "source": "crossref",
       "pubmed_publication_types": [],
@@ -21585,19 +21625,6 @@
     {
       "journal": "Brazilian Journal of Anesthesiology",
       "journal_short": "BJAN",
-      "title": "Artificial intelligence in the prediction of intraoperative red blood cell transfusion in cardiac surgery: a systematic review and diagnostic test accuracy meta-analysis",
-      "authors": "Valério F., Rodrigues A., de Amorim D., Cantarino R., de Araujo G., Yusuf J., Bessa L., Leme M., Euzebio M., Seixas F. et al.",
-      "published": "2026-07-22",
-      "doi": "10.1016/j.bjane.2026.844782",
-      "url": "https://doi.org/10.1016/j.bjane.2026.844782",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Meta-analysis"
-    },
-    {
-      "journal": "Brazilian Journal of Anesthesiology",
-      "journal_short": "BJAN",
       "title": "Clinical impact of extubation in the operating room after cardiac surgery: a retrospective analysis of a prospective registry",
       "authors": "de Marco P., Lauand P., Júnior L., Alves R., Belini M., Maia L., Machado M., Nakazone M.",
       "published": "2026-07-22",
@@ -21607,6 +21634,19 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Observational Studies"
+    },
+    {
+      "journal": "Brazilian Journal of Anesthesiology",
+      "journal_short": "BJAN",
+      "title": "Artificial intelligence in the prediction of intraoperative red blood cell transfusion in cardiac surgery: a systematic review and diagnostic test accuracy meta-analysis",
+      "authors": "Valério F., Rodrigues A., de Amorim D., Cantarino R., de Araujo G., Yusuf J., Bessa L., Leme M., Euzebio M., Seixas F. et al.",
+      "published": "2026-07-22",
+      "doi": "10.1016/j.bjane.2026.844782",
+      "url": "https://doi.org/10.1016/j.bjane.2026.844782",
+      "aop": false,
+      "source": "crossref",
+      "pubmed_publication_types": [],
+      "category": "Meta-analysis"
     },
     {
       "journal": "Brazilian Journal of Anesthesiology",
@@ -39456,19 +39496,6 @@
       "source": "crossref",
       "pubmed_publication_types": [],
       "category": "Randomized Control Trials"
-    },
-    {
-      "journal": "Journal of Clinical Anesthesia",
-      "journal_short": "JCLINANES",
-      "title": "The PAPE block: Ultrasound-guided pericapsular anterior and posterior elbow nerve group block for motor-sparing analgesia",
-      "authors": "Teng Q., Qian Z., Yao S., Li Q., Xu T.",
-      "published": "2026-02-01",
-      "doi": "10.1016/j.jclinane.2025.112121",
-      "url": "https://doi.org/10.1016/j.jclinane.2025.112121",
-      "aop": false,
-      "source": "crossref",
-      "pubmed_publication_types": [],
-      "category": "Unclassified"
     }
   ],
   "meta": {
