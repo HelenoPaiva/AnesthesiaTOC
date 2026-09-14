@@ -1,28 +1,48 @@
 {
-  "generated_at": "2026-09-14T14:37:32+00:00",
+  "generated_at": "2026-09-14T19:14:53+00:00",
   "source_name": "SCImago Journal Rank (SJR)",
   "source_note": "SJR is treated as an annual journal-level metric; the dashboard uses the latest year available in the upstream dataset at update time.",
   "sjr_year": 2025,
   "coverage": {
-    "matched": 17,
-    "total_sources": 17
+    "matched": 30,
+    "total_sources": 31
   },
   "by_issn": {
     "0003-2409": {
       "sjr": 2.262,
       "title_source": "Anaesthesia"
     },
-    "2352-5568": {
-      "sjr": 1.274,
-      "title_source": "Anaesthesia Critical Care and Pain Medicine"
-    },
     "0003-2999": {
       "sjr": 1.124,
       "title_source": "Anesthesia and Analgesia"
     },
+    "1975-5171": {
+      "sjr": 0.532,
+      "title_source": "Anesthesia and Pain Medicine"
+    },
     "0003-3022": {
       "sjr": 1.65,
       "title_source": "Anesthesiology"
+    },
+    "2228-7523": {
+      "sjr": 0.418,
+      "title_source": "Anesthesiology and Pain Medicine"
+    },
+    "2058-5349": {
+      "sjr": 0.822,
+      "title_source": "BJA Education"
+    },
+    "2772-6096": {
+      "sjr": 0.964,
+      "title_source": "BJA Open"
+    },
+    "1471-2253": {
+      "sjr": 0.819,
+      "title_source": "BMC Anesthesiology"
+    },
+    "1878-1608": {
+      "sjr": 0.774,
+      "title_source": "Best Practice and Research in Clinical Anaesthesiology"
     },
     "0104-0014": {
       "sjr": 0.537,
@@ -32,9 +52,17 @@
       "sjr": 2.687,
       "title_source": "British Journal of Anaesthesia"
     },
-    "0832-610X": {
-      "sjr": 0.855,
-      "title_source": "Canadian Journal of Anesthesia"
+    "2049-4637": {
+      "sjr": 0.627,
+      "title_source": "British Journal of Pain"
+    },
+    "2474-0527": {
+      "sjr": 0.891,
+      "title_source": "Canadian Journal of Pain"
+    },
+    "2167-6275": {
+      "sjr": 0.404,
+      "title_source": "Current Anesthesiology Reports"
     },
     "0952-7907": {
       "sjr": 0.724,
@@ -44,33 +72,57 @@
       "sjr": 1.777,
       "title_source": "European Journal of Anaesthesiology"
     },
-    "1053-0770": {
-      "sjr": 0.587,
-      "title_source": "Journal of Cardiothoracic and Vascular Anesthesia"
+    "0019-5049": {
+      "sjr": 0.498,
+      "title_source": "Indian Journal of Anaesthesia"
+    },
+    "2772-5944": {
+      "sjr": 0.443,
+      "title_source": "Interventional Pain Medicine"
+    },
+    "0913-8668": {
+      "sjr": 0.866,
+      "title_source": "Journal of Anesthesia"
     },
     "0952-8180": {
       "sjr": 1.403,
       "title_source": "Journal of Clinical Anesthesia"
     },
-    "0898-4921": {
-      "sjr": 0.743,
-      "title_source": "Journal of Neurosurgical Anesthesiology"
+    "1178-7090": {
+      "sjr": 0.814,
+      "title_source": "Journal of Pain Research"
     },
     "2005-6419": {
       "sjr": 1.389,
       "title_source": "Korean Journal of Anesthesiology"
     },
-    "1155-5645": {
-      "sjr": 0.676,
-      "title_source": "Paediatric Anaesthesia"
+    "2005-9159": {
+      "sjr": 0.881,
+      "title_source": "Korean Journal of Pain"
+    },
+    "1178-7112": {
+      "sjr": 0.591,
+      "title_source": "Local and Regional Anesthesia"
+    },
+    "0375-9393": {
+      "sjr": 0.736,
+      "title_source": "Minerva Anestesiologica"
+    },
+    "1758-1869": {
+      "sjr": 0.476,
+      "title_source": "Pain Management"
+    },
+    "1533-3159": {
+      "sjr": 0.899,
+      "title_source": "Pain Physician"
     },
     "1530-7085": {
       "sjr": 0.878,
       "title_source": "Pain Practice"
     },
-    "1098-7339": {
-      "sjr": 1.211,
-      "title_source": "Regional Anesthesia and Pain Medicine"
+    "2471-2531": {
+      "sjr": 1.162,
+      "title_source": "Pain Reports"
     },
     "1658-354X": {
       "sjr": 0.383,
