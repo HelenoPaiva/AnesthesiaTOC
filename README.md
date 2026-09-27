@@ -20,6 +20,8 @@ The project addresses a common challenge in anesthesiology practice and academia
 
 The dashboard relies exclusively on **open scholarly metadata infrastructures** and **static web technologies**, requiring no backend server, database, or user authentication.
 
+This project has been puclished on the **Brazilian Journal of Anesthesiology**: https://doi.org/10.1016/j.bjane.2026.844833
+
 ---
 
 ## Key features
